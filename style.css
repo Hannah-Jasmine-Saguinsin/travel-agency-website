@@ -4,7 +4,6 @@ body{
     padding: 0;
     position: relative;
     font-family: 'playfair display';
-    background; url('/assets/hero-image.jpg') no-repeat center center/cover;
 }
 .navbar{
     display: flex;
