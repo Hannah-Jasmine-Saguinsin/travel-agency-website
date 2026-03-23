@@ -1,8 +1,70 @@
 /*This is a CSS file*/
 body{
-    background-color: darkgrey;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: 'playfair display';
+    background; url('/assets/hero-image.jpg') no-repeat center center/cover;
 }
-.navdiv ul li{
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fefeff;
+    padding: 0 2rem;
+    min-height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #306f91;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.nav-left{
+    flex-shrink: 0;
+}
+.logo{
+    color: #306f91;
+    font-family: 'playfair display';
+    font-size: 1.8rem;
+    font-weight: bold;
     text-decoration: none;
-    list-style: none;
+}
+.nav-right{
+    flex-wrap: nowrap;
+    margin-left: auto;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-right a{
+    color: #306f91;
+    text-decoration: none;
+    font-size: 1rem;
+    gap: 2rem;
+    padding: 0.5rem 0;
+    white-space: nowrap
+    
+}
+nav li{
+    display: inline;
+}
+.hero-section{
+    
+    background-size: 150px 150px;
+    position: relative;
+    height: 100vh;
+    color: #fefeff;
+    padding: 20px;
+    text-align: center;
+}
+#section-2, #section-3, #section-4, #section-5, #section-6, #section-7{
+    background-color: #fefeff;
+    padding: 20px;
+    text-align: center;
+}
+#section-8, footer{
+    background-color: #306f91;
+    padding: 20px;
+    text-align: center;
 }
