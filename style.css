@@ -1,10 +1,39 @@
-/*This is a CSS file*/
+/*NOTE WRITE YOUR CODE BELOW THE NAME*/
 body{
     margin: 0;
     padding: 0;
     position: relative;
     font-family: 'playfair display';
 }
+@media (max-width:768px) {
+  .hero {
+    height: 70vh; /* slightly shorter on phones */
+  }
+  
+  .hero h1 {
+    font-size: 28px;
+  }
+  
+  .hero p {
+    font-size: 16px;
+  }
+}
+@media (max-width:768px){
+  .hero {
+    background-attachment: scroll;
+  }
+}
+#section-2, #section-3, #section-4, #section-5, #section-6, #section-7{
+    background-color: #fefeff;
+    padding: 20px;
+    text-align: center;
+}
+#section-8, footer{
+    background-color: #306f91;
+    padding: 20px;
+    text-align: center;
+}
+/*Navbar Section, Hero Section, and Packages Section (SAGUINSIN)*/
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -38,7 +67,6 @@ body{
 
 .nav-right a{
     color: #306f91;
-    font-weight: 100;
     text-decoration: none;
     font-size: 1rem;
     gap: 2rem;
@@ -50,20 +78,22 @@ nav li{
     display: inline;
 }
 .hero-section{
-    background: url(assets/hero.jpg) no-repeat center center;
-    position: relative;
-    height: 100vh;
-    color: #fefeff;
-    padding: 20px;
-    text-align: center;
+  height: 100vh; /* fills 100% of the viewport height */
+   background: radial-gradient(circle at left center,
+rgba(255,255,255,0.9),
+rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
+  background-size: cover; /* image covers the whole area */
+  background-position: center; /* keeps it centered */
+  background-repeat: no-repeat;
+  display: flex; /* for centering content if needed */
+  align-items: center;
+  justify-content: flex-start; /* text on left side */
+  padding-left: 5vw; /* responsive padding */
+  text-align: center;
+  color: #fefeff;
 }
-#section-2, #section-3, #section-4, #section-5, #section-6, #section-7{
-    background-color: #fefeff;
-    padding: 20px;
-    text-align: center;
-}
-#section-8, footer{
-    background-color: #306f91;
-    padding: 20px;
-    text-align: center;
-}
+   
+/*Destinations Section,and Featured Section (ENDOZO)*/
+/*About Section,and Testimonials Section (KONG)*/
+/*FAQ Section and Contact Section (LAGNADA)*/
+
