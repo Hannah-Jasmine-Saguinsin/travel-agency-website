@@ -5,8 +5,25 @@ body{
     position: relative;
     font-family: 'playfair display';
 }
-
-#section-2, #section-3, #section-4, #section-5, #section-6, #section-7{
+@media (max-width:768px) {
+  .hero {
+    height: 70vh; /* slightly shorter on phones */
+  }
+  
+  .hero h1 {
+    font-size: 28px;
+  }
+  
+  .hero p {
+    font-size: 16px;
+  }
+}
+@media (max-width:768px){
+  .hero {
+    background-attachment: scroll;
+  }
+}
+#section-2, #section-3,  #section-5, #section-6, #section-7{
     background-color: #fefeff;
     padding: 20px;
     text-align: center;
@@ -61,11 +78,26 @@ nav li{
     display: inline;
 }
 .hero-section{
+  height: 100vh; /* fills 100% of the viewport height */
    background: radial-gradient(circle at left center,
 rgba(255,255,255,0.9),
 rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
-  color: #0B1C3A;
-   height: 50vh;
+  background-size: cover; /* image covers the whole area */
+  background-position: center; /* keeps it centered */
+  background-repeat: no-repeat;
+  display: flex; /* for centering content if needed */
+  align-items: center;
+  justify-content: flex-start; /* text on left side */
+  padding-left: 5vw; /* responsive padding */
+  text-align: center;
+  color: #fefeff;
+}
+/*css ni kong*/
+.abt-content{
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)), url('assets/bgabtus.jpg');
+    height: 50vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -78,43 +110,220 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
     text-align: center;
     
 }
-.hero-section h1{
-  font-family: 'caveat';
-  font-size: 12px;
+.contentcontent{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 0;
 }
-.hero-section h2{
-    font-family: 'playfair display';
-    font-weight: 900;
-}  
-.hero-section p{
-    color: #306f91;
+.content h2{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 50px;
+    color: rgb(252, 252, 252);
+    margin-bottom: 10px;
+    font-size: 50px;
 }
-.btn-1, .btn-2 {
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    font-weight: bold;
+.content p{
+    text-align: center;
+    color: rgb(252, 252, 252);
+    font-size: 30px;
+    padding: 0px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.one {
+  background: linear-gradient(
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.75));
+  height: 300px;
+  width: 250px;
+  margin: 20px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+
 }
 
-.btn-1 {
-    background-color: #306f91;
-    color: white;
+.one img{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    margin-top: 100px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    position: relative;
+    top: 50px;
+}
+.one:hover img{
+    opacity: 0;                   
+}
+.one h3{
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    font-size: 30px;
+    opacity: 1;                   
+    transition: opacity 0.5s ease;  
+    position: relative;
+    top: 50px;
+
+}
+.one:hover h3 {
+    opacity: 0;                    
+}
+.one p{
+   text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-top: 10px;
+    opacity: 0;                   
+    transition: opacity 0.5s ease;  
+    position: relative;
+    top: -155px; 
+    
+}
+.one:hover p {
+    opacity: 1;                    
+}
+.tw {
+   background: linear-gradient(
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.75));
+  height: 300px;
+  width: 250px;
+  margin: 20px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  
+}
+.tw img{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    margin-top: 100px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    position: relative;
+    top: 90px;
+}
+.tw:hover img{
+    opacity: 0;                   
+}
+.tw h3{
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    font-size: 30px;
+    opacity: 1;                   
+    transition: opacity 0.5s ease;  
+    position: relative;
+    top: 90px;
+
+}
+.tw:hover h3 {
+    opacity: 0;                    
 }
 
-.btn-2 {
-    background-color: transparent;
-    color: #0B1C3A;
-    border: 2px solid #0B1C3A;
+.tw p{
+   text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-top: 10px;
+    opacity: 0;                   
+    transition: opacity 0.5s ease;  
+    position: relative;
+    top: -145px; 
+    
 }
-.btn-1:hover {
-    background-color: #1d5371;
+.tw:hover p {
+    opacity: 1;                    
+}
+.th {
+   background: linear-gradient(
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.75));
+  height: 300px;
+  width: 250px;
+  margin: 20px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  
+}
+.th img{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    margin-top: 100px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    position: relative;
+    top: 90px;
+}
+.th:hover img{
+    opacity: 0;                   
+}
+.th h3{
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    font-size: 30px;
+    opacity: 1;                   
+    transition: opacity 0.5s ease;  
+    position: relative;
+    top: 90px;
+
+}
+.th:hover h3 {
+    opacity: 0;                    
 }
 
-.btn-2:hover {
-    background-color: #0B1C3A;
-    color: white;
+.th p{
+   text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-top: 10px;
+    opacity: 0;                   
+    transition: opacity 0.5s ease;  
+    position: relative;
+    top: -155px; 
+    
 }
+.th:hover p {
+    opacity: 1;                    
+}
+/*hangang dito*/
 
 
 /*Destinations Section,and Featured Section (ENDOZO)*/
