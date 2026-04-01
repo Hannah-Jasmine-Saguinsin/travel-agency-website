@@ -40,7 +40,7 @@ img{
     min-height: 70px;
     width: 100%;
     background: linear-gradient(
-        rgba(255, 255, 255, 0.50),
+        rgba(255, 255, 255, 0.95),
         rgba(255, 255, 255, 0.50));
     box-shadow: 0 2px 12px rgba(48, 111, 145, 0.5);
     top: 0;
@@ -174,7 +174,7 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
 /*Packages(SAGUINSIN)*/
 .packages-section {
     min-height: 100vh;
-    padding: 5em 5em;
+    padding: 1em 1em;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -184,7 +184,6 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
 .packages-main-content{
     margin: 0;
     padding: 0;
-    font-family: ;
     color: #306f91;
 }
 .packages-main-content h3{
@@ -217,27 +216,38 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
 
 .packages-content {
     flex-grow: 1;
-    font-size: 1rem;
-    padding: 1rem;
+    font-size: 0.75rem;
+    padding: 0 1rem 0rem 1rem;
     text-align: center;
     font-family: 'roboto';
     color: #0B1C3A;
 }
 .packages-content p:first-of-type{
-    font-weight: 900;
+    font-weight: bold;
+    text-align: justify;
 }
 .packages-content h4{
     font-family:'playfair display';
     font-weight: bolder;
 }
-.card-places button {
-    margin: 1rem 3rem 4rem 3rem;
-    padding: 1rem 3rem 1rem 3rem;
-    border: none;
-    border-radius: 50px;
-    background: #F0B13D;
+.card-btn {
+    display: block;             
+    text-align: center;          
+    margin: 1rem auto;           
+    padding: 1rem 3rem;          
+    border-radius: 50px;         
+    background: #F0B13D;         
+    color: #0B1C3A;              
     font-weight: bold;
+    text-decoration: none;       
     cursor: pointer;
+    transition: 0.3s ease;
+}
+.card-btn:hover {
+    background-color: #e2a82c;   
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 .card-places:hover {
     transform: translateY(-5px);
