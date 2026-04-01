@@ -8,22 +8,11 @@
 body{
     min-height: 100vh;
     min-height: 100dvh;
-    font-family: 'playfair display';
+    font-family: ('source sans pro');
 }
 img{
     max-width: 100%;
     height: auto;
-}
-#section-2, #section-3,  #section-5, #section-6, #section-7{
-    background-color: #fefeff;
-    min-height: 50vh;
-    padding: 60px 20px;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center; 
 }
 #section-8, footer{
     background-color: #306f91;
@@ -183,205 +172,87 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
     color: white;
 }
 /*Packages(SAGUINSIN)*/
-.packages-card{
+.packages-section {
+    min-height: 100vh;
+    padding: 5em 5em;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
-.packages-card .packages-content{
-    padding: 1em 1em;
-    color: #0B1C3A;
+.packages-main-content{
+    margin: 0;
+    padding: 0;
+    font-family: ;
+    color: #306f91;
 }
-.packages-card .card-korea{
-    background-color: white;
+.packages-main-content h3{
+    color: #0B1C3A;
+    font-family: 'playfair display';
+    font-size: 3em;
+    font-weight: 900;
+}
+.packages-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    min-width: 50vw;
+    margin-top: 1em;
+}
+.card-places {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    border-radius: 2rem;
+    transition: 0.3s ease;
 }
-.packages-card .card-korea img{
-    display: flex;
-    padding: 1.5em;
-    align-items: center;
-    min-height: 50vh;
-    box-shadow: 100px #0B1C3A;
-    border-radius: 2rem;
-}
-.packages-card .card-korea button{
-    border: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-decoration: none;
-    padding: 0.5em;
-    margin: 0em 3em 3em 3em;
-    border-radius: 50px;
-    font-weight: bold;
-    background-color: #F0B13D;
-    color: #0B1C3A;
-}
-.packages-card .card-korea:hover{
-    transition: 1s ease;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+.card-places img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
-.packages-card .card-china{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2rem;
-}
-.packages-card .card-china img{
-    display: flex;
-    padding: 1.5em;
-    align-items: center;
-    min-height: 50vh;
-    box-shadow: 100px #0B1C3A;
-    border-radius: 2rem;
-}
-.packages-card .card-china button{
-    border: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-decoration: none;
-    padding: 0.5em;
-    margin: 0em 3em 3em 3em;
-    border-radius: 50px;
-    font-weight: bold;
-    background-color: #F0B13D;
+.packages-content {
+    flex-grow: 1;
+    font-size: 1rem;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'roboto';
     color: #0B1C3A;
 }
-.packages-card .card-china:hover{
-    transition: 1s ease;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+.packages-content p:first-of-type{
+    font-weight: 900;
+}
+.packages-content h4{
+    font-family:'playfair display';
+    font-weight: bolder;
+}
+.card-places button {
+    margin: 1rem 3rem 4rem 3rem;
+    padding: 1rem 3rem 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    background: #F0B13D;
+    font-weight: bold;
+    cursor: pointer;
+}
+.card-places:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+@media (max-width: 900px) {
+    .packages-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.packages-card .card-japan-taiwan{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2rem;
-}
-.packages-card .card-japan-taiwan img{
-    display: flex;
-    padding: 1.5em;
-    align-items: center;
-    min-height: 50vh;
-    box-shadow: 100px #0B1C3A;
-    border-radius: 2rem;
-}
-.packages-card .card-japan-taiwan button{
-    border: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-decoration: none;
-    padding: 0.5em;
-    margin: 0em 3em 3em 3em;
-    border-radius: 50px;
-    font-weight: bold;
-    background-color: #F0B13D;
-    color: #0B1C3A;
-}
-.packages-card .card-japan-taiwan:hover{
-    transition: 1s ease;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-}
-
-.packages-card .card-singapore{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2rem;
-}
-.packages-card .card-singapore img{
-    display: flex;
-    padding: 1.5em;
-    align-items: center;
-    min-height: 50vh;
-    box-shadow: 100px #0B1C3A;
-    border-radius: 2rem;
-}
-.packages-card .card-singapore button{
-    border: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-decoration: none;
-    padding: 0.5em;
-    margin: 0em 3em 3em 3em;
-    border-radius: 50px;
-    font-weight: bold;
-    background-color: #F0B13D;
-    color: #0B1C3A;
-}
-.packages-card .card-singapore:hover{
-    transition: 1s ease;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-}
-
-.packages-card .card-siargao{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2rem;
-}
-.packages-card .card-siargao img{
-    display: flex;
-    padding: 1.5em;
-    align-items: center;
-    min-height: 50vh;
-    box-shadow: 100px #0B1C3A;
-    border-radius: 2rem;
-}
-.packages-card .card-siargao button{
-    border: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-decoration: none;
-    padding: 0.5em;
-    margin: 0em 3em 3em 3em;
-    border-radius: 50px;
-    font-weight: bold;
-    background-color: #F0B13D;
-    color: #0B1C3A;
-}
-.packages-card .card-siargao:hover{
-    transition: 1s ease;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-}
-.packages-card .card-batanes{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2rem;
-}
-.packages-card .card-batanes img{
-    display: flex;
-    padding: 1.5em;
-    align-items: center;
-    min-height: 50vh;
-    box-shadow: 100px #0B1C3A;
-    border-radius: 2rem;
-}
-.packages-card .card-batanes button{
-    border: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-decoration: none;
-    padding: 0.5em;
-    margin: 0em 3em 3em 3em;
-    border-radius: 50px;
-    font-weight: bold;
-    background-color: #F0B13D;
-    color: #0B1C3A;
-}
-.packages-card .card-batanes:hover{
-    transition: 1s ease;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+@media (max-width: 600px) {
+    .packages-card {
+        grid-template-columns: 1fr;
+    }
 }
 /*hangang dito*/
 /*css ni kong*/
