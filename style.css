@@ -2,8 +2,8 @@
 *{
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    list-style: none;
+    text-decoration: none !important;
+    list-style: none !important;
 }
 body{
     min-height: 100vh;
@@ -13,11 +13,6 @@ body{
 img{
     max-width: 100%;
     height: auto;
-}
-#section-8, footer{
-    background-color: #306f91;
-    padding: 20px;
-    text-align: center;
 }
 /*Navbar Section, Hero Section, and Packages Section (SAGUINSIN)*/
 .navigation .menu-toggle{
@@ -39,9 +34,7 @@ img{
     align-items: center;
     min-height: 70px;
     width: 100%;
-    background: linear-gradient(
-        rgba(255, 255, 255, 0.95),
-        rgba(255, 255, 255, 0.50));
+    background-color: #DEE1E6;
     box-shadow: 0 2px 12px rgba(48, 111, 145, 0.5);
     top: 0;
     z-index: 1000;
@@ -207,6 +200,8 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
     display: flex;
     flex-direction: column;
     transition: 0.3s ease;
+    transform: translateY(1px);
+    box-shadow: 0 1px 10px rgba(153, 231, 255, 0.75)
 }
 .card-places img {
     width: 100%;
@@ -401,17 +396,18 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
     text-align: center;
 }
 .testimonials h3{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'playfair display';
     text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: clamp(14px, 5vw, 25px);
+    color: #0B1C3A;
+    font-size: 3em;
+    font-weight: bolder;
     margin-bottom: 40px;
     padding: 20px;  
-    font-size: xx-large; 
     
 }
 
  .testimonial li {
+    font-family: 'source sans pro';
     background-color: #ffffff;
     height: 300px;
     width: 100%;
@@ -425,6 +421,8 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
     position: relative;
     color: #000000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(1px);
+    box-shadow: 0 1px 5px rgb(153, 231, 255)
     
  }
  .testimonial li:hover {
@@ -469,4 +467,77 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
 /*Destinations Section,and Featured Section (ENDOZO)*/
 /*About Section,and Testimonials Section (KONG)*/
 /*FAQ Section and Contact Section (LAGNADA)*/
+/*CONTACT ADJUST BY SAGUINSIN*/
+.contact-section {
+    background-color: #091E3D;
+    color: #ffffff;
+    padding: 20px;
+    text-align: left;
+    
+}
+.contact-p{
+    color: #F0B13D;
+    font-family: 'caveat';
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
+}
+.contact-section a{
+    margin-bottom: 10px;
+    display: block;
+    color: #ffffff;
 
+}
+.contact-section h3{
+    padding-bottom: 0.70em;
+    font-family: 'Playfair Display';
+    font-weight: 900;
+    font-size: 3em;
+}
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #86a1e7;
+    flex-shrink: 0;         /* prevents icon from shrinking */
+}
+.contact-item {
+    display: flex !important;          /* FORCE horizontal */
+    flex-direction: row !important;    /* ensure side-by-side */
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.contact-text {
+    font-size: 12px;
+    font-family: 'source sans pro';
+    display: flex;
+    flex-direction: column;            /* stack TEL + number */
+}
+.contact-text p{
+    font-family: 'source sans pro';
+    color: #acacac;
+    font-weight: bold;
+    margin: 0;
+}
+.contact-icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    color: #86a1e7;
+    flex-shrink: 0;
+    transform: translateY(1px);
+    box-shadow: 0 1px 15px rgba(153, 231, 255, 0.50)
+}
+
+footer{
+   background-color: #091E3D; 
+}
