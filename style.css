@@ -266,12 +266,13 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
     }
 }
 /*hangang dito*/
+
 /*css ni kong*/
 .abt-content{
     background: linear-gradient(
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)), url('assets/bgabtus.jpg');
-    min-height: 100vh;
+    min-height: 50vh;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
@@ -281,6 +282,7 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
+   
     
 }
 .contentcontent{
@@ -293,207 +295,174 @@ rgba(255,255,255,0) 60%), url('assets/hero.jpg') no-repeat center center;
 .content h2{
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
-    padding-top: 10px;
-    margin-top: 50px;
     color: rgb(252, 252, 252);
-    margin-bottom: 10px;
-    font-size: clamp(28px, 5vw, 50px);
+    font-size: clamp(14px, 5vw, 25px);
+    top: 50px;          
 }
 .content p{
     text-align: center;
     color: rgb(252, 252, 252);
-    font-size: clamp(16px, 3vw, 30px);
+    font-size: clamp(10px, 3vw, 20px);
     padding: 0px;
     font-family: 'Times New Roman', Times, serif;
     
 }
-.one {
-  background: linear-gradient(
-        rgba(255, 255, 255, 0.75),
-        rgba(255, 255, 255, 0.75));
-  height: 300px;
-  width: 250px;
-  margin: 20px;
-  border-radius: 15px;
-  align-items: center;
-  justify-content: center;
-  display:flex;
-  flex-direction: column;
-  text-align: center;
 
-}
-
-.one img{
-    width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
-    margin-top: 100px;
+.one, .tw, .th {
+    background: linear-gradient(
+            rgba(255, 255, 255, 0.75),
+            rgba(255, 255, 255, 0.75));
+    height: 300px;
+    width: 260px;
+    margin: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;     
+    text-align: center;
+    padding-top: 30px;
+    padding: 20px;
+    gap: 15px;
+    position: relative;
+    }
+.one img, .tw img, .th  img{
+ width: 70px;
+    height: 70px;
+    margin: 0;
     opacity: 1;
     transition: opacity 0.5s ease;
-    position: relative;
-    top: 50px;
+    margin-top: 0px;
+    
 }
-.one:hover img{
+
+.one:hover img, .tw:hover img, .th:hover img{
     opacity: 0;                   
-}
-.one h3{
+}   
+               
+.one h3,.tw h3,.th h3{
     font-family: 'Times New Roman', Times, serif;
     padding-left: 20px;
     padding-right: 20px;
     margin-bottom: 10px;
     color: rgb(0, 0, 0);
-    margin: 0;
     font-size: 30px;
-    opacity: 1;                   
-    transition: opacity 0.5s ease;  
-    margin-top: 20px;
-
-}
-.one:hover h3 {
-    opacity: 0;                    
-}
-.one p{
-   text-align: center;
-    color: rgb(0, 0, 0);
-    padding: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    margin-top: 10px;
-    opacity: 0;                   
-    transition: opacity 0.5s ease;  
-    position: relative;
-    top: -155px; 
-    
-}
-.one:hover p {
-    opacity: 1;                    
-}
-.tw {
-   background: linear-gradient(
-        rgba(255, 255, 255, 0.75),
-        rgba(255, 255, 255, 0.75));
-  height: 300px;
-  width: 250px;
-  margin: 20px;
-  border-radius: 15px;
-  align-items: center;
-  justify-content: center;
-  display:flex;
-  flex-direction: column;
-  text-align: center;
-  
-}
-.tw img{
-    width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
-    margin-top: 100px;
+    margin: 0;
     opacity: 1;
     transition: opacity 0.5s ease;
-    position: relative;
-    top: 50px;
+    min-height: 70px;
 }
-.tw:hover img{
-    opacity: 0;                   
-}
-.tw h3{
-    font-family: 'Times New Roman', Times, serif;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 10px;
-    color: rgb(0, 0, 0);
-    margin: 0;
-    font-size: 30px;
-    opacity: 1;                   
-    transition: opacity 0.5s ease;  
-    margin-top: 20px;
 
-}
-.tw:hover h3 {
+
+.one:hover h3, .tw:hover h3, .th:hover h3 {
     opacity: 0;                    
 }
 
-.tw p{
-   text-align: center;
-    color: rgb(0, 0, 0);
-    padding: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    margin-top: 10px;
-    opacity: 0;                   
-    transition: opacity 0.5s ease;  
-    position: relative;
-    top: -145px; 
-    
-}
-.tw:hover p {
-    opacity: 1;                    
-}
-.th {
-   background: linear-gradient(
-        rgba(255, 255, 255, 0.75),
-        rgba(255, 255, 255, 0.75));
-  height: 300px;
-  width: 250px;
-  margin: 20px;
-  border-radius: 15px;
-  align-items: center;
-  justify-content: center;
-  display:flex;
-  flex-direction: column;
-  text-align: center;
-  
-}
-.th img{
-    width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
-    margin-top: 100px;
-    opacity: 1;
+.one p,.tw p,.th p{
+    position: absolute;  
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    opacity: 0;
     transition: opacity 0.5s ease;
-    position: relative;
-    top: 50px;
-}
-.th:hover img{
-    opacity: 0;                   
-}
-.th h3{
-    font-family: 'Times New Roman', Times, serif;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 10px;
+    width: 80%;
+    font-size: 19px;
+    text-align: center;
     color: rgb(0, 0, 0);
-    margin: 0;
-    font-size: 30px;
-    opacity: 1;                   
-    transition: opacity 0.5s ease;  
-    margin-top: 20px;
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
 
-}
-.th:hover h3 {
-    opacity: 0;                    
-}
-
-.th p{
-   text-align: center;
-    color: rgb(0, 0, 0);
-    padding: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    margin-top: 10px;
-    opacity: 0;                   
-    transition: opacity 0.5s ease;  
-    position: relative;
-    top: -155px; 
     
 }
-.th:hover p {
-    opacity: 1;                    
+
+.one:hover p,.tw:hover p, .th:hover p {
+    opacity: 1;
 }
-.one p, .tw p, .th p{
-    font-size: 16px;
+
+/*testimonials*/
+
+.testimonials{
+    background: linear-gradient( to bottom,#f9f9f9, #e6f7ff);
+        min-height: 90vh;
+        padding: 40px 20px;
+
 }
-.one, .tw, .th{
-    min-height: 300px;
-    width: 250px;
+.testimonial {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+    scroll-behavior: smooth;
+    width: 80%;          
+    gap: 20px; 
+    grid-auto-rows: 300px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
 }
+.testimonials h3{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: clamp(14px, 5vw, 25px);
+    margin-bottom: 40px;
+    padding: 20px;  
+    font-size: xx-large; 
+    
+}
+
+ .testimonial li {
+    background-color: #ffffff;
+    height: 300px;
+    width: 100%;
+    margin:0;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;     
+    text-align: center;
+    position: relative;
+    color: #000000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+ }
+ .testimonial li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+ }
+ .testimonial li blockquote{
+    font-style: italic;
+    font-size: large;
+    color: #000000;
+    display: block;
+ }
+  .testimonial li span{
+    font-style: italic;
+    color: #000000;
+ }
+ .testimonial li cite {
+     
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;    
+  align-self: flex-end;
+  margin-right: 70px;
+}
+
+ .checked{
+    color: gold !important;
+ }
+ .stars {
+  display: flex;        
+  gap: 5px;             
+  position: absolute;
+  font-size: 24px;
+  top:40px;
+  left: 30px;
+}
+
+
 /*hangang dito*/
 
 
