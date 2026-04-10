@@ -1,0 +1,74 @@
+/*CONTACT ADJUST BY SAGUINSIN*/
+.contact-section {
+    background-color: #091E3D;
+    color: #ffffff;
+    padding: 20px;
+    text-align: left;
+    
+}
+.contact-p{
+    color: #F0B13D;
+    font-family: 'caveat';
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
+}
+.contact-section a{
+    margin-bottom: 10px;
+    display: block;
+    color: #ffffff;
+
+}
+.contact-section h3{
+    padding-bottom: 0.70em;
+    font-family: 'Playfair Display';
+    font-weight: 900;
+    font-size: 3em;
+}
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #86a1e7;
+    flex-shrink: 0;         /* prevents icon from shrinking */
+}
+.contact-item {
+    display: flex !important;          /* FORCE horizontal */
+    flex-direction: row !important;    /* ensure side-by-side */
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.contact-text {
+    font-size: 12px;
+    font-family: 'source sans pro';
+    display: flex;
+    flex-direction: column;            /* stack TEL + number */
+}
+.contact-text p{
+    font-family: 'source sans pro';
+    color: #acacac;
+    font-weight: bold;
+    margin: 0;
+}
+.contact-icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    color: #86a1e7;
+    flex-shrink: 0;
+    transform: translateY(1px);
+    box-shadow: 0 1px 15px rgba(153, 231, 255, 0.50)
+}
+
+footer{
+   background-color: #091E3D; 
+}

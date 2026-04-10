@@ -1,0 +1,88 @@
+/*testimonials*/
+
+.testimonials{
+    background: linear-gradient( to bottom,#f9f9f9, #e6f7ff);
+        min-height: 90vh;
+        padding: 40px 20px;
+
+}
+.testimonial {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+    scroll-behavior: smooth;
+    width: 80%;          
+    gap: 20px; 
+    grid-auto-rows: 300px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+.testimonials h3{
+    font-family: 'playfair display';
+    text-align: center;
+    color: #0B1C3A;
+    font-size: 3em;
+    font-weight: bolder;
+    margin-bottom: 40px;
+    padding: 20px;  
+    
+}
+
+ .testimonial li {
+    font-family: 'source sans pro';
+    background-color: #ffffff;
+    height: 300px;
+    width: 100%;
+    margin:0;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;     
+    text-align: center;
+    position: relative;
+    color: #000000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(1px);
+    box-shadow: 0 1px 5px rgb(153, 231, 255)
+    
+ }
+ .testimonial li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+ }
+ .testimonial li blockquote{
+    font-style: italic;
+    font-size: large;
+    color: #000000;
+    display: block;
+ }
+  .testimonial li span{
+    font-style: italic;
+    color: #000000;
+ }
+ .testimonial li cite {
+     
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;    
+  align-self: flex-end;
+  margin-right: 70px;
+}
+
+ .checked{
+    color: gold !important;
+ }
+ .stars {
+  display: flex;        
+  gap: 5px;             
+  position: absolute;
+  font-size: 24px;
+  top:40px;
+  left: 30px;
+}
+
+
+/*hangang dito*/

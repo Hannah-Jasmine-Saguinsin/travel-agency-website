@@ -1,0 +1,193 @@
+/*This is our global css file.*/
+@font-face /*Caveat Font (Use only for accents and highlights)*/
+{
+    font-family: 'caveat';
+    src: url(../fonts/Caveat/Caveat-Regular.ttf);  
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face /*Montserrat (Use only for body text)*/
+{
+    font-family: 'montserrat';
+    src: url(../fonts/Montserrat/Montserrat-Medium.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face /*Playfair Display Font (Use only for headings)*/
+{
+    font-family: 'playfair display';
+    src: url(../fonts/Playfair_Display/PlayfairDisplay-ExtraBold.ttf);
+    font-weight: 900;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none !important;
+    list-style: none !important;
+}
+body{
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: 'montserrat';
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+/*Navbar Section(SAGUINSIN)*/
+.navigation .menu-toggle{
+    display: none;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 1em;
+    font-size: 24px;
+    cursor: pointer;
+    color: #306f91;
+}
+
+.navigation{
+    position: sticky;
+    padding: 0 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+    width: 100%;
+    background-color: #DEE1E6;
+    box-shadow: 0 2px 12px rgba(48, 111, 145, 0.5);
+    top: 0;
+    z-index: 1000;
+}
+.navigation .logo{
+    color: #306f91;
+    font-family: 'playfair display';
+    font-size: 2em;
+    font-weight: bolder;
+    text-decoration: none;
+}
+.navigation .nav-links{
+    font-family: 'montserrat';
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-left: auto;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.navigation .nav-links a {
+    text-decoration: none;
+    display: flex;
+    color: #306f91;
+    font-size: 1rem;
+    gap: 2rem;
+    padding: 0.5rem 0;
+    white-space: nowrap
+    
+}
+@media screen and (max-width: 900px){
+    .navigation{
+        padding: 0;
+    }
+    .navigation .logo{
+        position: absolute;
+        padding: 1rem;
+    }
+    .navigation .menu-toggle{
+        display: block;
+    }
+    .nav-links{
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255,255,255,0.85);
+        max-height: 0;
+        overflow: hidden;
+    }
+    .nav-links.active{
+        max-height: 500px;
+        padding: 20px 0;
+    }
+    .nav-links a{  
+        position: relative;
+        padding: 15px;
+        width: 100%;
+        font-weight: bolder;
+        text-align: center;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.hero-section{
+    background: radial-gradient(circle at left center,
+rgba(255,255,255,0.9),
+rgba(255,255,255,0) 60%), url('/assets/hero.jpg') no-repeat center center;
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    color: #0B1C3A;
+}
+.hero-section h1{
+    font-family: 'caveat';
+    font-size: clamp(16px, 3vw, 24px);
+}
+.hero-section h2{
+    font-family: 'playfair display';
+    font-weight: 900;
+    font-size: 3em;
+}  
+.hero-section p{
+    color: #306f91;
+}
+.btn-hero{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.btn-1, .btn-2 {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.btn-1 {
+    background-color: #306f91;
+    color: white;
+}
+
+.btn-2 {
+    background-color: transparent;
+    color: #0B1C3A;
+    border: 2px solid #0B1C3A;
+}
+.btn-1:hover {
+    background-color: #1d5371;
+}
+
+.btn-2:hover {
+    background-color: #0B1C3A;
+    color: white;
+}
+
+
+
+
+
+
+
