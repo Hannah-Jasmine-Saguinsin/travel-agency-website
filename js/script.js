@@ -155,7 +155,7 @@ if (destinationBox && input && suggestions && searchButton) {
             params.set("date", selectedDate);
         }
 
-        window.location.href = `/travel-agency-website/destinations/destinations.html?${params.toString()}`;
+        window.location.href = `/destinations/destinations.html?${params.toString()}`;
     };
 
     searchButton.addEventListener("click", performSearch);

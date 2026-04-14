@@ -2,7 +2,7 @@
 .abt-content{
     background: linear-gradient(
         rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5)), url('/travel-agency-website/assets/about-us-background.webp');
+        rgba(0, 0, 0, 0.5)), url('/assets/about-us-background.webp');
     min-height: 50vh;
     padding: 40px 20px;
     display: flex;
