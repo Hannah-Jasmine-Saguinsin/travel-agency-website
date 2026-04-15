@@ -834,58 +834,135 @@ html {
     background: #add4e6;
     transform: scale(1.35);
 }
-.featured-placeholder {
-    display: flex;
-    gap: 1.5rem;
-    margin: 2em 0 3em;
-    flex-wrap: wrap;
-    justify-content: center;
+/*CTA SECTION*/
+.cta-section {
     position: relative;
-    z-index: 2;
+    width: 100%;
+    padding: 120px 6vw;
+    text-align: center;
+    background-image: url('assets/home-cta.jpg'); 
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+/* Dark overlay */
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(9,30,61,0.90), rgba(9,30,61,0.70));
+    }
+
+/* Content sits above overlay */
+.cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    }
+
+.cta-accent {
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    color: #f0c040;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    }
+
+.cta-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 1rem;
+    }
+
+.cta-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin: 0 0 2.4rem;
+    }
+
+/* Button row */
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-/* Main button */
-.featured-link {
-    text-decoration: none;
-    padding: 16px 36px; /* 👈 bigger */
-    background: rgb(9, 30, 61);
-    color: white;
-    border-radius: 999px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-
-    /* 👇 makes it eye-catching */
-    box-shadow: 0 8px 20px rgba(9, 30, 61, 0.3);
-    
-    transition: all 0.3s ease;
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--trans);
+    position: relative;
+    overflow: hidden;
+    }
+.cta-btn::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
 }
 
-/* Hover effect (lift + glow) */
-.featured-link:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(9, 30, 61, 0.5);
-    background: rgb(5, 20, 45);
-}
+.cta-btn:hover::after { transform: translateX(100%); }
+/* Primary — filled gold */
+.cta-btn--primary {
+    background: #e8ab18;
+    color: #1a1200;
+    box-shadow: 0 4px 24px rgba(240,177,61,0.45);
+    }
 
-/* Click effect */
-.featured-link:active {
-    transform: scale(0.97);
-}
+.cta-btn--primary:hover {
+    background: #cd9615;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px rgba(240,177,61,0.55);
+    }
 
-/* Secondary button */
-.featured-link--secondary {
+/* Secondary — outlined white */
+.cta-btn--secondary {
     background: transparent;
-    color: rgb(9, 30, 61);;
-    border: 2px solid rgb(9, 30, 61);
-    box-shadow: none;
+    color: #ffffff;
+    border: 2px solid rgba(255,255,255,0.55);
 }
 
-/* Hover for secondary */
-.featured-link--secondary:hover {
-    background: rgb(9, 30, 61);
-    color: rgb(2, 30, 61);
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4);
+.cta-btn--secondary:hover {
+    border-color: var(--white);
+    background: rgba(255,255,255,0.10);
+    transform: translateY(-3px);
+}
+/*CTA Trust*/
+.cta-trust {
+    position: relative;
+    margin-top: 2.8rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+}
+
+.cta-trust-dot {
+    width: 3px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 50%;
+    flex-shrink: 0;
 }
