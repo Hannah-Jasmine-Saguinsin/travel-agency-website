@@ -4,84 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Global CS and JS Links-->
+
+    <!-- Global CSS and JS -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/script.js" defer></script>
 
-    <!--Navbar CSS style and JS link-->
+    <!-- Navbar CSS and JS -->
     <link rel="stylesheet" href="/navbar/navbar.css">
     <script src="/navbar/navbar.js" defer></script>
 
-    <!--Home CSS style Link-->
+    <!-- Home Page CSS -->
     <link rel="stylesheet" href="/home.css">
+    <script src="/home.js" defer></script>
 
-    <!--Fontawesome script kit-->
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/6a1f3f4237.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Bryvelrisse Travel and Tours</title>
 </head>
-<body>
-    <!--Navbar Section-->
-    <nav class="navigation">
 
+<body>
+
+    <!-- Navbar -->
+    <nav class="navigation">
         <a href="/index.html" class="logo">Bryvelrisse Travels and Tours</a>
         <div class="nav-links">
             <a href="/index.html">Home</a>
-
             <a href="/destinations/destinations.html">Destinations</a>
-
             <a href="/about/about.html">About</a>
-
             <a href="/contact/contact.html">Contact</a>
-        </div>       
-        <div class="menu-toggle">
-            <i class="fa-solid fa-bars"></i>
         </div>
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
-    
-        <!--Hero Section-->
+
+    <!-- Hero -->
     <div class="hero-section" id="section-1">
-        <video autoplay loop muted plays-inline class="home-featured-video">
+        <video autoplay loop muted playsinline class="home-featured-video">
             <source src="/assets/home-featured-video.mp4">
         </video>
         <div class="hero-content">
             <h1>Bryvelrisse Travel and Tours</h1>
             <h2>WANDER TO WONDER</h2>
             <p>
-                Thoughtfully crafted journeys designed to turn travel 
+                Thoughtfully crafted journeys designed to turn travel
                 dreams into unforgettable experiences.
             </p>
         </div>
-            <!-- BUTTONS -->
+
         <div class="btn-hero">
             <a href="/destinations/destinations.html" class="btn-1">
-            <i class="fa-regular fa-compass"></i>
-            Explore Now
+                <i class="fa-regular fa-compass"></i>
+                Explore Now
             </a>
-            <a href="#" class="btn-2">Plan your journey</a> 
+            <a href="#packages" class="btn-2">Plan your journey</a>
         </div>
 
-            <!-- SEARCH BAR -->
-        <div class="search-bar">
-
+        <div class="search-bar" role="search" aria-label="Destination search">
             <div class="search-box" id="destination-box" tabindex="0">
-                <i class="fa-solid fa-location-dot" id="icon"></i>
+                <i class="fa-solid fa-location-dot search-box__icon"></i>
                 <div class="text">
                     <span class="title">Where To?</span>
                     <span class="subtitle">Search for your Destination</span>
-                    <input type="text" id="destination-input" class="search-input" placeholder="Type destination..." autocomplete="off">
-                    <div class="suggestions" id="suggestions"></div>
+                    <input type="text" id="destination-input" class="search-input"
+                        placeholder="Type destination..." autocomplete="off" aria-label="Search destination"
+                        aria-controls="suggestions" aria-expanded="false">
+                    <div class="suggestions" id="suggestions" role="listbox" aria-label="Destination suggestions"></div>
                 </div>
             </div>
 
-            
-            
             <div class="search-box" id="date-box" tabindex="0">
-                <i class="fa-regular fa-calendar" id="icon"></i>
+                <i class="fa-regular fa-calendar search-box__icon"></i>
                 <div class="text">
                     <span class="title">When To?</span>
                     <span class="subtitle">Select Preferred Dates</span>
-                    <input type="date" id="travel-date" class="search-input">
+                    <input type="date" id="travel-date" class="search-input" aria-label="Travel date">
                 </div>
             </div>
 
@@ -90,89 +89,429 @@
             </button>
         </div>
     </div>
-    <!--Testimonials Section-->
-    <div class="testimonials" id="section-6">
-        <h3>What Travellers Say</h3>
-        <div class="tescont">
-        <ul class="testimonial">
-            <li>
-                <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                </div>
-                <blockquote>First time travelling, It was so fun!</blockquote>
-                <cite>- John T****</cite>
-            </li>
 
-            <li>
-                <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+    <!-- Packages -->
+    <section class="package-gallery" id="packages">
+        <div class="section-header">
+            <h3>Explore Our Packages</h3>
+            <p class="section-subtitle">Handpicked destinations crafted just for you</p>
+        </div>
+
+        <div class="gallery-scroll-area">
+            <button class="gallery-arrow gallery-arrow--left" id="galleryLeft" aria-label="Scroll left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="gallery-track" id="galleryTrack">
+                <div class="pkg-card" data-title="Siargao, Philippines" data-img="assets/home-siargao-packages.jpg">
+                    <div class="pkg-card__img-wrap">
+                        <img src="assets/home-siargao-packages.jpg" alt="Siargao, Philippines" loading="lazy">
+                        <div class="pkg-card__overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Beach</span>
+                        <h4>Siargao, Philippines</h4>
+                        <p>Crystal white sand and turquoise waters await you.</p>
+                    </div>
                 </div>
-                <blockquote>Everything was well done, I am very satisfied!</blockquote>
-                <cite>- Christian G******</cite>
-            </li>
-            <li>
-                <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
+
+                <div class="pkg-card" data-title="South Korea" data-img="assets/home-korea-packages.jpg">
+                    <div class="pkg-card__img-wrap">
+                        <img src="assets/home-korea-packages.jpg" alt="South Korea" loading="lazy">
+                        <div class="pkg-card__overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Culture</span>
+                        <h4>South Korea</h4>
+                        <p>K-culture, street food, and breathtaking cityscapes.</p>
+                    </div>
                 </div>
-                <blockquote>Booking was easy, ang ganda din ng <br>service nila, will book again!</blockquote>
-                <cite>- Marie C****</cite>
-            </li>
-            <li>
-                <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star "></span>
+
+                <div class="pkg-card" data-title="China" data-img="assets/home-china-packages.jpg">
+                    <div class="pkg-card__img-wrap">
+                        <img src="assets/home-china-packages.jpg" alt="China" loading="lazy">
+                        <div class="pkg-card__overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Heritage</span>
+                        <h4>China</h4>
+                        <p>Ancient wonders and modern marvels in one journey.</p>
+                    </div>
                 </div>
-                <blockquote>Travel was nice, ambabait ng service!</blockquote>
-                <cite>- Edward H****</cite>
-            </li>
-            <li>
-                <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star "></span>
+
+                <div class="pkg-card" data-title="Singapore" data-img="assets/home-singapore-packages.jpg">
+                    <div class="pkg-card__img-wrap">
+                        <img src="assets/home-singapore-packages.jpg" alt="Singapore" loading="lazy">
+                        <div class="pkg-card__overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">City</span>
+                        <h4>Singapore</h4>
+                        <p>The Garden City &mdash; where luxury meets nature.</p>
+                    </div>
                 </div>
-                <blockquote>Really affordable talaga, recommended!</blockquote>
-                <cite>- Jane J****</cite>
-            </li>
-            <li>
-                <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-    
+
+                <div class="pkg-card" data-title="Japan-Taiwan" data-img="assets/home-japan-taiwan-packages.jpg">
+                    <div class="pkg-card__img-wrap">
+                        <img src="assets/home-japan-taiwan-packages.jpg" alt="Japan-Taiwan" loading="lazy">
+                        <div class="pkg-card__overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Iconic</span>
+                        <h4>Japan-Taiwan</h4>
+                        <p>Cherry blossoms, ramen, and timeless tradition.</p>
+                    </div>
                 </div>
-                <blockquote>Sulit, napaka ganda ng tanawin, reccomended ko siya.</blockquote>
-                <cite>- Angela O*****</cite>
-            </li>  
-            </ul>
+
+                <div class="pkg-card" data-title="Batangas, Philippines" data-img="assets/home-batanes-packages.jpg">
+                    <div class="pkg-card__img-wrap">
+                        <img src="assets/home-batanes-packages.jpg" alt="Batangas" loading="lazy">
+                        <div class="pkg-card__overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Local</span>
+                        <h4>Batanes, Philippines</h4>
+                        <p>Experience windswept hills and timeless island views.</p>
+                    </div>
+                </div>
+
+                <div class="pkg-card" data-title="Siargao, Philippines" data-img="assets/home-siargao-packages.jpg">
+                    <div class="pkg-card__img-wrap">
+                        <img src="assets/home-siargao-packages.jpg" alt="Siargao, Philippines" loading="lazy">
+                        <div class="pkg-card__overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Beach</span>
+                        <h4>Siargao, Philippines</h4>
+                        <p>Surf breaks, palm-lined roads, and laid-back island adventures.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="gallery-arrow gallery-arrow--right" id="galleryRight" aria-label="Scroll right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <div class="pkg-modal" id="pkgModal" role="dialog" aria-modal="true" aria-label="Package preview">
+        <div class="pkg-modal__backdrop" id="modalBackdrop"></div>
+        <div class="pkg-modal__box">
+            <button class="pkg-modal__close" id="modalClose" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img src="" id="modalImg" alt="" class="pkg-modal__img">
+            <div class="pkg-modal__caption" id="modalCaption"></div>
         </div>
     </div>
 
-    <!--Featured Section-->
-    <div class="featured-section" id="section-5">
-        <h3>Popular Destinations</h3>
+    <!-- Why Choose Us -->
+    <section class="why-choose-us" id="why-us">
+        <div class="section-header">
+            <h3>Why Choose Us</h3>
+            <p class="section-subtitle">The values that drive every journey we plan</p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card fade-in-up">
+                <div class="value-card__icon">🎯</div>
+                <h4>Personalization</h4>
+                <p>We believe every traveler is unique. We design travel packages that reflect individual preferences, goals, and non-negotiables.</p>
+            </div>
+
+            <div class="value-card fade-in-up">
+                <div class="value-card__icon">😊</div>
+                <h4>Customer Satisfaction</h4>
+                <p>Client happiness is our top priority. We strive to exceed expectations in every trip we organize.</p>
+            </div>
+
+            <div class="value-card fade-in-up">
+                <div class="value-card__icon">🤝</div>
+                <h4>Integrity</h4>
+                <p>We operate with honesty, transparency, and professionalism in all transactions.</p>
+            </div>
+
+            <div class="value-card fade-in-up">
+                <div class="value-card__icon">✈️</div>
+                <h4>Passion for Travel</h4>
+                <p>Our love for travel drives us to continuously explore, learn, and improve our services.</p>
+            </div>
+
+            <div class="value-card fade-in-up">
+                <div class="value-card__icon">⭐</div>
+                <h4>Excellence in Service</h4>
+                <p>We are committed to delivering quality service with attention to detail and care.</p>
+            </div>
+
+            <div class="value-card fade-in-up">
+                <div class="value-card__icon">💰</div>
+                <h4>Budget Friendly</h4>
+                <p>We make dream travel accessible. Great experiences don't have to break the bank.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-slider" id="testimonials">
+        <div class="section-header">
+            <h3>What Travellers Say</h3>
+            <p class="section-subtitle">Real stories from real adventurers</p>
+        </div>
+
+        <div class="slider-container">
+            <button class="slider-btn slider-btn--prev" id="sliderPrev" aria-label="Previous testimonial">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="slider-track-wrap">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="testimonial-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                            <blockquote>
+                                "Super smooth and hassle-free experience! From March 31 to April 1, everything was already arranged for us &mdash; flights, hotel, tours, and transfers. As a family, sobrang dali lang namin nag-enjoy without worrying about anything. Highly recommended for families!"
+                            </blockquote>
+                            <div class="testi-footer">
+                                <div class="testi-avatar">MF</div>
+                                <div>
+                                    <cite class="testi-name">Magsipoc Family</cite>
+                                    <span class="testi-detail">Family Travel &middot; Boracay, Philippines</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                            <blockquote>
+                                "As a first-time traveler kasama ko pa girlfriend ko, sobrang dali ng buong trip. Everything went smoothly and organized. We didn't stress at all and focused lang kami sa pag-explore and picture taking. Definitely worth it!"
+                            </blockquote>
+                            <div class="testi-footer">
+                                <div class="testi-avatar">CC</div>
+                                <div>
+                                    <cite class="testi-name">Christian Cruz</cite>
+                                    <span class="testi-detail">First-Time Traveller &middot; South Korea</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                            <blockquote>
+                                "Finally, natuloy din! Me and my best friend always dreamed of going to China, parang napapanood lang namin sa C-dramas before. The whole plan was easy and well arranged. Super unforgettable experience!"
+                            </blockquote>
+                            <div class="testi-footer">
+                                <div class="testi-avatar">KR</div>
+                                <div>
+                                    <cite class="testi-name">Kathlyn Ramos</cite>
+                                    <span class="testi-detail">Traveler &middot; China</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">⭐⭐⭐⭐ <span style="opacity:0.4">⭐</span> <small>(4.9)</small></div>
+                            <blockquote>
+                                "Booking was very easy and organized. I traveled with my employees and everything went smoothly from start to finish. It made our trip stress-free and enjoyable."
+                            </blockquote>
+                            <div class="testi-footer">
+                                <div class="testi-avatar">AS</div>
+                                <div>
+                                    <cite class="testi-name">Angela Soriano</cite>
+                                    <span class="testi-detail">Business Owner &middot; Batangas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">⭐⭐⭐⭐ <span style="opacity:0.4">⭐</span> <small>(4.8)</small></div>
+                            <blockquote>
+                                "My wife, our young son, and I had a wonderful honeymoon trip. Everything was planned perfectly. We just enjoyed every moment without worrying about logistics."
+                            </blockquote>
+                            <div class="testi-footer">
+                                <div class="testi-avatar">JA</div>
+                                <div>
+                                    <cite class="testi-name">John Aquino</cite>
+                                    <span class="testi-detail">Occasional Traveller &middot; Singapore</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="testi-card">
+                            <div class="testi-stars">⭐⭐⭐⭐ <span style="opacity:0.4">⭐</span> <small>(4.5)</small></div>
+                            <blockquote>
+                                "It was a sudden trip for me and my kids, but everything worked out perfectly. This trip gave us more time together before my son leaves for college. Very meaningful and smooth experience."
+                            </blockquote>
+                            <div class="testi-footer">
+                                <div class="testi-avatar">MO</div>
+                                <div>
+                                    <cite class="testi-name">Maria Ocampo</cite>
+                                    <span class="testi-detail">Traveler &middot; Thailand</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-btn slider-btn--next" id="sliderNext" aria-label="Next testimonial">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- Featured -->
+    <section class="featured-section" id="section-5">
+        <div class="section-header">
+            <h3>Popular Destinations</h3>
+            <p class="section-subtitle">Handpicked places worth every mile</p>
+        </div>
+
+        <div class="dest-filters">
+            <button class="dest-tab active" type="button" data-filter="all">All</button>
+            <button class="dest-tab" type="button" data-filter="east-asia">East Asia</button>
+            <button class="dest-tab" type="button" data-filter="southeast-asia">Southeast Asia</button>
+        </div>
+
+        <div class="dest-grid">
+            <div class="dest-card" data-region="east-asia"
+                data-name="Seoul, South Korea"
+                data-desc="Seoul is a dazzling mix of ancient palaces and neon-lit streets. Wander through Bukchon Hanok Village, eat your way through Myeongdong, and catch cherry blossoms along the Han River every spring."
+                data-best="March-May, September-November"
+                data-known="K-culture, Street food, Temples">
+                <img class="dest-card-img" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80" alt="Seoul, South Korea">
+                <div class="dest-card-overlay"></div>
+                <div class="dest-card-info">
+                    <p class="dest-card-region">East Asia &middot; South Korea</p>
+                    <h4 class="dest-card-name">Seoul</h4>
+                    <p class="dest-card-teaser">Ancient palaces meet neon-lit streets in Asia's most electric city.</p>
+                    <button class="dest-card-btn" type="button">Explore &rarr;</button>
+                </div>
+            </div>
+
+            <div class="dest-card" data-region="east-asia"
+                data-name="Kyoto, Japan"
+                data-desc="Kyoto is the soul of traditional Japan, with shrines, geisha districts, bamboo forests, and the famous Fushimi Inari gates."
+                data-best="March-May, October-November"
+                data-known="Temples, Sakura, Geisha culture">
+                <img class="dest-card-img" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80" alt="Kyoto, Japan">
+                <div class="dest-card-overlay"></div>
+                <div class="dest-card-info">
+                    <p class="dest-card-region">East Asia &middot; Japan</p>
+                    <h4 class="dest-card-name">Kyoto</h4>
+                    <p class="dest-card-teaser">Thousands of shrines, bamboo forests, and timeless tradition.</p>
+                    <button class="dest-card-btn" type="button">Explore &rarr;</button>
+                </div>
+            </div>
+
+            <div class="dest-card" data-region="east-asia"
+                data-name="Taipei, Taiwan"
+                data-desc="Taipei blends a buzzing food scene with mountain scenery, hot springs, and unforgettable night markets."
+                data-best="October-April"
+                data-known="Night markets, Hot springs, City views">
+                <img class="dest-card-img" src="https://images.unsplash.com/photo-1470004914212-05527e49370b?w=600&q=80" alt="Taipei, Taiwan">
+                <div class="dest-card-overlay"></div>
+                <div class="dest-card-info">
+                    <p class="dest-card-region">East Asia &middot; Taiwan</p>
+                    <h4 class="dest-card-name">Taipei</h4>
+                    <p class="dest-card-teaser">Vibrant night markets and mountain escapes on one island.</p>
+                    <button class="dest-card-btn" type="button">Explore &rarr;</button>
+                </div>
+            </div>
+
+            <div class="dest-card" data-region="southeast-asia"
+                data-name="Boracay, Philippines"
+                data-desc="Boracay is famous for White Beach, island hopping, and glowing sunset views over the Sulu Sea."
+                data-best="November-May"
+                data-known="White Beach, Island hopping, Sunsets">
+                <img class="dest-card-img" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&q=80" alt="Boracay, Philippines">
+                <div class="dest-card-overlay"></div>
+                <div class="dest-card-info">
+                    <p class="dest-card-region">Southeast Asia &middot; Philippines</p>
+                    <h4 class="dest-card-name">Boracay</h4>
+                    <p class="dest-card-teaser">Powder-white sand and electric sunsets on the Sulu Sea.</p>
+                    <button class="dest-card-btn" type="button">Explore &rarr;</button>
+                </div>
+            </div>
+
+            <div class="dest-card" data-region="southeast-asia"
+                data-name="Bangkok, Thailand"
+                data-desc="Bangkok mixes golden temples, floating markets, rooftop bars, and some of the best street food in Southeast Asia."
+                data-best="November-February"
+                data-known="Temples, Street food, Rooftop bars">
+                <img class="dest-card-img" src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&q=80" alt="Bangkok, Thailand">
+                <div class="dest-card-overlay"></div>
+                <div class="dest-card-info">
+                    <p class="dest-card-region">Southeast Asia &middot; Thailand</p>
+                    <h4 class="dest-card-name">Bangkok</h4>
+                    <p class="dest-card-teaser">Golden temples, floating markets, and legendary street food.</p>
+                    <button class="dest-card-btn" type="button">Explore &rarr;</button>
+                </div>
+            </div>
+
+            <div class="dest-card" data-region="southeast-asia"
+                data-name="Singapore"
+                data-desc="Singapore pairs futuristic architecture with hawker food, lush gardens, and polished city life."
+                data-best="February-April"
+                data-known="Gardens by the Bay, Hawker food, Shopping">
+                <img class="dest-card-img" src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80" alt="Singapore">
+                <div class="dest-card-overlay"></div>
+                <div class="dest-card-info">
+                    <p class="dest-card-region">Southeast Asia &middot; Singapore</p>
+                    <h4 class="dest-card-name">Singapore</h4>
+                    <p class="dest-card-teaser">Futuristic supertrees, hawker gems, and world-class culture.</p>
+                    <button class="dest-card-btn" type="button">Explore &rarr;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-placeholder">
+            <a href="#packages" class="featured-link">Browse featured packages</a>
+            <a href="/contact/contact.html" class="featured-link featured-link--secondary">Ask for a custom itinerary</a>
+        </div>
+    </section>
+
+    <div class="dest-modal-overlay" id="destModal">
+        <div class="dest-modal-box">
+            <button class="dest-modal-close" id="destModalClose" type="button" aria-label="Close featured destination modal">&times;</button>
+            <img class="dest-modal-img" id="destModalImg" src="" alt="">
+            <div class="dest-modal-body">
+                <p class="dest-modal-region" id="destModalRegion"></p>
+                <h2 class="dest-modal-title" id="destModalTitle"></h2>
+                <p class="dest-modal-desc" id="destModalDesc"></p>
+                <div class="dest-modal-meta">
+                    <span class="dest-modal-pill" id="destModalBest"></span>
+                    <span class="dest-modal-pill" id="destModalKnown"></span>
+                </div>
+            </div>
+        </div>
     </div>
+
 </body>
+
 </html>
-
-
-
