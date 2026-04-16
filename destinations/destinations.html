@@ -3,150 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Global CSS and JS Links-->
+
     <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/script.js" defer></script>
-
-    <!--Navbar CSS and JS Links-->
     <link rel="stylesheet" href="/navbar/navbar.css">
-    <script src="/navbar/navbar.js" defer></script>
-
-    <!--Destinations CSS style Link-->
+    <link rel="stylesheet" href="/home.css">
     <link rel="stylesheet" href="/destinations/destinations.css">
-    <!--JS Link-->
-    <script src="/destinations/destinations.js" defer></script>
 
-    <!--Fontawesome script kit-->
+    <script src="/destinations/destinations.js" defer></script>
+    <script src="/navbar/navbar.js" defer></script>
     <script src="https://kit.fontawesome.com/6a1f3f4237.js" crossorigin="anonymous"></script>
-    <title>Bryvelrisse Travel and Tours</title>
+
+    <title>Destinations | Bryvelrisse Travel and Tours</title>
 </head>
 <body>
-    <!--Navbar Section-->
-    <nav class="navigation">
 
+    <nav class="navigation">
         <a href="/index.html" class="logo">Bryvelrisse Travels and Tours</a>
         <div class="nav-links">
             <a href="/index.html">Home</a>
-
             <a href="/destinations/destinations.html">Destinations</a>
-
             <a href="/about/about.html">About</a>
-
             <a href="/contact/contact.html">Contact</a>
-            </div>       
-            <div class="menu-toggle">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
 
-    
-    <!--Destinations Section-->
-    <div class="destinations-section" id="section-2">
-        <h3>Where will your next journey take you?</h3>
-        <p>From international adventures to relaxing local escapes, 
-        Bryvelrisse Travel and Tours offers carefully curated travel 
-        experiences designed to make every trip seamless and memorable.</p>
-    </div>
+    <header class="destinations-header">
+        <h1>Our Destinations</h1>
+        <p>Explore our curated selection of local and international travel packages.</p>
+    </header>
 
-        <!--Packages Section-->
-    <div class="packages-section" id="section-3">
-        <div class="packages-main-content">
-            <h3>Explore Our Travel Experiences</h3>
-            <p>Discover a wide range of carefully designed travel packages 
-            that cater to every type of traveler.</p>
+    <section class="package-gallery" id="featured">
+        <div class="section-header">
+            <h3>Best Places to Visit</h3>
+            <p class="section-subtitle">Our top-rated and most requested getaways</p>
         </div>
-        <div class="packages-card"> <!--Start of packages-card-->
 
-            <div class="card-places">
-                <img src="/assets/packages-korea.webp" alt="korea">
-                <div class="packages-content">
-                        <h4>Korea</h4>
-                        <p>Cherry Blossom • Premium • Summer Tours</p>
-                        <p>Explore Korea in every season with our 2026 travel packages featuring a romantic cherry blossom getaway 
-                            with cultural experiences, a premium journey across Seoul, Gangwon, and Busan, and a vibrant summer tour 
-                            with trendy spots and historic landmarks.</p>                                           
+        <div class="gallery-scroll-area">
+            <div class="gallery-track">
+                <div class="pkg-card" data-img="..\assets\home-siargao-packages.jpg">
+                    <div class="pkg-card__img-wrap">
+                        <img src="..\assets\packages-siargao.webp" alt="Siargao"> 
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Trending</span>
+                        <h4>Siargao, Philippines</h4>
+                        <p>Experience the surfing capital with its iconic cloud 9 waves.</p>
+                    </div>
                 </div>
-                <a href="#" class="card-btn">See Details</a>
-                
+
+                <div class="pkg-card" data-img="">
+                    <div class="pkg-card__img-wrap">
+                        <img src="" alt="South Korea">
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Popular</span>
+                        <h4>Seoul, South Korea</h4>
+                        <p>Discover the perfect blend of ancient palaces and high-tech life.</p>
+                    </div>
+                </div>
+
+                <div class="pkg-card" data-img="">
+                    <div class="pkg-card__img-wrap">
+                        <img src="" alt="Japan">
+                    </div>
+                    <div class="pkg-card__info">
+                        <span class="pkg-card__tag">Seasonal</span>
+                        <h4>Tokyo & Osaka, Japan</h4>
+                        <p>A journey through cherry blossoms and rich cultural heritage.</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="card-places">
-                <img src="/assets/packages-china.webp" alt="china">
-                <div class="packages-content">
-                    <h4>China</h4>
-                        <p>Tour • Shows • Hotels • Activities</p>
-                        <p>Explore the perfect blend of history and modern city life with tours in Beijing and Shanghai.
-                        Enjoy a magical day at Disneyland, witness a Chinese acrobatic show,and shop at Florentia Village
-                        for a complete travel experience.</p>
-                </div>     
-                <a href="#" class="card-btn">See Details</a>             
-            </div>
-
-            <div class="card-places">
-                <img src="/assets/packages-japan.webp" alt="japan-and-taiwan">
-                <div class="packages-content">
-                    <h4>Japan and Taiwan</h4>
-                    <p>Cruise • Dining • Shows • Activities • Visa Free</p>
-                    <p>Sail in luxury on an 8-day, 7-night Italian premium cruise with all-day dining, full board meals, live 
-                    evening shows, and fun daytime activities. Enjoy a hassle-free journey with no visa requirements.</p>        
-                </div>
-                <a href="#" class="card-btn">See Details</a>
-            </div>
-
-            <div class="card-places">
-                <img src="/assets/packages-singapore.webp" alt="singapore-cruise">
-                <div class="packages-content">
-                    <h4>Singapore Disney Cruise</h4>
-                    <p>Airfare • Cruise • Dining • Shows • Activities • Magic</p>
-                    <p>Fly from the Philippines and sail to Singapore while Disney brings your story to life. Enjoy magical 
-                    experiences on board, fun-filled activities, and unforgettable entertainment for the whole family.</p>       
-                </div>
-                <a href="#" class="card-btn">See Details</a>
-            </div>
-            
-            <div class="card-places">
-                <img src="/assets/packages-siargao.webp" alt="siargao">
-                <div class="packages-content">
-                    <h4>Siargao</h4>
-                    <p>Airfare • Hotel • Tours • Meals</p>
-                    <p>Explore the paradise of Siargao with a complete package including airfare, hotel stay, guided tours, 
-                    and meals. Relax, adventure, and enjoy hassle-free travel from start to finish.</p>
-                </div>
-                <a href="#" class="card-btn">See Details</a>
-            </div> 
-
-            <div class="card-places">
-                <img src="/assets/packages-batanes.webp" alt="batanes">
-                <div class="packages-content">
-                    <h4>Batanes</h4>
-                    <p>Airfare • Hotel • Tours • Meals</p>
-                    <p>Discover the beauty of Batanes with a complete package including airfare, hotel stay, guided tours,
-                    and meals. Enjoy hassle-free travel and breathtaking scenery from start to finish.</p>
-                </div>
-                <a href="#" class="card-btn">See Details</a>
-            </div>   
-        </div> <!--End of packages-card-->       
+    <section class="why-choose-us" id="all-packages" style="background: var(--home-white);">
+    <div class="section-header">
+        <h3>Explore All Packages</h3>
+        <p class="section-subtitle">Our complete collection of local and international getaways</p>
     </div>
+    
+    <div class="values-grid">
+        <div class="pkg-card" data-img="..\assets\home-siargao-packages.jpg">
+            <div class="pkg-card__img-wrap"><img src="..\assets\packages-siargao.webp" alt="Siargao"></div>
+            <div class="pkg-card__info">
+                <h4>Siargao, Philippines</h4>
+                <p>The surfing capital of the Philippines.</p>
+            </div>
+        </div>
 
-    <!--(Footer)-->
+        <div class="pkg-card" data-img="/assets/korea.jpg">
+            <div class="pkg-card__img-wrap"><img src="/assets/korea.jpg" alt="South Korea"></div>
+            <div class="pkg-card__info">
+                <h4>Seoul, South Korea</h4>
+                <p>Palaces, shopping, and street food.</p>
+            </div>
+        </div>
+
+        <div class="pkg-card" data-img="/assets/japan.jpg">
+            <div class="pkg-card__img-wrap"><img src="/assets/japan.jpg" alt="Japan"></div>
+            <div class="pkg-card__info">
+                <h4>Tokyo & Osaka, Japan</h4>
+                <p>Culture, technology, and cuisine.</p>
+            </div>
+        </div>
+
+        <div class="pkg-card" data-img="/assets/home-china-packages.jpg">
+            <div class="pkg-card__img-wrap"><img src="/assets/home-china-packages.jpg" alt="China"></div>
+            <div class="pkg-card__info">
+                <h4>Beijing, China</h4>
+                <p>Ancient wonders and modern marvels.</p>
+            </div>
+        </div>
+
+        <div class="pkg-card" data-img="/assets/home-singapore-packages.jpg">
+            <div class="pkg-card__img-wrap"><img src="/assets/home-singapore-packages.jpg" alt="Singapore"></div>
+            <div class="pkg-card__info">
+                <h4>Singapore</h4>
+                <p>Where luxury meets nature.</p>
+            </div>
+        </div>
+
+        <div class="pkg-card" data-img="/assets/home-batanes-packages.jpg">
+            <div class="pkg-card__img-wrap"><img src="/assets/home-batanes-packages.jpg" alt="Batanes"></div>
+            <div class="pkg-card__info">
+                <h4>Batanes, Philippines</h4>
+                <p>Windswept hills and island views.</p>
+            </div>
+        </div>
+
+        <div class="pkg-card" data-img="/assets/boracay.jpg">
+            <div class="pkg-card__img-wrap"><img src="/assets/boracay.jpg" alt="Boracay"></div>
+            <div class="pkg-card__info">
+                <h4>Boracay, Philippines</h4>
+                <p>World-famous white sand beaches.</p>
+            </div>
+        </div>
+
+        <div class="pkg-card" data-img="/assets/taiwan.jpg">
+            <div class="pkg-card__img-wrap"><img src="/assets/taiwan.jpg" alt="Taiwan"></div>
+            <div class="pkg-card__info">
+                <h4>Taipei, Taiwan</h4>
+                <p>Night markets and towering skyscrapers.</p>
+            </div>
+        </div>
+
+        <div class="pkg-card" data-img="/assets/thailand.jpg">
+            <div class="pkg-card__img-wrap"><img src="/assets/thailand.jpg" alt="Thailand"></div>
+            <div class="pkg-card__info">
+                <h4>Bangkok, Thailand</h4>
+                <p>Vibrant temples and bustling streets.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-choose-us" style="background: var(--home-surface);">
+        <div class="section-header">
+            <h3>Why Choose Our Packages</h3>
+            <p class="section-subtitle">We handle the details, you make the memories</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-card__icon">🎯</div>
+                <h4>Curated Itineraries</h4>
+                <p>Every destination is hand-picked to ensure maximum value and comfort.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-card__icon">🛡️</div>
+                <h4>Hassle-Free Booking</h4>
+                <p>From flights to hotels, we manage all the paperwork for you.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-card__icon">⭐</div>
+                <h4>Expert Support</h4>
+                <p>Get 24/7 travel assistance throughout your entire journey.</p>
+            </div>
+        </div>
+    </section>
     <footer class="site-footer">
         <div class="footer-inner">
-
-            <!-- Brand -->
             <div class="footer-brand">
-                <a href="/index.html" class="footer-logo">Bryvelrisse<br><span>Travel and Tours</span></a>
-                <p class="footer-tagline">Crafting unforgettable journeys since 2019. Your adventure begins with a single step.</p>
+                <a href="/index.html" class="footer-logo">
+                    Bryvelrisse<br><span>Travel and Tours</span>
+                </a>
+                <p class="footer-tagline">Crafting unforgettable journeys and seamless travel experiences since 2024.</p>
                 <div class="footer-socials">
-                    <a href="https://www.facebook.com/share/1YTtkZ2UkY/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="tel:+639123456789" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-                    <a href="mailto:bryvelrissetravelandtours@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/share/1YTtkZ2UkY/" target="_blank" rel="noopener" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="mailto:bryvelrissetravelandtours@gmail.com" aria-label="Email">
+                        <i class="fa-regular fa-envelope"></i>
+                    </a>
                     <a href="https://www.google.com/maps/place/336+E+Bautista+St,+Angono,+1930+Rizal/@14.5233892,121.1428003,17z/data=!3m1!4b1!4m6!3m5!1s0x3397c6955a4ae49d:0xab32088e8de36c2d!8m2!3d14.5233841!4d121.1476712!16s%2Fg%2F11f776jr0_?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" aria-label="Location">
                         <i class="fa-solid fa-location-dot"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Company -->
             <div class="footer-col">
                 <h4>Company</h4>
                 <ul>
@@ -154,23 +210,48 @@
                 </ul>
             </div>
 
-            <!-- Support -->
             <div class="footer-col">
                 <h4>Support</h4>
                 <ul>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#hero">Contact</a></li>
-                    <li><a href="/assets/terms.jpg" target="_blank">Terms</a></li>
+                    <li><a href="/contact/contact.html">Help Center</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
                 </ul>
             </div>
 
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+639000000000">+63 900 000 0000</a></li>
+                    <li><a href="/contact/contact.html">Get a Quote</a></li>
+                </ul>
+            </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Bryvelrisse Travel and Tours. All rights reserved.</p>
-            <p>Designed with <i class="fa-solid fa-heart" style="color:#F0B13D;"></i> for every traveler</p>
+            <p>© 2026 Bryvelrisse Travel and Tours. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+            </div>
         </div>
     </footer>
+
+    <div class="pkg-modal" id="pkgModal">
+        <div class="pkg-modal__backdrop" id="modalBackdrop"></div>
+        <div class="pkg-modal__box">
+            <button class="pkg-modal__close" id="modalClose">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <a href="/contact/contact.html" class="modal-inquire-btn">
+                <i class="fa-solid fa-paper-plane"></i> Inquire Now
+            </a>
+
+            <img src="" id="modalImg" alt="Destination View" class="pkg-modal__img">
+        </div>
+    </div>
+
 </body>
 </html>
-
