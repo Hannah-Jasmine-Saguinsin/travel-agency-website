@@ -1,31 +1,49 @@
 /*This is our global css file.*/
 @font-face /*Gochihand Font (For Logo Only)*/
 {
-    font-family: 'gochihand';
+    font-family: "gochihand";
     src: url(../fonts/gochihand/GochiHand-Regular.ttf);  
     font-weight: normal;
     font-style: normal;
 }
 @font-face /*Caveat Font (Use only for accents and highlights)*/
 {
-    font-family: 'caveat';
+    font-family: "caveat";
     src: url(../fonts/Caveat/Caveat-Regular.ttf);  
     font-weight: normal;
     font-style: italic;
 }
 @font-face /*Montserrat (Use only for body text)*/
 {
-    font-family: 'montserrat';
+    font-family: "montserrat";
     src: url(../fonts/Montserrat/Montserrat-Medium.ttf);
     font-weight: normal;
     font-style: normal;
 }
 @font-face /*Playfair Display Font (Use only for headings)*/
 {
-    font-family: 'playfair display';
+    font-family: "playfair display";
     src: url(../fonts/Playfair_Display/PlayfairDisplay-ExtraBold.ttf);
     font-weight: 900;
     font-style: normal;
+}
+:root {
+/*For Website Colors*/
+--white: #ffffff;
+--dark: #1e4f6b; /*Darkest We can Go on Backgrounds*/
+--accent: #4fb8e0; /*Like navbar background*/
+--primary-color: #306f91; /*Logo Color*/
+--primary-light: #afc3dc; /*Light Colored Backgrounds*/
+--primary-dark: #11263b; /*Color for those Background is lighter*/
+--secondary-light-dark: #356b86; /*Lighter Version(For Soft Look)*/
+--secondary-light: #8a96b0; /*Light Gray*/
+--secondary-dark: #234e63; /*Darker version of primary color*/
+--soft-blue: #dceaf1; /*(For Soft Look)*/
+--surface: #f5f9fb;   /*Off-White background*/
+--surface-strong: #edf4f7; /*For it to pop on white BG*/
+--surface-line: #d8e5ec; /*Border on white*/
+--gold:       #F0B13D; /* For Buttons/ Accent-Text*/
+--gold-dark:  #d9973a; /*For Buttons Hover*/
 }
 *{
     margin: 0;
@@ -37,11 +55,11 @@
 body{
     min-height: 100vh;
     min-height: 100dvh;
-    font-family: 'montserrat';
+    font-family: "montserrat";
 }
 /*FOOTER*/
 .site-footer {
-    background: #060f1d;
+    background: var(--primary-dark);
     color: rgba(255,255,255,0.7);
 }
 
@@ -56,7 +74,7 @@ body{
 
 /* Brand col */
 .footer-logo {
-    font-family: 'Playfair Display', serif;
+    font-family: "playfair display", serif;
     font-weight: 900;
     font-size: 1.35rem;
     color: var(--white);
@@ -69,7 +87,7 @@ body{
     font-size: 0.85rem;
     color: var(--gold);
     font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     letter-spacing: 0.05em;
 }
 
@@ -100,7 +118,7 @@ body{
 
 /* Col headings */
 .footer-col h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.18em;
