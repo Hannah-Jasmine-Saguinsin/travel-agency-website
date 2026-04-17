@@ -25,7 +25,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     background: var(--white);
     color: var(--navy);
     overflow-x: hidden;
@@ -93,7 +93,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .hero-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "playfair display", serif;
     font-weight: 900;
     font-size: clamp(2.8rem, 7vw, 5rem);
     line-height: 1.08;
@@ -137,7 +137,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .card-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "playfair display", serif;
     font-weight: 700;
     font-size: 1.6rem;
     color: var(--navy);
@@ -155,7 +155,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .panel-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "playfair display", serif;
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--white);
@@ -290,7 +290,7 @@ a { text-decoration: none; color: inherit; }
 .input-wrap select,
 .form-group textarea {
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     font-size: 0.87rem;
     font-weight: 500;
     color: var(--navy);
@@ -372,7 +372,7 @@ a { text-decoration: none; color: inherit; }
     padding: 15px 24px;
     background: var(--gold);
     color: var(--navy);
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -429,7 +429,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "playfair display", serif;
     font-weight: 900;
     font-size: clamp(2.2rem, 5vw, 3.4rem);
     color: var(--navy);
@@ -476,7 +476,7 @@ a { text-decoration: none; color: inherit; }
     border: none;
     cursor: pointer;
     padding: 20px 24px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--navy);
@@ -579,7 +579,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .cta-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "playfair display", serif;
     font-weight: 900;
     font-size: clamp(2.4rem, 6vw, 4.2rem);
     color: var(--white);
@@ -610,7 +610,7 @@ a { text-decoration: none; color: inherit; }
     gap: 8px;
     padding: 15px 32px;
     border-radius: 50px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.1em;

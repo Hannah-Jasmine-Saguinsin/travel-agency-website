@@ -862,7 +862,7 @@ html {
     }
 
 .cta-accent {
-    font-family: 'Caveat', cursive;
+    font-family: "caveat", cursive;
     font-size: 1.3rem;
     color: #f0c040;
     letter-spacing: 0.05em;
@@ -870,7 +870,7 @@ html {
     }
 
 .cta-heading {
-    font-family: 'Playfair Display', serif;
+    font-family: "playfair display", serif;
     font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 700;
     color: #ffffff;
@@ -879,7 +879,7 @@ html {
     }
 
 .cta-sub {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     font-size: 0.95rem;
     font-weight: 400;
     color: rgba(255,255,255,0.8);
@@ -901,7 +901,7 @@ html {
     gap: 8px;
     padding: 15px 32px;
     border-radius: 50px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "montserrat", sans-serif;
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.1em;
