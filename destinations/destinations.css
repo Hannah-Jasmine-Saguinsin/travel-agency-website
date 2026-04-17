@@ -4,31 +4,26 @@
     --home-section-pad: clamp(64px, 8vw, 100px);
     --home-gutter: clamp(16px, 4vw, 32px);
     --home-radius: 24px;
-    --home-surface: #f5f9fb;
-    --home-line: #d8e5ec;
-    --home-ink: #11263b;
-    --home-text: #476273;
-    --home-white: #ffffff;
 }
 
 /* 1. Destinations Header */
 .destinations-header {
     padding: 120px var(--home-gutter) 60px;
-    background: var(--home-surface);
+    background: var(--surface-line);
     text-align: center;
-    border-bottom: 1px solid var(--home-line);
+    border-bottom: 1px solid var(--surface-line);
 }
 
 .destinations-header h1 {
     font-family: "playfair display", serif;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    color: var(--home-ink);
+    color: var(--secondary-light);
     margin-bottom: 12px;
     font-weight: 900;
 }
 
 .destinations-header p {
-    color: var(--home-text);
+    color: var(--secondary-light);
     max-width: 600px;
     margin: 0 auto;
     font-size: 1.1rem;
@@ -44,7 +39,7 @@
 .package-gallery {
     background: radial-gradient(circle at right center, rgba(53, 107, 134, 1), transparent 40%),
                 radial-gradient(circle at left bottom, rgba(240, 177, 61, 1), transparent 40%),
-                var(--home-surface);
+                var(--surface-line);
 }
 
 .section-header {
@@ -56,7 +51,7 @@
 .section-header h3 {
     font-family: "playfair display", serif;
     font-size: 2rem;
-    color: var(--home-ink);
+    color: var(--secondary-light);
     margin-bottom: 8px;
     
 }
@@ -74,14 +69,14 @@
 
 /* Package Cards */
 .pkg-card {
-    background: var(--home-white);
+    background: var(--white);
     border-radius: var(--home-radius);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    border: 1px solid var(--home-line);
+    border: 1px solid var(--surface-line);
 }
 
 .pkg-card:hover {
@@ -93,7 +88,7 @@
     height: 240px;
     width: 100%;
     overflow: hidden;
-    background-color: var(--home-line);
+    background-color: var(--surface-line);
 }
 
 .pkg-card__img-wrap img {
@@ -119,13 +114,13 @@
 .pkg-card__info h4 {
     font-family: "playfair display", serif;
     font-size: 1.25rem;
-    color: var(--home-ink);
+    color: var(--secondary-light);
     margin-bottom: 10px;
 }
 
 .pkg-card__info p {
     font-size: 0.9rem;
-    color: var(--home-text);
+    color: var(--secondary-light);
     line-height: 1.5;
 }
 

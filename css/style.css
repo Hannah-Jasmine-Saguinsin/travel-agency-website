@@ -27,6 +27,24 @@
     font-weight: 900;
     font-style: normal;
 }
+:root {
+/*For Website Colors*/
+--white: #ffffff;
+--primary-light: #afc3dc;
+--primary-color: #306f91; /*Logo Color*/
+--dark: #1e4f6b; /*Darkest We can Go on Backgrounds*/
+--accent: #4fb8e0; /*Like navbar background*/
+--primary-dark: #11263b; /*Text color for those background is lighter*/
+--secondary-light-dark: #356b86; /*Lighter Version of Text Color (For Soft Look)*/
+--secondary-light: #8a96b0;
+--secondary-dark: #234e63; 
+--soft-blue: #dceaf1;
+--surface: #f5f9fb;   /*white background*/
+--surface-strong: #edf4f7; /*For it to pop on white bg*/
+--surface-line: #d8e5ec; /*Border on white*/
+--gold:       #F0B13D; /* For Buttons/ Accent-Text*/
+--gold-dark:  #d9973a; /*For Buttons Hover*/
+}
 *{
     margin: 0;
     padding: 0;
@@ -41,7 +59,7 @@ body{
 }
 /*FOOTER*/
 .site-footer {
-    background: #060f1d;
+    background: var(--primary-dark);
     color: rgba(255,255,255,0.7);
 }
 

@@ -5,9 +5,37 @@ Caveat (accent)
 Montserrat (body)
 
 For text colors and etc:
-rgb(48 111 145) 
-rgb(9 30 61)
-rgb(0, 0, 0)
-rgb(255, 255, 255)
-rgb(240 177 61)
-rgb(134 161 231)
+
+Nav:
+  --nav-primary:   #306f91; --primary-color
+  --nav-dark:      #1e4f6b; --dark 
+  --nav-accent:    #4fb8e0; --accent
+
+About us:
+Replace with var(--name);
+#333 → Dark gray (--secondary-light or --primary-dark:)
+rgb(48, 111, 145) → (--primary-color)
+#ffffff → White (--white)
+#0a1f44 → Deep navy-blue  (--primary-dark:)
+
+#0066cc → Bright blue -disregard
+#2557c4 → Strong medium blue -disregard
+#000000 → Black -disregard
+
+Global:
+/*For Website Colors*/
+--white: #ffffff;
+--dark: #1e4f6b; /*Darkest We can Go on Backgrounds*/
+--accent: #4fb8e0; /*Like navbar background*/
+--primary-color: #306f91; /*Logo Color*/
+--primary-light: #afc3dc; /*Light Colored Backgrounds*/
+--primary-dark: #11263b; /*Color for those Background is lighter*/
+--secondary-light-dark: #356b86; /*Lighter Version(For Soft Look)*/
+--secondary-light: #8a96b0; /*Light Gray*/
+--secondary-dark: #234e63; /*Darker version of primary color*/
+--soft-blue: #dceaf1; /*(For Soft Look)*/
+--surface: #f5f9fb;   /*Off-White background*/
+--surface-strong: #edf4f7; /*For it to pop on white BG*/
+--surface-line: #d8e5ec; /*Border on white*/
+--gold:       #F0B13D; /* For Buttons/ Accent-Text*/
+--gold-dark:  #d9973a; /*For Buttons Hover*/

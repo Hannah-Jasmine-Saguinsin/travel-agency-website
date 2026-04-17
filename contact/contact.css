@@ -1,15 +1,5 @@
 /* ── CSS Variables ── */
 :root {
-    --navy:       #091E3D;
-    --navy-mid:   #0d2a52;
-    --navy-light: #132d5e;
-    --gold:       #F0B13D;
-    --gold-dark:  #d9973a;
-    --gold-light: #fce4a6;
-    --white:      #ffffff;
-    --off-white:  #f4f6fb;
-    --text-muted: #8a96b0;
-    --border:     #dde3ee;
     --radius-sm:  8px;
     --radius-md:  14px;
     --radius-lg:  22px;
@@ -27,7 +17,7 @@ html { scroll-behavior: smooth; }
 body {
     font-family: "montserrat", sans-serif;
     background: var(--white);
-    color: var(--navy);
+    color: var(--primary-dark);
     overflow-x: hidden;
 }
 
@@ -140,14 +130,14 @@ a { text-decoration: none; color: inherit; }
     font-family: "playfair display", serif;
     font-weight: 700;
     font-size: 1.6rem;
-    color: var(--navy);
+    color: var(--primary-dark);
     margin-bottom: 28px;
 }
 
 /*(Info panel)*/
 .contact-info-panel {
     flex: 0 1 300px;
-    background: var(--navy);
+    background: var(--primary-dark);
     padding: 48px 36px;
     display: flex;
     flex-direction: column;
@@ -164,7 +154,7 @@ a { text-decoration: none; color: inherit; }
 
 .panel-sub {
     font-size: 0.83rem;
-    color: var(--text-muted);
+    color: var(--primary-light);
     line-height: 1.6;
     margin-bottom: 32px;
 }
@@ -189,7 +179,7 @@ a { text-decoration: none; color: inherit; }
 
 .info-item:hover .info-icon {
     background: var(--gold);
-    color: var(--navy);
+    color: var(--primary-dark);
     transform: scale(1.08);
 }
 
@@ -204,7 +194,7 @@ a { text-decoration: none; color: inherit; }
     font-weight: 800;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--primary-light);
 }
 
 .info-text a,
@@ -240,7 +230,7 @@ a { text-decoration: none; color: inherit; }
 .social-btn:hover { transform: scale(1.15) translateY(-2px); }
 .social-btn.facebook:hover { background: #1877f2; }
 .social-btn.instagram:hover { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-.social-btn.email:hover { background: var(--gold); color: var(--navy); }
+.social-btn.email:hover { background: var(--gold); color: var(--primary-dark); }
 .social-btn.phone:hover { background: #25d366; }
 
 
@@ -265,7 +255,7 @@ a { text-decoration: none; color: inherit; }
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--navy);
+    color: var(--primary-dark);
 }
 
 .req { color: var(--gold-dark); margin-left: 2px; }
@@ -279,7 +269,7 @@ a { text-decoration: none; color: inherit; }
 .input-icon {
     position: absolute;
     left: 13px;
-    color: var(--text-muted);
+    color: var(--primary-light);
     font-size: 0.85rem;
     pointer-events: none;
     transition: color var(--trans);
@@ -293,9 +283,9 @@ a { text-decoration: none; color: inherit; }
     font-family: "montserrat", sans-serif;
     font-size: 0.87rem;
     font-weight: 500;
-    color: var(--navy);
-    background: var(--off-white);
-    border: 1.5px solid var(--border);
+    color: var(--primary-dark);
+    background: var(--surface-strong);
+    border: 1.5px solid var(--surface-line);
     border-radius: var(--radius-sm);
     padding: 12px 14px 12px 40px;
     outline: none;
@@ -327,7 +317,7 @@ a { text-decoration: none; color: inherit; }
 .select-wrap .select-caret {
     position: absolute;
     right: 14px;
-    color: var(--text-muted);
+    color: var(--primary-light);
     font-size: 0.75rem;
     pointer-events: none;
 }
@@ -371,7 +361,7 @@ a { text-decoration: none; color: inherit; }
     width: 100%;
     padding: 15px 24px;
     background: var(--gold);
-    color: var(--navy);
+    color: var(--primary-dark);
     font-family: "montserrat", sans-serif;
     font-size: 0.82rem;
     font-weight: 800;
@@ -407,7 +397,7 @@ a { text-decoration: none; color: inherit; }
 
 /*  SECTION 2 — FAQ */
 .faq-section {
-    background: var(--off-white);
+    background: var(--surface-strong);
     padding: 100px 6vw;
 }
 
@@ -432,7 +422,7 @@ a { text-decoration: none; color: inherit; }
     font-family: "playfair display", serif;
     font-weight: 900;
     font-size: clamp(2.2rem, 5vw, 3.4rem);
-    color: var(--navy);
+    color: var(--primary-dark);
     line-height: 1.1;
     margin-bottom: 16px;
 }
@@ -460,7 +450,7 @@ a { text-decoration: none; color: inherit; }
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border);
+    border: 1px solid var(--surface-line);
     transition: box-shadow var(--trans);
 }
 
@@ -479,7 +469,7 @@ a { text-decoration: none; color: inherit; }
     font-family: "montserrat", sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--primary-dark);
     text-align: left;
     transition: color var(--trans), background var(--trans);
 }
@@ -491,7 +481,7 @@ a { text-decoration: none; color: inherit; }
     flex-shrink: 0;
     font-size: 0.9rem;
     transition: transform 0.35s ease, color var(--trans);
-    color: var(--text-muted);
+    color: var(--primary-light);
 }
 
 .faq-question[aria-expanded="true"] .faq-icon {
@@ -515,7 +505,7 @@ a { text-decoration: none; color: inherit; }
 
 /* SECTION 3 — SUPPORT INQUIRY FORM*/
 .support-section {
-    background: var(--navy);
+    background: var(--primary-dark);
     padding: 100px 6vw;
 }
 
@@ -539,7 +529,7 @@ a { text-decoration: none; color: inherit; }
 .support-desc {
     font-size: 0.88rem;
     line-height: 1.75;
-    color: var(--text-muted);
+    color: var(--primary-light);
     margin-top: 16px;
     max-width: 320px;
 }
@@ -633,7 +623,7 @@ a { text-decoration: none; color: inherit; }
 
 .btn-cta.primary {
     background: var(--gold);
-    color: var(--navy);
+    color: var(--primary-dark);
     box-shadow: 0 4px 24px rgba(240,177,61,0.45);
 }
 
