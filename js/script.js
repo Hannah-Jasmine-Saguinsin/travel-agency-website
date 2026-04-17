@@ -1,20 +1,64 @@
 const destinations = [
-    "Paris, France",
-    "Tokyo, Japan",
-    "Seoul, South Korea",
-    "Bali, Indonesia",
-    "New York, USA",
-    "London, UK",
-    "Rome, Italy",
-    "Dubai, UAE",
-    "Singapore",
-    "Bangkok, Thailand",
-    "Manila, Philippines",
-    "Palawan, Philippines",
-    "Cebu, Philippines",
-    "Boracay, Philippines",
-    "Siargao, Philippines",
-    "Bohol, Philippines"
+/* LOCAL (PHILIPPINES)*/
+"Baguio, Philippines",
+"Baler, Philippines",
+"Calaguas, Philippines",
+"La Union, Philippines",
+"Mt. Pulag, Philippines",
+"Sagada, Philippines",
+"Batanes, Philippines",
+"Iloilo, Philippines",
+"Manila, Philippines",
+"Palawan, Philippines",
+"Cebu, Philippines",
+"Boracay, Philippines",
+"Siargao, Philippines",
+"Bohol, Philippines",
+"Coron, Philippines",
+"Cagayan de Oro, Philippines",
+"Iligan, Philippines",
+"Bukidnon, Philippines",
+"Camiguin, Philippines",
+"Guimaras, Philippines",
+
+/* EAST ASIA */
+"Taiwan",
+"Taipei, Taiwan",
+"Hong Kong",
+"Disneyland, Hong Kong",
+"Tokyo, Japan",
+"Osaka, Japan",
+"Hokkaido, Japan",
+"Kyushu, Japan",
+"Seoul, South Korea",
+"Beijing, China",
+"Shanghai, China",
+"Xian, China",
+"Hainan, China",
+"Zhangjiajie, China",
+
+/*SOUTHEAST ASIA*/
+"Bali, Indonesia",
+"Kuala Lumpur, Malaysia",
+"Singapore",
+"Bangkok, Thailand",
+"Da Nang, Vietnam",
+"Hanoi, Vietnam",
+
+/* MULTI-COUNTRY (ASIA)*/
+"Singapore-Malaysia",
+"Indochina (Vietnam, Cambodia, Laos)",
+
+/*MIDDLE EAST*/
+"Dubai, UAE",
+"Abu Dhabi, UAE",
+"Holy Land, Israel",
+"Jordan",
+/* EUROPE*/
+"London, UK",
+"Rome, Italy",
+"Iceland",
+"Balkans (Croatia, Serbia, Bosnia & Herzegovina, Montenegro, Albania)",
 ];
 
 const destinationBox = document.getElementById("destination-box");
