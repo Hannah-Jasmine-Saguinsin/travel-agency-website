@@ -9,7 +9,7 @@
     align-items: center;     
     padding: 40px;
     position: relative;
-    background-image: url(/assets/bg.jpg);
+    background-image: url(assets/bg.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -81,7 +81,7 @@
         rgba(176, 224, 230, 0.9) 40%,
         rgba(188, 214, 236, 0.8) 70%,
         rgba(181, 234, 241, 0.2) 100%
-    ), url('/assets/3.jpg') no-repeat center center;
+    ), url('assets/3.jpg') no-repeat center center;
     background-size: cover;
     background-position: center;
     background-blend-mode: lighten;
@@ -279,7 +279,7 @@
     /* Hero */
     .abt-content {
         padding: 20px;
-        background-image: url('/assets/cpbg.png');
+        background-image: url('assets/cpbg.png');
         min-height: 40vh;
     }
     .abt-content h2 {
