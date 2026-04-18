@@ -1,38 +1,43 @@
-/* --- Modern Destinations Page Styles (Boxed & Fixed) --- */
 
-:root {
-    --home-section-pad: clamp(60px, 8vw, 100px);
-    --home-gutter: clamp(20px, 5vw, 40px);
-    --home-radius: 24px;
-    --accent-gold: #e8ab18;
-    --navy-deep: #11263b;
-    --text-muted: #5f7285;
-    --white: #ffffff;
-    --surface-alt: #fcfcfc;
-    --shadow-subtle: 0 10px 30px -5px rgba(17, 38, 59, 0.05);
-}
-
-/* 1. Header */
+/* Header */
 .destinations-header {
-    padding: 100px var(--home-gutter) 60px;
-    background: linear-gradient(135deg, #16324a 0%, #234e63 50%, #11263b 100%);
+    padding: 100px 60px 60px;
+    background:
+    radial-gradient(circle at left center,
+        rgba(9,30,61,0.88),
+        rgba(255, 255, 255, 0) 60%
+    ),
+    radial-gradient(circle at right center,
+        rgba(9,30,61,0.88),
+        rgba(255, 255, 255, 0) 60%), url('/assets/destinations-hero.jpg') center/cover no-repeat;
     text-align: center;
+    min-height: 450px;
     
 }
 
 .destinations-header h1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(2.2rem, 5vw, 3rem);
+    max-width: 100%;
     color: var(--white);
-    margin-bottom: 12px;
+    font-family: "playfair display", serif;
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 0.98;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.2em;
 }
-
+.destinations-header p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    max-width: 600px;
+    margin: 0 auto;
+}
 /* 2. Main Grid Layout */
 .destination-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 120px; /* Increased from 30px to 60px */
-    padding: 0 var(--home-gutter) var(--home-section-pad);
+    padding: 0 60px 80px;
     max-width: 1100px; /* Increased max-width slightly to allow for the wider gap */
     margin: 0 auto;
     align-items: stretch;
@@ -41,13 +46,13 @@
 
 /* 3. The Column "Box" Containers */
 .column {
-    background: var(--surface-alt);
+    background: var(--surface);
     border: 5px solid rgba(17, 38, 59, 0.08);
-    border-radius: var(--home-radius);
+    border-radius: 24px;
     padding: 32px 24px;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--shadow-subtle);
+    box-shadow: 0 10px 30px -5px rgba(17, 38, 59, 0.05);
     overflow: hidden; 
 }
 
@@ -58,13 +63,13 @@
 
 .section-header h3 {
     font-size: 1.5rem;
-    color: var(--navy-deep);
+    color: var(--primary-dark);
     margin-bottom: 8px;
 }
 
 .section-subtitle {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--secondary-light);
 }
 
 /* 4. Package List Alignment */
@@ -88,14 +93,14 @@
     justify-content: center; /* Vertically centers text in the box */
     align-items: center;     /* Horizontally centers text in the box */
     text-decoration: none;
-    color: inherit;
+    color: var(--secondary-light-dark);
     width: 100%; 
     padding: 24px 0;         /* Even padding on top and bottom */
 }
 
 .text-card:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-gold);
+    border-color: var(--gold);
 }
 
 .text-card__image {
@@ -111,12 +116,12 @@
 .text-card h4 {
     margin: 0 0 8px 0;       /* Balanced margin below title */
     font-size: 1.1rem;
-    color: var(--navy-deep);
+    color: var(--primary-dark);
     padding: 0 15px;
 }
 
 .text-card p {
-    color: var(--text-muted);
+    color: var(--secondary-light);
     font-size: 0.85rem;
     line-height: 1.4;
     margin: 0;               /* Removed bottom margin for symmetry */
@@ -125,7 +130,7 @@
 
 .pkg-card__tag {
     display: inline-block;
-    color: var(--accent-gold);
+    color: var(--gold);
     font-size: 0.65rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -158,7 +163,7 @@
 /* 7. Why Choose Us Section */
 .why-choose-us {
     background: #ffffff;
-    padding: var(--home-section-pad) var(--home-gutter);
+    padding: 80px 60px;    
     border-top: 1px solid #eee;
 }
 
@@ -173,9 +178,9 @@
 .value-card {
     text-align: center;
     padding: 24px;
-    background: var(--surface-alt);
-    border-radius: var(--home-radius);
-    border: 1px solid rgba(17, 38, 59, 0.05);
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px solid var(--surface-line);
 }
 
 /* --- Responsive Adjustments --- */
