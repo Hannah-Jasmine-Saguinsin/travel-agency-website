@@ -318,7 +318,6 @@ html {
 
 .section-header h3 {
     font-family: "playfair display", serif;
-    font-family: "playfair display", serif;
     font-weight: 900;
     color: var(--primary-dark);
     margin: 0 0 10px;
@@ -332,12 +331,6 @@ html {
     line-height: 1.7;
 }
 
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.8s ease forwards;
-}
-
 @keyframes fadeUp {
     to {
         opacity: 1;
@@ -345,7 +338,7 @@ html {
     }
 }
 
-.fade-in-up.visible {
+.fade-in-up {
     opacity: 1;
     transform: translateY(0);
 }
@@ -406,7 +399,7 @@ html {
     scroll-behavior: smooth;
     cursor: grab;
     padding: 16px 4px 24px;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
     touch-action: pan-x;
 }
@@ -416,9 +409,6 @@ html {
     scroll-behavior: auto;
 }
 
-.gallery-track::-webkit-scrollbar {
-    display: none;
-}
 
 .pkg-card {
     flex-shrink: 0;
@@ -453,7 +443,7 @@ html {
 .pkg-card__img-wrap img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     display: block;
     transition: transform 0.5s ease;
@@ -677,6 +667,7 @@ html {
 
 .slider-container {
     display: flex;
+    position: relative;
     align-items: center;
     gap: 16px;
     max-width: 860px;
@@ -691,16 +682,19 @@ html {
 
 .slider-track {
     display: flex;
+    overflow-x: auto;   
+    scroll-snap-type: x mandatory;
     transition: transform 0.55s ease;
     will-change: transform;
     touch-action: pan-y;
 }
 
 .testimonial-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
     flex-shrink: 0;
     width: 100%;
 }
-
 .testi-card {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
@@ -800,6 +794,8 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 5;
     transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -953,4 +949,135 @@ html {
     background: #ffffff;
     border-radius: 50%;
     flex-shrink: 0;
+}
+/* =========================
+   TABLET (768px and below)
+========================= */
+@media (max-width: 768px) {
+
+    /* HERO */
+    .hero-content h2 {
+        font-size: 2.6rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .btn-hero {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* SEARCH BAR STACK */
+    .search-bar {
+        flex-direction: column;
+        padding: 14px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-btn {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    /* WHY CHOOSE US */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* TESTIMONIAL */
+    .testi-card {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* HERO */
+    .hero-section {
+        padding: 80px 16px 40px;
+    }
+    .hero-content h1 {
+        font-size: 1.3rem;
+    }
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 0.85rem;
+    }
+    /* BUTTONS */
+    .btn-hero a {
+        width: 100%;
+        text-align: center;
+    }
+    /* SEARCH BAR */
+    .search-bar {
+        gap: 8px;
+    }
+    .search-box {
+        min-height: 60px;
+    }
+    .search-box.active {
+        min-height: 100px;
+    }
+    /* PACKAGES */
+    .pkg-card {
+        width: 80%;
+    }
+    .gallery-track {
+        gap: 16px;
+    }
+    /* WHY CHOOSE US */
+    .values-grid {
+        grid-template-columns: 1fr; /* STACK */
+    }
+    .value-card {
+        padding: 28px 20px;
+    }
+    /* TESTIMONIAL */
+    .slider-container {
+        gap: 8px;
+    }
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+    }
+    .testi-card {
+        padding: 24px 18px;
+    }
+    .testi-card blockquote {
+        font-size: 0.9rem;
+    }
+    .testi-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 0.8rem;
+    }
+    /* CTA */
+    .cta-heading {
+        font-size: 1.6rem;
+    }
+    .cta-buttons {
+        flex-direction: column;
+    }
+    .cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .cta-trust {
+        flex-wrap: wrap;
+        gap: 8px;
+        text-align: center;
+    }
+    /* FOOTER */
+    .footer-inner {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
 }
