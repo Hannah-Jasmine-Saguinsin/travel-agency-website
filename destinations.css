@@ -1,20 +1,6 @@
-/* --- Modern Destinations Page Styles (Boxed & Fixed) --- */
-
-:root {
-    --home-section-pad: clamp(60px, 8vw, 100px);
-    --home-gutter: clamp(20px, 5vw, 40px);
-    --home-radius: 24px;
-    --accent-gold: #e8ab18;
-    --navy-deep: #11263b;
-    --text-muted: #5f7285;
-    --white: #ffffff;
-    --surface-alt: #fcfcfc;
-    --shadow-subtle: 0 10px 30px -5px rgba(17, 38, 59, 0.05);
-}
-
 /* 1. Header */
 .destinations-header {
-    padding: 100px var(--home-gutter) 60px;
+    padding: 100px 60px 60px;
     background: linear-gradient(135deg, #16324a 0%, #234e63 50%, #11263b 100%);
     text-align: center;
     
@@ -28,6 +14,11 @@
 }
 .destinations-header p {
     font-size: 1rem;
+    color: var(--secondary-light);
+    max-width: 600px;
+    margin: 0 auto;
+}.destinations-header p {
+    font-size: 1rem;
     color: whitesmoke;
     max-width: 600px;
     margin: 0 auto;
@@ -37,28 +28,27 @@
 .destination-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px; 
-    padding: 60px 15% var(--home-section-pad); /* Added top padding and percentage side padding */
-    width: 100%; /* Ensures the section spans the full width */
-    margin: 0; 
+    gap: 120px; /* Increased from 30px to 60px */
+    padding: 0 var(--home-gutter) var(--home-section-pad);
+    max-width: 1100px; /* Increased max-width slightly to allow for the wider gap */
+    margin: 0 auto;
     align-items: stretch;
     background: rgba(10, 88, 166, 0.045)
 }
-
 /* 3. The Column "Box" Containers */
 .column {
-    background: var(--surface-alt);
-    border: 5px solid rgba(17, 38, 59, 0.08);
-    border-radius: var(--home-radius);
+    background: var(--surface-strong);
+    border: 5px solid var(--surface-line);
+    border-radius: 24px;
     padding: 32px 24px;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--shadow-subtle);
+    box-shadow: 0 10px 30px -5px var(--surface-line);
     overflow: hidden; 
 }
 
 .section-header {
-    text-align: center;
+    text-align: center;;
     margin-bottom: 30px;
 }
 
@@ -70,7 +60,7 @@
 
 .section-subtitle {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--secondary-light);
 }
 
 /* 4. Package List Alignment */
@@ -84,7 +74,7 @@
 /* 5. Cards within the Boxes */
 .text-card {
     background: var(--white);
-    border: 1px solid rgba(17, 38, 59, 0.05);
+    border: 1px solid var(--surface-line);
     border-radius: 16px;
     transition: all 0.3s ease;
     overflow: hidden;
@@ -101,7 +91,7 @@
 
 .text-card:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-gold);
+    border-color: var(--gold);
 }
 
 .text-card__image {
@@ -117,12 +107,12 @@
 .text-card h4 {
     margin: 0 0 8px 0;       /* Balanced margin below title */
     font-size: 1.1rem;
-    color: var(--navy-deep);
+    color: var(--primary-dark);
     padding: 0 15px;
 }
 
 .text-card p {
-    color: var(--text-muted);
+    color: var(--secondary-light);
     font-size: 0.85rem;
     line-height: 1.4;
     margin: 0;               /* Removed bottom margin for symmetry */
@@ -131,7 +121,7 @@
 
 .pkg-card__tag {
     display: inline-block;
-    color: var(--accent-gold);
+    color: var(--gold);
     font-size: 0.65rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -180,9 +170,23 @@
 .value-card {
     text-align: center;
     padding: 24px;
-    background: var(--surface-alt);
-    border-radius: var(--home-radius);
-    border: 1px solid rgba(17, 38, 59, 0.05);
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px solid var(--surface-line);
+}
+.value-card h4 {
+    margin: 0;
+    padding: 0 15px;
+    color: var(--dark);
+    font-size: 1.2rem;
+    margin-bottom: 8px; 
+}
+.value-card p {
+    color: var(--secondary-light-dark);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0 15px;
 }
 
 /* --- Responsive Adjustments --- */
