@@ -93,10 +93,8 @@ if (
         return `${day}/${month}/${year}`;
     };
 
-    const setActiveBox = (activeBox = null) => {
-        [destinationBox, dateBox, peopleBox].forEach((box) => {
-            box.classList.toggle("active", box === activeBox);
-        });
+    const setActiveBox = (box) => {
+        if (box) box.classList.add("active");
     };
 
     const hideSuggestions = () => {
@@ -198,9 +196,13 @@ if (
         peopleDropdown.classList.remove("show");
         dateBox.classList.remove("dropdown-open");
         peopleBox.classList.remove("dropdown-open");
-        setActiveBox(null);
+        clearActiveBoxes();
     };
-
+    const clearActiveBoxes = () => {
+        [destinationBox, dateBox, peopleBox].forEach((box) => {
+            box.classList.remove("active");
+        });
+    };
     const buildCalendar = (year, month) => {
         const minDate = getMinSelectableDate();
         calendarDropdown.innerHTML = "";
@@ -359,8 +361,7 @@ if (
         setActiveBox(destinationBox);
         peopleDropdown.classList.remove("show");
         peopleBox.classList.remove("dropdown-open");
-        calendarDropdown.classList.remove("show");
-        dateBox.classList.remove("dropdown-open");
+        setActiveBox(dateBox);
         destinationInput.focus();
         filterDestinations();
     });
@@ -381,17 +382,16 @@ if (
             performSearch();
         }
     });
-
+    [destinationInput].forEach(input => {
+    input.addEventListener("blur", () => {
+        setActiveBox(destinationBox); // keep it active after typing
+    });
+    });
     dateBox.addEventListener("click", (event) => {
         event.stopPropagation();
         const isOpen = calendarDropdown.classList.contains("show");
 
-        if (isOpen) {
-            calendarDropdown.classList.remove("show");
-            dateBox.classList.remove("dropdown-open");
-            setActiveBox(null);
-            return;
-        }
+        if (isOpen) return; 
 
         openDatePicker();
     });
@@ -403,7 +403,7 @@ if (
         if (isOpen) {
             peopleDropdown.classList.remove("show");
             peopleBox.classList.remove("dropdown-open");
-            setActiveBox(null);
+            clearActiveBoxes();
             return;
         }
 
@@ -441,6 +441,19 @@ if (
     [calendarDropdown, peopleDropdown, suggestionsEl].forEach((element) => {
         element.addEventListener("click", (event) => event.stopPropagation());
     });
+    cell.addEventListener("click", (event) => {
+    event.stopPropagation();
+    updateSelectedDate(cellDate);
+
+
+    setActiveBox(dateBox);
+    calendarDropdown.classList.add("show"); // keep dropdown open
+    });
+    [adultIncBtn, adultDecBtn, childIncBtn, childDecBtn].forEach(btn => {
+    btn?.addEventListener("click", () => {
+        setActiveBox(peopleBox);
+    });
+    });
 
     [dateBox, peopleBox].forEach((box) => {
         box.addEventListener("keydown", (event) => {
@@ -460,9 +473,26 @@ if (
     });
 
     searchButton.addEventListener("click", performSearch);
-    document.addEventListener("click", closeAll);
-
+    document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-bar")) {
+        closeAll();
+    }
+});
+[adultIncBtn, adultDecBtn, childIncBtn, childDecBtn].forEach(btn => {
+    btn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setActiveBox(peopleBox); // KEEP BOX ACTIVE
+    });
+});
     syncPeopleCount();
     ensureCalendarWindow();
     buildCalendar(calendarYear, calendarMonth);
 }
+setActiveBox(dateBox); // for date
+setActiveBox(peopleBox); // for people
+
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-bar")) {
+        closeAll();
+    }
+});

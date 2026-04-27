@@ -109,23 +109,21 @@
     justify-content: space-between;
 }
 
-#date-box,
 #date-box:hover,
 #date-box:focus-within,
 #date-box.active {
-    min-height: 76px;
-    align-items: center;
+    min-height: 118px;
+    align-items: flex-start;
 }
 
 #date-box .search-box__icon {
     margin-top: 0;
 }
 
-#date-box .date-display {
-    max-height: 48px;
-    opacity: 1;
-    pointer-events: auto;
-    margin-top: 6px;
+.date-display {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 #date-box.active .date-display {
@@ -138,14 +136,8 @@
     color: var(--primary-dark);
 }
 
-.search-box:hover .search-input,
-.search-box:focus-within .search-input,
 .search-box.active .search-input,
-.search-box:hover .date-display,
-.search-box:focus-within .date-display,
 .search-box.active .date-display,
-.search-box:hover .people-display,
-.search-box:focus-within .people-display,
 .search-box.active .people-display {
     max-height: 48px;
     opacity: 1;
