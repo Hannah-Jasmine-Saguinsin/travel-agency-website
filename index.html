@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Search Bar JS-->
+    <script src="searchbar.js" defer></script>
 
+    <!--Home Page JS-->
+    <script src="home.js" defer></script>
+    
     <!-- Global CSS -->
     <link rel="stylesheet" href="style.css">
 
@@ -13,6 +18,9 @@
 
     <!-- Home Page CSS -->
     <link rel="stylesheet" href="home.css">
+
+    <!--Search Bar CSS-->
+    <link rel="stylesheet" href="searchbar.css">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/6a1f3f4237.js" crossorigin="anonymous"></script>
@@ -55,33 +63,88 @@
             </a>
             <a href="contact.html" class="btn-2">Plan your journey</a>
         </div>
-
+        <!--Search Bar-->
         <div class="search-bar" role="search" aria-label="Destination search">
+
+            <!-- WHERE TO -->
             <div class="search-box" id="destination-box" tabindex="0">
                 <i class="fa-solid fa-location-dot search-box__icon"></i>
                 <div class="text">
                     <span class="title">Where To?</span>
                     <span class="subtitle">Search for your Destination</span>
-                    <input type="text" id="destination-input" class="search-input"
-                        placeholder="Type destination..." autocomplete="off" aria-label="Search destination"
-                        aria-controls="suggestions" aria-expanded="false">
+                    <input
+                        type="text"
+                        id="destination-input"
+                        class="search-input"
+                        placeholder="Type Destination..."
+                        autocomplete="off"
+                        aria-label="Search destination"
+                        aria-controls="suggestions"
+                    >
                     <div class="suggestions" id="suggestions" role="listbox" aria-label="Destination suggestions"></div>
                 </div>
             </div>
 
+            <!-- WHEN TO -->
             <div class="search-box" id="date-box" tabindex="0">
                 <i class="fa-regular fa-calendar search-box__icon"></i>
                 <div class="text">
                     <span class="title">When To?</span>
                     <span class="subtitle">Select Preferred Dates</span>
-                    <input type="date" id="travel-date" class="search-input" aria-label="Travel date">
+                    <div class="date-display" id="date-display" role="button" aria-haspopup="true">
+                        <span id="date-placeholder">dd/mm/yyyy</span>
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+                </div>
+                <div class="calendar-dropdown" id="calendar-dropdown" role="dialog" aria-label="Date picker"></div>
+            </div>
+
+            <!-- WHO -->
+            <div class="search-box" id="people-box" tabindex="0">
+                <i class="fa-solid fa-user search-box__icon"></i>
+                <div class="text">
+                    <span class="title">Who?</span>
+                    <span class="subtitle">People Included</span>
+                    <div class="people-display" id="people-display" role="button" aria-haspopup="true">
+                        <i class="fa-solid fa-users people-display__icon"></i>
+                        <span id="people-label">1 adult</span>
+                        <i class="fa-solid fa-chevron-down people-display__arrow"></i>
+                    </div>
+                </div>
+
+                <div class="people-dropdown" id="people-dropdown" role="dialog" aria-label="People selector">
+                    <div class="people-row">
+                        <div>
+                            <span class="people-row__label">Adult</span>
+                            <span class="people-row__sub">Ages 18 above</span>
+                        </div>
+                        <div class="people-counter">
+                            <button class="counter-btn" id="adult-dec" type="button" aria-label="Decrease adults">−</button>
+                            <span class="counter-val" id="adult-count">1</span>
+                            <button class="counter-btn" id="adult-inc" type="button" aria-label="Increase adults">+</button>
+                        </div>
+                    </div>
+                    <div class="people-row">
+                        <div>
+                            <span class="people-row__label">Children</span>
+                            <span class="people-row__sub">Ages 0–17</span>
+                        </div>
+                        <div class="people-counter">
+                            <button class="counter-btn" id="child-dec" type="button" aria-label="Decrease children">−</button>
+                            <span class="counter-val" id="child-count">0</span>
+                            <button class="counter-btn" id="child-inc" type="button" aria-label="Increase children">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <button class="search-btn" id="search-button" type="button" aria-label="Search destinations">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
+
         </div>
+
+        <!--End of Search Bar-->
     </div>
 
     <!-- Packages -->
