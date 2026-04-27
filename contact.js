@@ -96,6 +96,20 @@
             input.addEventListener('change', function () { clearError(input); });
         });
     }
+    var phoneInput  = $('#phone');
+    var sPhoneInput = $('#sPhone');
+
+    if (phoneInput) {
+    phoneInput.addEventListener('input', function () {
+        this.value = this.value.replace(/[^\d\s\+\-\(\)]/g, '');
+    });
+    }
+
+    if (sPhoneInput) {
+        sPhoneInput.addEventListener('input', function () {
+        this.value = this.value.replace(/[^\d\s\+\-\(\)]/g, '');
+        });
+    }
 
 
     /*MAIN CONTACT FORM*/
@@ -103,6 +117,8 @@
     var mainSuccess = $('#mainSuccess');
     var mainError   = $('#mainError');
     var mainSubmit  = $('#mainSubmit');
+    if (mainSuccess) mainSuccess.style.display = 'none';
+    if (mainError) mainError.style.display = 'none';
 
     if (mainForm) {
         var mainInputs = $$('input, select, textarea', mainForm);
@@ -112,9 +128,12 @@
             e.preventDefault();
             hideFeedback(mainSuccess);
             hideFeedback(mainError);
+            mainSuccess.style.display = 'none';
+            mainError.style.display = 'none';
 
             var fullName    = $('#fullName');
             var email       = $('#email');
+            var phone       = $('#phone');
             var subject     = $('#subject');
             var message     = $('#message');
             var valid       = true;
@@ -131,6 +150,13 @@
                 setError(email, 'Please enter a valid email address.');
                 valid = false;
             }
+            if (!phone.value.trim()) {
+                setError(phone, 'Please enter your phone number.');
+                valid = false;
+            } else if (!/^[\d\s\+\-\(\)]{11}$/.test(phone.value.trim())) {
+                setError(phone, 'Please enter a valid 11-digit phone number.');
+                valid = false;
+            }
 
             if (!subject.value) {
                 setError(subject, 'Please select a subject.');
@@ -143,15 +169,17 @@
             }
 
             if (!valid) {
+                mainError.style.display = '';
                 showFeedback(mainError, 'persist');
                 return;
-            }
+                }
 
             // Simulate send
             setLoading(mainSubmit, true);
 
             setTimeout(function () {
                 setLoading(mainSubmit, false);
+                mainSuccess.style.display = '';
                 showFeedback(mainSuccess, 'auto-hide');
                 mainForm.reset();
             }, 1800);
@@ -187,7 +215,9 @@
     var supportSubmit  = $('#supportSubmit');
     var concernSelect  = $('#concernType');
     var sMessage       = $('#sMessage');
-
+    if (supportSuccess) supportSuccess.style.display = 'none';
+    if (supportError) supportError.style.display = 'none';
+    
     // Concern-type → placeholder suggestions
     var placeholderMap = {
         'Booking':      'E.g. I\'d like to book a tour to Palawan for 4 people on June 15–20. What packages are available?',
@@ -217,6 +247,8 @@
             e.preventDefault();
             hideFeedback(supportSuccess);
             hideFeedback(supportError);
+            supportSuccess.style.display = 'none';
+            supportError.style.display = 'none';
 
             var sName       = $('#sName');
             var sEmail      = $('#sEmail');
@@ -248,21 +280,25 @@
             }
 
             if (!valid) {
+                supportError.style.display = '';
                 showFeedback(supportError, 'persist');
                 return;
             }
 
+
+
             setLoading(supportSubmit, true);
 
-            setTimeout(function () {
-                setLoading(supportSubmit, false);
-                showFeedback(supportSuccess, 'auto-hide');
-                supportForm.reset();
-                if (sMessage) sMessage.setAttribute('placeholder', placeholderMap['']);
+        setTimeout(function () {
+            setLoading(supportSubmit, false);
+            supportSuccess.style.display = '';
+            showFeedback(supportSuccess, 'auto-hide');
+            supportForm.reset();
+            if (sMessage) sMessage.setAttribute('placeholder', placeholderMap['']);
             }, 1800);
-        });
+            });
     }
-
+        
 
     /* SMOOTH SCROLL for anchor links*/
     $$('a[href^="#"]').forEach(function (anchor) {
