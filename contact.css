@@ -13,7 +13,7 @@ img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
 /*(Hero + Contact Form)*/
-.hero-contact {
+.hero-contact {  
     position: relative;
     min-height: 100vh;
     padding: 140px 6vw 100px;
@@ -596,30 +596,55 @@ a { text-decoration: none; color: inherit; }
 
 /*(Responsive)*/
 
-/* Tablet */
+
 @media (max-width: 900px) {
-    .nav-links { display: none; }
-    .menu-toggle { display: block; }
-    .mobile-nav { display: flex; }
+    .contact-info-panel {
+        flex: 1 1 auto;
+        width: 100%;
+        padding: 40px;
+        align-items: center;
+        text-align: center;
+    }
 
-    .contact-wrapper { flex-direction: column; }
-    .contact-info-panel { flex: 1 1 auto; }
-    .socials-row { margin-top: 24px; padding-top: 24px; }
+    .panel-sub {
+        max-width: 450px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-    .support-inner { flex-direction: column; }
-    .support-inner .section-header { align-items: flex-start; text-align: left; }
+    .info-item {
+        justify-content: center;
+        width: 100%;
+    }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
-    .hero-contact { padding: 120px 5vw 80px; }
-    .contact-form-card { padding: 32px 20px; }
-    .contact-info-panel { padding: 32px 20px; }
-    .support-form-card { padding: 30px 20px; }
-    .faq-section { padding: 72px 5vw; }
-    .support-section { padding: 72px 5vw; }
-    .cta-section { padding: 90px 5vw; }
-    .cta-buttons { flex-direction: column; align-items: center; }
-    .btn-cta { width: 100%; justify-content: center; max-width: 320px; }
-    .form-row { flex-direction: column; }
+    .contact-info-panel {
+        padding: 35px 20px;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .info-icon {
+        margin: 0 auto;
+    }
+
+    .info-text {
+        align-items: center;
+    }
+
+    .info-text a, 
+    .info-text span {
+        font-size: 0.85rem; 
+    }
+
+    .socials-row {
+        justify-content: center;
+        width: 100%;
+    }
 }
