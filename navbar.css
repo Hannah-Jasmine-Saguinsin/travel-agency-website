@@ -27,7 +27,7 @@
 
 /*Logo*/
 .navigation .logo {
-  font-family: 'gochihand', cursive;
+  font-family: GochiHand, cursive;
   font-size: clamp(1.1rem, 2.2vw, 1.7rem);
   font-weight: bold;
   color: var(--nav-primary);
@@ -52,7 +52,7 @@
 }
 .navigation .nav-links a {
   position: relative;
-  font-family: 'montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--nav-primary);

@@ -18,7 +18,7 @@ html {
         rgba(9,30,61,0.88),
         rgba(255, 255, 255, 0) 60%
     ),
-    url("assets/contacts-hero.jpg") center/cover no-repeat;
+    url("assets/home-hero.jpg") center/cover no-repeat;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@ html {
 }
 
 .hero-content h1 {
-    font-family: "caveat", cursive;
+    font-family: Caveat, cursive;
     font-size: 1.8rem;
     font-weight: 500;
     color: var(--white);
@@ -77,7 +77,7 @@ html {
 .hero-content h2 {
     max-width: 100%;
     color: var(--white);
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-weight: 900;
     font-size: 4rem;
     line-height: 0.98;
@@ -95,7 +95,7 @@ html {
     margin: 0 0 20px;
     max-width: 640px;
     line-height: 1.7;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     color: rgba(255, 255, 255, 0.92);
 }
@@ -113,7 +113,7 @@ html {
 .btn-hero a {
     padding: 1rem 2rem;
     border-radius: 30px;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.95rem;
     text-decoration: none;
     transition: 0.3s ease;
@@ -140,202 +140,25 @@ html {
     transform: scale(1.05);
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.96);
-    border: 1px solid rgba(216, 229, 236, 0.85);
-    border-radius: 20px;
-    padding: 10px;
-    gap: 10px;
-    width: min(100%, 750px);
-    box-shadow: 0 16px 36px rgba(17, 38, 59, 0.14);
-    position: relative;
-    z-index: 2;
-}
-
-.search-box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px;
-    border-radius: 15px;
-    background: var(--surface);
-    position: relative;
-    min-height: 76px;
-    cursor: text;
-    transition: background 0.3s ease, box-shadow 0.3s ease, min-height 0.3s ease;
-}
-
-.search-box__icon {
-    font-size: 1.5rem;
-    color: #7899ad;
-    margin-top: 0;
-    transition: margin-top 0.3s ease;
-    flex-shrink: 0;
-}
-
-.text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    gap: 4px;
-    min-height: 100%;
-}
-
-.title {
-    font-family: "montserrat", sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--primary-color);
-}
-
-.subtitle {
-    font-family: "montserrat", sans-serif;
-    font-size: 0.75rem;
-    color: var(--primary-light);
-}
-
-.search-input {
-    width: 100%;
-    margin-top: 0;
-    padding: 10px 12px;
-    border: 1px solid var(--surface-line);
-    border-radius: 10px;
-    background: var(--white);
-    color: var(--primary-dark);
-    font-family: "montserrat", sans-serif;
-    font-size: 0.95rem;
-    outline: none;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    pointer-events: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, max-height 0.3s ease, opacity 0.3s ease;
-}
-
-.search-box.active,
-.search-box:hover,
-.search-box:focus-within {
-    min-height: 126px;
-    align-items: flex-start;
-    background: var(--surface-strong);
-    box-shadow: 0 10px 22px rgba(53, 107, 134, 0.12);
-}
-
-.search-box.active .search-input,
-.search-box:hover .search-input,
-.search-box:focus-within .search-input {
-    margin-top: 8px;
-    max-height: 48px;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.search-box.active .search-box__icon,
-.search-box:hover .search-box__icon,
-.search-box:focus-within .search-box__icon {
-    margin-top: 8px;
-}
-
-.search-box.active .text,
-.search-box:hover .text,
-.search-box:focus-within .text {
-    justify-content: flex-start;
-}
-
-.search-input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(53, 107, 134, 0.12);
-}
-
-.search-input::placeholder {
-    color: #9aaab5;
-}
-
-.suggestions {
-    position: absolute;
-    top: calc(100% - 2px);
-    left: 58px;
-    width: calc(100% - 70px);
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 14px 28px rgba(17, 38, 59, 0.14);
-    overflow: hidden;
-    display: none;
-    z-index: 10;
-    border: 1px solid var(--surface-line);
-}
-
-.suggestions.show {
-    display: block;
-}
-
-.suggestion-item {
-    width: 100%;
-    border: none;
-    background: transparent;
-    text-align: left;
-    padding: 10px 12px;
-    cursor: pointer;
-    font-family: "montserrat", sans-serif;
-    font-size: 0.9rem;
-    color: var(--primary-dark);
-    transition: background 0.2s ease;
-}
-
-.suggestion-item:hover,
-.suggestion-item:focus-visible {
-    background: var(--surface);
-    outline: none;
-}
-
-.search-btn {
-    background: var(--primary-color);
-    border: none;
-    color: var(--white);
-    width: 55px;
-    height: 55px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: 0.3s ease;
-    flex-shrink: 0;
-}
-
-.search-btn:hover {
-    background: var(--secondary-light-dark);
-}
-
-/* Shared */
+/* Packages */
 .section-header {
     text-align: center;
     margin-bottom: 48px;
 }
 
 .section-header h3 {
-    font-family: "playfair display", serif;
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-weight: 900;
     color: var(--primary-dark);
     margin: 0 0 10px;
 }
 
 .section-subtitle {
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.98rem;
     color: var(--secondary-light);
     margin: 0;
     line-height: 1.7;
-}
-
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.8s ease forwards;
 }
 
 @keyframes fadeUp {
@@ -345,7 +168,7 @@ html {
     }
 }
 
-.fade-in-up.visible {
+.fade-in-up {
     opacity: 1;
     transform: translateY(0);
 }
@@ -406,7 +229,7 @@ html {
     scroll-behavior: smooth;
     cursor: grab;
     padding: 16px 4px 24px;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
     touch-action: pan-x;
 }
@@ -414,10 +237,6 @@ html {
 .gallery-track.dragging {
     cursor: grabbing;
     scroll-behavior: auto;
-}
-
-.gallery-track::-webkit-scrollbar {
-    display: none;
 }
 
 .pkg-card {
@@ -453,7 +272,7 @@ html {
 .pkg-card__img-wrap img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     display: block;
     transition: transform 0.5s ease;
@@ -489,7 +308,7 @@ html {
     display: inline-block;
     background: var(--soft-blue);
     color: var(--primary-color);
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -500,7 +319,7 @@ html {
 }
 
 .pkg-card__info h4 {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-size: 1rem;
     font-weight: 900;
     color: var(--primary-dark);
@@ -508,7 +327,7 @@ html {
 }
 
 .pkg-card__info p {
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.82rem;
     color: var(--secondary-light);
     margin: 0;
@@ -566,7 +385,7 @@ html {
 }
 
 .pkg-modal__caption {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-size: 1.1rem;
     font-weight: 900;
     color: var(--primary-dark);
@@ -645,7 +464,7 @@ html {
 }
 
 .value-card h4 {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-size: 1.05rem;
     font-weight: 900;
     color: var(--primary-dark);
@@ -653,7 +472,7 @@ html {
 }
 
 .value-card p {
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.875rem;
     color: var(--secondary-light);
     line-height: 1.7;
@@ -662,19 +481,15 @@ html {
 
 /* Testimonials */
 .testimonials-slider {
-    padding: 80px 24px;
-    background: linear-gradient(135deg, #16324a 0%, #234e63 50%, #11263b 100%);
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0B1C3A 0%, #1a3a56 50%, #0d2b44 100%);
     overflow: hidden;
 }
 
-.testimonials-slider .section-header h3 {
-    color: var(--white);
-}
+.testimonials-slider .section-header h3 { color: #ffffff; }
+.testimonials-slider .section-subtitle   { color: rgba(255, 255, 255, 0.6); }
 
-.testimonials-slider .section-subtitle {
-    color: rgba(255, 255, 255, 0.72);
-}
-
+/* Container: holds arrows + the slide window */
 .slider-container {
     display: flex;
     align-items: center;
@@ -683,35 +498,39 @@ html {
     margin: 0 auto;
 }
 
+/* The visible window — clips everything outside */
 .slider-track-wrap {
     overflow: hidden;
     width: 100%;
     border-radius: 24px;
 }
 
+/* The moving strip of slides */
 .slider-track {
     display: flex;
-    transition: transform 0.55s ease;
-    will-change: transform;
-    touch-action: pan-y;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform; /* performance hint */
 }
 
+/* Each individual slide takes 100% of the wrapper */
 .testimonial-slide {
     flex-shrink: 0;
     width: 100%;
 }
 
+/* The styled card inside each slide */
 .testi-card {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 24px;
     padding: 44px 48px;
     text-align: center;
-    color: var(--white);
+    color: #fff;
 }
 
+/* Stars row */
 .testi-stars {
     font-size: 1.4rem;
     margin-bottom: 24px;
@@ -719,28 +538,30 @@ html {
 }
 
 .testi-stars small {
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.6);
     vertical-align: middle;
     margin-left: 4px;
 }
 
+/* Quote text */
 .testi-card blockquote {
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 1rem;
     font-style: italic;
     line-height: 1.85;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.9);
     margin: 0 0 32px;
     position: relative;
 }
 
+/* Decorative quote mark */
 .testi-card blockquote::before {
     content: "\201C";
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-size: 5rem;
-    color: rgba(173, 212, 230, 0.22);
+    color: rgba(134, 161, 231, 0.25);
     position: absolute;
     top: -30px;
     left: -10px;
@@ -748,6 +569,7 @@ html {
     pointer-events: none;
 }
 
+/* Footer: avatar + name */
 .testi-footer {
     display: flex;
     align-items: center;
@@ -755,38 +577,40 @@ html {
     gap: 14px;
 }
 
+/* Avatar circle with initials */
 .testi-avatar {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #4f88a6, #8db5c8);
+    background: linear-gradient(135deg, #306f91, #86a1e7);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--white);
+    color: #fff;
     flex-shrink: 0;
 }
 
 .testi-name {
     display: block;
-    font-family: "playfair display", serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.95rem;
-    font-weight: 900;
-    color: var(--white);
+    font-weight: 700;
+    color: #fff;
     font-style: normal;
 }
 
 .testi-detail {
     display: block;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.55);
     margin-top: 2px;
 }
 
+/* Prev / Next arrow buttons */
 .slider-btn {
     flex-shrink: 0;
     width: 48px;
@@ -794,7 +618,7 @@ html {
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.25);
     background: rgba(255, 255, 255, 0.08);
-    color: var(--white);
+    color: #fff;
     font-size: 1rem;
     cursor: pointer;
     display: flex;
@@ -804,11 +628,12 @@ html {
 }
 
 .slider-btn:hover {
-    background: #4f88a6;
-    border-color: #4f88a6;
+    background: #306f91;
+    border-color: #306f91;
     transform: scale(1.08);
 }
 
+/* Dot indicators */
 .slider-dots {
     display: flex;
     justify-content: center;
@@ -821,15 +646,35 @@ html {
     height: 10px;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.25);
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
     padding: 0;
 }
 
 .slider-dot.active {
-    background: #add4e6;
+    background: #86a1e7;
     transform: scale(1.35);
+}
+
+/* Responsive: hide arrows on very small screens */
+@media (max-width: 600px) {
+    .testi-card { padding: 32px 24px; }
+
+    .testi-card blockquote {
+        font-size: 0.9rem;
+    }
+
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .slider-btn { display: none; }  /* hide on tiny screens, dots still work */
+    .slider-track-wrap { border-radius: 16px; }
 }
 /*CTA SECTION*/
 .cta-section {
@@ -859,7 +704,7 @@ html {
     }
 
 .cta-accent {
-    font-family: "caveat", cursive;
+    font-family: Caveat, cursive;
     font-size: 1.3rem;
     color: #f0c040;
     letter-spacing: 0.05em;
@@ -867,7 +712,7 @@ html {
     }
 
 .cta-heading {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-size: 2.4rem;
     font-weight: 700;
     color: #ffffff;
@@ -876,7 +721,7 @@ html {
     }
 
 .cta-sub {
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.95rem;
     font-weight: 400;
     color: rgba(255,255,255,0.8);
@@ -898,7 +743,7 @@ html {
     gap: 8px;
     padding: 15px 32px;
     border-radius: 50px;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -953,4 +798,135 @@ html {
     background: #ffffff;
     border-radius: 50%;
     flex-shrink: 0;
+}
+/* =========================
+   TABLET (768px and below)
+========================= */
+@media (max-width: 768px) {
+
+    /* HERO */
+    .hero-content h2 {
+        font-size: 2.6rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .btn-hero {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* SEARCH BAR STACK */
+    .search-bar {
+        flex-direction: column;
+        padding: 14px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-btn {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    /* WHY CHOOSE US */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* TESTIMONIAL */
+    .testi-card {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* HERO */
+    .hero-section {
+        padding: 80px 16px 40px;
+    }
+    .hero-content h1 {
+        font-size: 1.3rem;
+    }
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 0.85rem;
+    }
+    /* BUTTONS */
+    .btn-hero a {
+        width: 100%;
+        text-align: center;
+    }
+    /* SEARCH BAR */
+    .search-bar {
+        gap: 8px;
+    }
+    .search-box {
+        min-height: 60px;
+    }
+    .search-box.active {
+        min-height: 100px;
+    }
+    /* PACKAGES */
+    .pkg-card {
+        width: 80%;
+    }
+    .gallery-track {
+        gap: 16px;
+    }
+    /* WHY CHOOSE US */
+    .values-grid {
+        grid-template-columns: 1fr; /* STACK */
+    }
+    .value-card {
+        padding: 28px 20px;
+    }
+    /* TESTIMONIAL */
+    .slider-container {
+        gap: 8px;
+    }
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+    }
+    .testi-card {
+        padding: 24px 18px;
+    }
+    .testi-card blockquote {
+        font-size: 0.9rem;
+    }
+    .testi-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 0.8rem;
+    }
+    /* CTA */
+    .cta-heading {
+        font-size: 1.6rem;
+    }
+    .cta-buttons {
+        flex-direction: column;
+    }
+    .cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .cta-trust {
+        flex-wrap: wrap;
+        gap: 8px;
+        text-align: center;
+    }
+    /* FOOTER */
+    .footer-inner {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
 }
