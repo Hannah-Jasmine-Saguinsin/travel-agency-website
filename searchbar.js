@@ -180,12 +180,29 @@ function deactivateBoxes() {
   peopleBox.classList.remove("dropdown-open");
   dateTrigger.setAttribute("aria-expanded", "false");
 }
-
+// Open the destination suggestions panel and build suggestions based on current input
 function openDestinationPanel() {
   activateBox(destinationBox);
-  buildSuggestions(destinationInput.value);
-}
 
+  const value = destinationInput.value.trim();
+
+  if (value.length > 0) {
+    buildSuggestions(value);
+  } else {
+    suggestionsList.innerHTML = "";
+    suggestionsList.classList.remove("show");
+  }
+}
+// Debounce the input event to avoid excessive suggestion building while typing
+let typingTimer;
+
+destinationInput.addEventListener("input", (event) => {
+  clearTimeout(typingTimer);
+
+  typingTimer = setTimeout(() => {
+    buildSuggestions(event.target.value);
+  }, 150);
+});
 function openDatePanel() {
   activateBox(dateBox);
 
@@ -216,14 +233,22 @@ function openPeoplePanel() {
 function normalizeDestinationValue(value) {
   return value.replace(/[0-9]/g, "").replace(/\s{2,}/g, " ");
 }
-
+// Build the suggestions list based on the current input value
 function buildSuggestions(query) {
+  const normalizedQuery = query.trim().toLowerCase();
+
+  // ❗ STOP if no input
+  if (normalizedQuery.length < 1) {
+    suggestionsList.innerHTML = "";
+    suggestionsList.classList.remove("show");
+    return;
+  }
+
   suggestionsList.innerHTML = "";
 
-  const normalizedQuery = query.trim().toLowerCase();
-  const matches = normalizedQuery
-    ? DESTINATIONS.filter((destination) => destination.toLowerCase().includes(normalizedQuery))
-    : DESTINATIONS;
+  const matches = DESTINATIONS.filter((destination) =>
+    destination.toLowerCase().includes(normalizedQuery)
+  );
 
   if (matches.length === 0) {
     suggestionsList.classList.remove("show");
@@ -242,7 +267,6 @@ function buildSuggestions(query) {
       activateBox(destinationBox);
       updatePersistentStates();
       clearError();
-      buildSuggestions(destinationInput.value);
       suggestionsList.classList.remove("show");
       destinationInput.focus();
     });

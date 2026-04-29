@@ -2,7 +2,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     background: var(--white);
     color: var(--primary-dark);
     overflow-x: hidden;
@@ -55,7 +55,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .hero-title {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-weight: 900;
     font-size: 4rem;
     line-height: 1.08;
@@ -99,7 +99,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .card-title {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-weight: 700;
     font-size: 1.6rem;
     color: var(--primary-dark);
@@ -118,7 +118,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .panel-title {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--white);
@@ -253,7 +253,7 @@ a { text-decoration: none; color: inherit; }
 .input-wrap select,
 .form-group textarea {
     width: 100%;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.87rem;
     font-weight: 500;
     color: var(--primary-dark);
@@ -328,7 +328,7 @@ a { text-decoration: none; color: inherit; }
     padding: 15px 24px;
     background: var(--gold);
     color: var(--primary-dark);
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -376,7 +376,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .section-title {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-weight: 900;
     font-size: 3rem;
     color: var(--primary-dark);
@@ -423,7 +423,7 @@ a { text-decoration: none; color: inherit; }
     border: none;
     cursor: pointer;
     padding: 20px 24px;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--primary-dark);
@@ -526,7 +526,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .cta-title {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-weight: 900;
     font-size: 3.5rem;
     color: var(--white);
@@ -557,7 +557,7 @@ a { text-decoration: none; color: inherit; }
     gap: 8px;
     padding: 15px 32px;
     border-radius: 50px;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.1em;

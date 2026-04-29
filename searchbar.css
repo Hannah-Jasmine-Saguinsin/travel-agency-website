@@ -79,7 +79,7 @@
     border: 1px solid var(--surface-line);
     border-radius: 10px;
     background: var(--white);
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.94rem;
     outline: none;
     max-height: 0;
@@ -362,7 +362,7 @@
     border: none;
     background: transparent;
     padding: 0;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.68rem;
     font-weight: 600;
     color: var(--secondary-light, #6a8fa3);
@@ -380,7 +380,7 @@
     border: none;
     background: transparent;
     padding: 0;
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-size: 0.95rem;
     font-weight: 900;
     color: var(--primary-dark, #11263b);
@@ -409,7 +409,7 @@
     border-radius: 10px;
     background: var(--white, #fff);
     color: var(--primary-dark, #11263b);
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.76rem;
     font-weight: 600;
     padding: 8px 6px;
@@ -443,7 +443,7 @@
     border-radius: 10px;
     background: var(--white, #fff);
     color: var(--primary-dark, #11263b);
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.76rem;
     font-weight: 600;
     padding: 8px 6px;
@@ -478,7 +478,7 @@
 }
 
 .cal-day-name {
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.58rem;
     font-weight: 700;
     color: var(--secondary-light, #6a8fa3);
@@ -496,7 +496,7 @@
     border: none;
     background: transparent;
     border-radius: 50%;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.78rem;
     color: var(--primary-dark, #11263b);
     cursor: pointer;
@@ -541,7 +541,7 @@
 }
 
 .people-row__label {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-size: 0.95rem;
     font-weight: 900;
     color: var(--primary-dark, #11263b);
@@ -549,7 +549,7 @@
 
 .people-row__sub {
     display: block;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.72rem;
     color: var(--secondary-light, #6a8fa3);
     margin-top: 2px;
@@ -587,7 +587,7 @@
 }
 
 .counter-val {
-    font-family: "playfair display", serif;
+    font-family: PlayfairDisplay, serif;
     font-size: 1rem;
     font-weight: 900;
     color: var(--primary-dark, #11263b);
@@ -629,7 +629,7 @@
     border-radius: 14px;
     background: #ffe8ed;
     color: #8b2331;
-    font-family: "montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 0.9rem;
     line-height: 1.5;
     box-shadow: 0 10px 20px rgba(139, 35, 49, 0.12);
