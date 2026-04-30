@@ -99,7 +99,7 @@
     border-radius: 50px;
     text-decoration: none;
     transition: background 0.3s ease;
-    margin-top: 10px;f
+    margin-top: 10px;
 }
 
 .cta-button:hover {
@@ -107,95 +107,13 @@
     color: var(--primary-dark);
 }
 
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-} 
-
-.icon-box {
-    width: 50px;
-    height: 50px;
-    background-color: #1a3441; 
-    border-radius: 50%;         
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .terms-card {
+        padding: 30px 20px;
+    }
+    
+    .terms-container {
+        margin-top: -20px;
+    }
 }
-
-.icon-box:hover {
-    transform: scale(1.1);     
-}
-
-.icon-box i {
-    color: #F0B13D;           
-    font-size: 1.2rem;
-}
-
-.icon-box a {
-    text-decoration: none;
-    display: flex;
-}
-
-.footer-contact-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 1px;                     
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-} 
-
-.icon-box {
-    width: 50px;
-    height: 50px;
-    background-color: #1a3441; 
-    border-radius: 50%;         
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-    margin-right: 15px;            
-    flex-shrink: 0;               
-}
-
-.contact-border-wrapper {
-    border: 1px solid rgba(240, 177, 61, 0.3); 
-    padding: 30px;                             
-    border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.02); 
-    margin-top: 20px;
-    max-width: 600px;            
-}
-
-
-.contact-text {
-    overflow: hidden;
-}
-
-.footer-contact-section a {
-    color: #ffffff !important; 
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-    font-size: 0.9rem;            
-}
-
-
-.icon-box:hover { transform: scale(1.1); }
-.icon-box i { color: #F0B13D; font-size: 1.2rem; }
-.footer-contact-section a:hover { opacity: 0.8; color: #F0B13D !important; }
-.contact-text .label {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: 1px;
-    margin-bottom: 2px;
-    text-transform: uppercase;
-}
-.contact-text p { margin: 0; color: #ffffff; }
