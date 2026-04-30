@@ -1,24 +1,41 @@
+/* =========================
+   GLOBAL CHECK
+========================= */
+const isMobile = window.innerWidth <= 768;
+
+/* =========================
+   GALLERY (PACKAGES)
+========================= */
 const galleryTrack = document.getElementById('galleryTrack');
-    const galleryLeft  = document.getElementById('galleryLeft');
-    const galleryRight = document.getElementById('galleryRight');
+const galleryLeft  = document.getElementById('galleryLeft');
+const galleryRight = document.getElementById('galleryRight');
 
-    /*Arrow Button Scrolling*/
-    galleryLeft.addEventListener('click', () => {
-        galleryTrack.scrollBy({ left: -320, behavior: 'smooth' });
+/* Arrow Button Scrolling (DESKTOP ONLY) */
+if (!isMobile) {
+    galleryLeft?.addEventListener('click', () => {
+        galleryTrack.scrollBy({
+            left: galleryTrack.offsetWidth * 0.8,
+            behavior: 'smooth'
+        });
     });
 
-    galleryRight.addEventListener('click', () => {
-        galleryTrack.scrollBy({ left: 320, behavior: 'smooth' });
+    galleryRight?.addEventListener('click', () => {
+        galleryTrack.scrollBy({
+            left: galleryTrack.offsetWidth * 0.8,
+            behavior: 'smooth'
+        });
     });
+}
 
-    /*Drag to Scroll (Mouse)*/
-    let isDragging = false;
-    let startX     = 0;
-    let scrollLeft = 0;
+/* Drag to Scroll (Mouse) */
+let isDragging = false;
+let startX = 0;
+let scrollLeft = 0;
 
+if (galleryTrack) {
     galleryTrack.addEventListener('mousedown', (e) => {
         isDragging = true;
-        startX     = e.pageX - galleryTrack.offsetLeft;
+        startX = e.pageX - galleryTrack.offsetLeft;
         scrollLeft = galleryTrack.scrollLeft;
         galleryTrack.style.cursor = 'grabbing';
     });
@@ -36,134 +53,155 @@ const galleryTrack = document.getElementById('galleryTrack');
     galleryTrack.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         e.preventDefault();
-        const x    = e.pageX - galleryTrack.offsetLeft;
-        const walk = (x - startX) * 1.5; // scroll speed multiplier
+
+        const x = e.pageX - galleryTrack.offsetLeft;
+        const walk = (x - startX) * 1.5;
+
         galleryTrack.scrollLeft = scrollLeft - walk;
     });
+}
 
-    /*Modal Open / Close*/
-    const pkgModal     = document.getElementById('pkgModal');
-    const modalImg     = document.getElementById('modalImg');
-    const modalCaption = document.getElementById('modalCaption');
-    const modalClose   = document.getElementById('modalClose');
-    const modalBackdrop = document.getElementById('modalBackdrop');
+/* Mobile swipe enable */
+function enableMobileSwipe() {
+    if (!galleryTrack) return;
 
-    // Open modal when a card is clicked
-    document.querySelectorAll('.pkg-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const imgSrc = card.getAttribute('data-img');
-            const title  = card.getAttribute('data-title');
-
-            modalImg.src       = imgSrc;
-            modalImg.alt       = title;
-            modalCaption.textContent = title;
-
-            pkgModal.classList.add('active');   // show modal
-            document.body.style.overflow = 'hidden'; // lock scroll
-        });
-    });
-
-    // Close modal — close button
-    modalClose.addEventListener('click', closeModal);
-
-    // Close modal — clicking backdrop
-    modalBackdrop.addEventListener('click', closeModal);
-
-    // Close modal — Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
-
-    function closeModal() {
-        pkgModal.classList.remove('active');
-        document.body.style.overflow = ''; // unlock scroll
-        // Clear src after animation ends to avoid flicker
-        setTimeout(() => { modalImg.src = ''; }, 300);
+    if (isMobile) {
+        galleryTrack.style.overflowX = 'auto';
+        galleryTrack.style.cursor = 'grab';
     }
+}
+enableMobileSwipe();
 
+/* =========================
+   PACKAGE MODAL
+========================= */
+const pkgModal      = document.getElementById('pkgModal');
+const modalImg      = document.getElementById('modalImg');
+const modalCaption  = document.getElementById('modalCaption');
+const modalClose    = document.getElementById('modalClose');
+const modalBackdrop = document.getElementById('modalBackdrop');
 
-    /* TESTIMONIAL SLIDESHOW
-       Auto-slide every 4500ms, manual prev/next */
+document.querySelectorAll('.pkg-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const imgSrc = card.getAttribute('data-img');
+        const title  = card.getAttribute('data-title');
 
-    const sliderTrack = document.getElementById('sliderTrack');
-    const sliderPrev  = document.getElementById('sliderPrev');
-    const sliderNext  = document.getElementById('sliderNext');
-    const dotsWrap    = document.getElementById('sliderDots');
+        modalImg.src = imgSrc;
+        modalImg.alt = title;
+        modalCaption.textContent = title;
 
-    const slides      = document.querySelectorAll('.testimonial-slide');
-    const totalSlides = slides.length;
-    let currentSlide  = 0;
-    let autoSlideTimer;
-
-    /*Build Dot Indicator*/
-    slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.classList.add('slider-dot');
-        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-        if (i === 0) dot.classList.add('active'); // first dot active
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsWrap.appendChild(dot);
+        pkgModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     });
+});
 
-    /*Go To a Specific Slide*/
-    function goToSlide(index) {
-        currentSlide = index;
+function closeModal() {
+    pkgModal.classList.remove('active');
+    document.body.style.overflow = '';
 
-        // Move the track: each slide is 100% of the wrapper width
+    setTimeout(() => {
+        modalImg.src = '';
+    }, 300);
+}
+
+modalClose?.addEventListener('click', closeModal);
+modalBackdrop?.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
+
+
+/* =========================
+   TESTIMONIAL SLIDER
+========================= */
+const sliderTrack = document.getElementById('sliderTrack');
+const sliderPrev  = document.getElementById('sliderPrev');
+const sliderNext  = document.getElementById('sliderNext');
+const dotsWrap    = document.getElementById('sliderDots');
+
+const slides = document.querySelectorAll('.testimonial-slide');
+const totalSlides = slides.length;
+
+let currentSlide = 0;
+let autoSlideTimer;
+
+/* Build dots */
+slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.classList.add('slider-dot');
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+
+    if (i === 0) dot.classList.add('active');
+
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsWrap?.appendChild(dot);
+});
+
+/* Core slide function */
+function goToSlide(index) {
+    currentSlide = index;
+
+    console.log("Slide:", currentSlide); // debug
+
+    if (sliderTrack) {
         sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-        // Update dot states
-        document.querySelectorAll('.slider-dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
-        });
     }
 
-    /*Next Slide*/
-    function nextSlide() {
-        const next = (currentSlide + 1) % totalSlides; // loop back to 0
-        goToSlide(next);
-    }
-
-    /*Previous Slide*/
-    function prevSlide() {
-        const prev = (currentSlide - 1 + totalSlides) % totalSlides;
-        goToSlide(prev);
-    }
-
-    /*Button Listeners*/
-    sliderNext.addEventListener('click', () => {
-        nextSlide();
-        resetAutoSlide(); // restart timer after manual click
+    document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
     });
+}
 
-    sliderPrev.addEventListener('click', () => {
-        prevSlide();
-        resetAutoSlide();
+/* Next / Prev */
+function nextSlide() {
+    goToSlide((currentSlide + 1) % totalSlides);
+}
+
+function prevSlide() {
+    goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+}
+
+/* Arrow buttons (DESKTOP ONLY behavior) */
+sliderNext?.addEventListener('click', () => {
+    nextSlide();
+    resetAutoSlide();
+});
+
+sliderPrev?.addEventListener('click', () => {
+    prevSlide();
+    resetAutoSlide();
+});
+
+/* Auto slide (DESKTOP ONLY) */
+function startAutoSlide() {
+    if (isMobile) return;
+
+    autoSlideTimer = setInterval(nextSlide, 4500);
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    startAutoSlide();
+}
+
+/* INIT */
+startAutoSlide();
+goToSlide(0);
+
+
+/* =========================
+   FADE IN ON SCROLL
+========================= */
+const fadeItems = document.querySelectorAll('.fade-in-up');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
     });
+}, { threshold: 0.15 });
 
-    /*Auto-slide every 4.5 seconds*/
-    function startAutoSlide() {
-        autoSlideTimer = setInterval(nextSlide, 4500);
-    }
-
-    function resetAutoSlide() {
-        clearInterval(autoSlideTimer);
-        startAutoSlide();
-    }
-
-    startAutoSlide(); // kick off auto-slide on page load
-
-
-    /* FADE-IN ON SCROLL - Adds .visible class when element enters view*/
-    const fadeItems = document.querySelectorAll('.fade-in-up');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // run once
-            }
-        });
-    }, { threshold: 0.15 });
-
-    fadeItems.forEach(item => observer.observe(item));
+fadeItems.forEach(item => observer.observe(item));

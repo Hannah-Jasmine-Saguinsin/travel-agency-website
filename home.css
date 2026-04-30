@@ -502,22 +502,21 @@ html {
 .slider-track-wrap {
     overflow: hidden;
     width: 100%;
-    border-radius: 24px;
-    flex: 1 1 auto;
-    min-width: 0;
 }
 
-/* The moving strip of slides */
 .slider-track {
     display: flex;
-    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform; /* performance hint */
+    width: 100%;
+    transition: transform 0.55s ease;
+    will-change: transform;
 }
 
-/* Each individual slide takes 100% of the wrapper */
 .testimonial-slide {
-    flex-shrink: 0;
-    width: 100%;
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 /* The styled card inside each slide */
@@ -851,6 +850,89 @@ html {
         border-radius: 12px;
     }
 
+    /* PACKAGES */
+    .package-gallery {
+        padding: 64px 16px;
+    }
+
+    .gallery-scroll-area {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .gallery-track {
+        --mobile-card-width: min(84vw, 19rem);
+        gap: 14px;
+        padding: 12px calc((100% - var(--mobile-card-width)) / 2) 18px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pkg-card {
+        width: var(--mobile-card-width);
+        height: 24rem;
+        display: flex;
+        flex-direction: column;
+        scroll-snap-align: center;
+    }
+
+    .pkg-card__img-wrap {
+        height: 10.5rem;
+        flex-shrink: 0;
+    }
+
+    .pkg-card__info {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 8px;
+        padding: 14px 16px 16px;
+    }
+
+    .pkg-card__tag {
+        margin-bottom: 0;
+    }
+
+    .pkg-card__info h4 {
+        margin: 0;
+        line-height: 1.35;
+    }
+
+    .pkg-card__info p {
+        margin: 0;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .gallery-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        z-index: 3;
+    }
+
+    .gallery-arrow:hover {
+        transform: translateY(-50%) scale(1.08);
+    }
+
+    .gallery-arrow--left {
+        left: 6px;
+    }
+
+    .gallery-arrow--right {
+        right: 6px;
+    }
+
     /* WHY CHOOSE US */
     .values-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -893,11 +975,49 @@ html {
         min-height: 100px;
     }
     /* PACKAGES */
-    .pkg-card {
-        width: 80%;
+    .gallery-arrow {
+        display: none !important;
     }
+
+    .gallery-scroll-area {
+        overflow: hidden;
+    }
+
     .gallery-track {
-        gap: 16px;
+        display: flex !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+
+        gap: 12px;
+        padding: 12px;
+
+        /* CRITICAL FOR SMALL SCREENS */
+        width: 100%;
+    }
+
+    .pkg-card {
+        flex: 0 0 85%;
+        max-width: 85%;
+        scroll-snap-align: center;
+    }
+    .pkg-card__img-wrap {
+        height: 9.75rem;
+    }
+    .pkg-card__info {
+        padding: 12px 14px 14px;
+        gap: 6px;
+    }
+    .pkg-card__info h4 {
+        font-size: 0.95rem;
+    }
+    .pkg-card__info p {
+        font-size: 0.8rem;
+    }
+    .gallery-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
     }
     /* WHY CHOOSE US */
     .values-grid {
@@ -907,24 +1027,43 @@ html {
         padding: 28px 20px;
     }
     /* TESTIMONIAL */
-    .slider-container {
-        gap: 8px;
+@media (max-width: 768px) {
+
+    .slider-track-wrap {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
+
+    .slider-track {
+        display: flex;
+        gap: 25px;
+    }
+
+    .testimonial-slide {
+    flex: 0 0 100%;
+    padding: 0 12px; /* gives breathing room inside each slide */
+    box-sizing: border-box;
+    }
+
     .slider-btn {
-        width: 40px;
-        height: 40px;
+        display: none !important;
     }
+
+    .slider-track {
+        display: flex;
+    }
+
+    .testimonial-slide {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+
     .testi-card {
-        padding: 24px 18px;
+    padding: 28px 20px;
     }
-    .testi-card blockquote {
-        font-size: 0.9rem;
-    }
-    .testi-avatar {
-        width: 40px;
-        height: 40px;
-        font-size: 0.8rem;
-    }
+}
+
     /* CTA */
     .cta-heading {
         font-size: 1.6rem;
