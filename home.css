@@ -503,6 +503,8 @@ html {
     overflow: hidden;
     width: 100%;
     border-radius: 24px;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 /* The moving strip of slides */
@@ -528,6 +530,7 @@ html {
     padding: 44px 48px;
     text-align: center;
     color: #fff;
+    max-width: 100%;
 }
 
 /* Stars row */
@@ -552,7 +555,8 @@ html {
     font-style: italic;
     line-height: 1.85;
     color: rgba(255, 255, 255, 0.9);
-    margin: 0 0 32px;
+    margin: 0 auto 32px;
+    max-width: 40rem;
     position: relative;
 }
 
@@ -612,7 +616,7 @@ html {
 
 /* Prev / Next arrow buttons */
 .slider-btn {
-    flex-shrink: 0;
+    flex: 0 0 48px;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -659,6 +663,10 @@ html {
 
 /* Responsive: hide arrows on very small screens */
 @media (max-width: 600px) {
+    .slider-container {
+        gap: 10px;
+    }
+
     .testi-card { padding: 32px 24px; }
 
     .testi-card blockquote {
@@ -675,6 +683,16 @@ html {
 @media (max-width: 420px) {
     .slider-btn { display: none; }  /* hide on tiny screens, dots still work */
     .slider-track-wrap { border-radius: 16px; }
+}
+
+@media (min-width: 1024px) {
+    .slider-container {
+        max-width: 940px;
+    }
+
+    .testi-card {
+        padding: 44px 40px;
+    }
 }
 /*CTA SECTION*/
 .cta-section {
