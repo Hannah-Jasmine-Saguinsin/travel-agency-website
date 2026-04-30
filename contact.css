@@ -630,7 +630,7 @@ a { text-decoration: none; color: inherit; }
     .nav-links { display: none; }
     .menu-toggle { display: block; }
     .mobile-nav { display: flex; }
-
+    .contact-form-card { padding: 20px 10px; }
     .contact-wrapper { flex-direction: column; }
     .contact-info-panel { flex: 1 1 auto; }
     .socials-row { margin-top: 24px; padding-top: 24px; }
@@ -655,11 +655,8 @@ a { text-decoration: none; color: inherit; }
 
 /* Mobile */
 @media (max-width: 600px) {
-    .hero-contact {
-        padding: 104px 5vw 56px;
-        gap: 24px;
-    }
-    .contact-form-card { padding: 32px 20px; }
+    .hero-contact { padding: 120px 5vw 80px; }
+    .contact-form-card { padding: 20px 10px; }
     .contact-info-panel { padding: 32px 20px; }
     .support-form-card { padding: 30px 20px; }
     .faq-section { padding: 56px 5vw; }
