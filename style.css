@@ -59,6 +59,19 @@ body{
     min-height: 100vh;
     min-height: 100dvh;
     font-family: Montserrat, sans-serif;
+    overflow-x: hidden;
+}
+img,
+video{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+button,
+input,
+select,
+textarea{
+    font: inherit;
 }
 /*FOOTER*/
 .site-footer {
