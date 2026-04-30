@@ -259,8 +259,7 @@ body.modal-open {
 .why-choose-us {
     padding: var(--home-section-pad) var(--home-gutter);
     border-top: 1px solid #eee;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('/assets/bg.jpg'); 
+    background: var(--white); 
 }
 
 .values-grid {
