@@ -139,6 +139,25 @@
         var mainInputs = $$('input, select, textarea', mainForm);
         attachLiveValidation(mainInputs);
 
+        var bookingParams = new URLSearchParams(window.location.search);
+        var bookingSubject = bookingParams.get('subject');
+        var bookingDestination = bookingParams.get('destination');
+
+        if (bookingSubject === 'Booking' && bookingDestination) {
+            var bookingSubjectSelect = $('#subject');
+            var bookingMessage = $('#message');
+
+            if (bookingSubjectSelect) {
+                bookingSubjectSelect.value = 'Booking';
+                clearError(bookingSubjectSelect);
+            }
+
+            if (bookingMessage) {
+                bookingMessage.value = bookingDestination.trim() + ',';
+                clearError(bookingMessage);
+            }
+        }
+
         mainForm.addEventListener('submit', function (e) {
             e.preventDefault();
             hideFeedback(mainSuccess);
