@@ -180,6 +180,24 @@ function deactivateBoxes() {
   peopleBox.classList.remove("dropdown-open");
   dateTrigger.setAttribute("aria-expanded", "false");
 }
+
+function closeBoxesIfEmpty() {
+  if (!destinationInput.value.trim()) {
+    destinationBox.classList.remove("active");
+    suggestionsList.classList.remove("show");
+  }
+
+  if (!dateInput.value.trim() && !selectedDate) {
+    dateBox.classList.remove("active");
+    closeDatePanel();
+  }
+
+  if (adults <= 1 && children <= 0) {
+    peopleBox.classList.remove("active");
+    peopleDropdown.classList.remove("show");
+    peopleBox.classList.remove("dropdown-open");
+  }
+}
 // Open the destination suggestions panel and build suggestions based on current input
 function openDestinationPanel() {
   activateBox(destinationBox);
@@ -737,7 +755,7 @@ childDec.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".search-bar") && !event.target.closest(".search-error")) {
-    deactivateBoxes();
+    closeBoxesIfEmpty();
   }
 });
 

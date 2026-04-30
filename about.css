@@ -339,15 +339,21 @@
         padding: 40px 20px;
         min-height: auto;
         max-height: none;
-        background: linear-gradient(
-            to right,
-            rgba(173, 216, 230, 1) 10%,
-            rgba(173, 216, 230, 1) 60%,
-            rgba(40, 180, 21, 0) 100%
-        );
-    background-size: cover;
-    background-position: center;
-}
+        background-image:
+            radial-gradient(circle at left center,
+                rgba(37, 82, 150, 0.88),
+                rgba(255, 255, 255, 0) 80%
+            ),
+            radial-gradient(circle at right center,
+                rgba(37, 82, 150, 0.88),
+                rgba(255, 255, 255, 0) 80%
+            ),
+            url("assets/about-hero.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 28rem;
+    }
     .about h3 { font-size: 1.4rem; }
     
     /* Services */
