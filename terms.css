@@ -107,13 +107,71 @@
     color: var(--primary-dark);
 }
 
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-    .terms-card {
-        padding: 30px 20px;
-    }
-    
-    .terms-container {
-        margin-top: -20px;
+
+.footer-contact-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px 40px;                        
+    width: 100%;
+    max-width: 1000px;                   
+    margin-top: 20px;
+}
+
+
+.contact-item {
+    display: flex;
+    flex-direction: row;    
+    align-items: center;   
+    text-align: left;
+}
+
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background-color: #1a3441; 
+    border-radius: 50%;         
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;     
+    flex-shrink: 0;         
+    transition: transform 0.3s ease;
+}
+
+.icon-box i {
+    color: #F0B13D; 
+    font-size: 1.2rem;
+}
+
+.icon-box:hover {
+    transform: scale(1.1);
+}
+
+/* Text & Label Styling */
+.contact-text .label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.contact-text a, 
+.contact-text p {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+
+@media (max-width: 768px) {
+    .footer-contact-section {
+        grid-template-columns: 1fr;
     }
 }
+
