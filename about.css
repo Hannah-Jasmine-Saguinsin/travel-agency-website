@@ -312,7 +312,6 @@
     /* Hero */
     .abt-content {
         padding: 20px;
-        background-image: url(assets/bg.jpg);
         min-height: 40vh;
     }
     .abt-content h2 {
