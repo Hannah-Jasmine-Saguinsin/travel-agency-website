@@ -10,22 +10,20 @@ const galleryTrack = document.getElementById('galleryTrack');
 const galleryLeft  = document.getElementById('galleryLeft');
 const galleryRight = document.getElementById('galleryRight');
 
-/* Arrow Button Scrolling (DESKTOP ONLY) */
-if (!isMobile) {
-    galleryLeft?.addEventListener('click', () => {
-        galleryTrack.scrollBy({
-            left: galleryTrack.offsetWidth * 0.8,
-            behavior: 'smooth'
-        });
+/* Arrow Button Scrolling */
+galleryLeft?.addEventListener('click', () => {
+    galleryTrack.scrollBy({
+        left: -galleryTrack.offsetWidth * 0.8,
+        behavior: 'smooth'
     });
+});
 
-    galleryRight?.addEventListener('click', () => {
-        galleryTrack.scrollBy({
-            left: galleryTrack.offsetWidth * 0.8,
-            behavior: 'smooth'
-        });
+galleryRight?.addEventListener('click', () => {
+    galleryTrack.scrollBy({
+        left: galleryTrack.offsetWidth * 0.8,
+        behavior: 'smooth'
     });
-}
+});
 
 /* Drag to Scroll (Mouse) */
 let isDragging = false;
@@ -189,6 +187,46 @@ function resetAutoSlide() {
 startAutoSlide();
 goToSlide(0);
 
+/* Mobile touch/swipe for testimonials slider */
+if (isMobile && sliderTrack) {
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let startTime = 0;
+
+    const sliderContainer = document.querySelector('.slider-track-wrap');
+
+    sliderContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        isDragging = true;
+        startTime = Date.now();
+        resetAutoSlide();
+    });
+
+    sliderContainer.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+    });
+
+    sliderContainer.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const diffX = startX - currentX;
+        const diffTime = Date.now() - startTime;
+        const threshold = 50; // minimum swipe distance
+        const velocity = Math.abs(diffX) / diffTime;
+
+        if (Math.abs(diffX) > threshold || velocity > 0.3) {
+            if (diffX > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    });
+}
 
 /* =========================
    FADE IN ON SCROLL

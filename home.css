@@ -530,6 +530,10 @@ html {
     text-align: center;
     color: #fff;
     max-width: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Stars row */
@@ -557,6 +561,9 @@ html {
     margin: 0 auto 32px;
     max-width: 40rem;
     position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
 /* Decorative quote mark */
@@ -666,10 +673,14 @@ html {
         gap: 10px;
     }
 
-    .testi-card { padding: 32px 24px; }
+    .testi-card { 
+        padding: 32px 24px; 
+        min-height: 350px;
+    }
 
     .testi-card blockquote {
         font-size: 0.9rem;
+        margin-bottom: 24px;
     }
 
     .slider-btn {
@@ -897,6 +908,12 @@ html {
 
     .pkg-card__tag {
         margin-bottom: 0;
+        font-size: 0.68rem;
+        padding: 3px 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
     }
 
     .pkg-card__info h4 {

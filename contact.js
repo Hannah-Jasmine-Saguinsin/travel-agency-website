@@ -139,21 +139,34 @@
         var mainInputs = $$('input, select, textarea', mainForm);
         attachLiveValidation(mainInputs);
 
-        var bookingParams = new URLSearchParams(window.location.search);
-        var bookingSubject = bookingParams.get('subject');
-        var bookingDestination = bookingParams.get('destination');
+        // Handle URL parameters to auto-select concern type
+        var urlParams = new URLSearchParams(window.location.search);
+        var concern = urlParams.get('concern');
+        var destination = urlParams.get('destination');
+        var bookingSubject = urlParams.get('subject');
 
-        if (bookingSubject === 'Booking' && bookingDestination) {
-            var bookingSubjectSelect = $('#subject');
-            var bookingMessage = $('#message');
+        var subjectSelect = $('#subject');
 
-            if (bookingSubjectSelect) {
-                bookingSubjectSelect.value = 'Booking';
-                clearError(bookingSubjectSelect);
+        if (concern === 'booking') {
+            if (subjectSelect) {
+                subjectSelect.value = 'Booking';
+                clearError(subjectSelect);
+            }
+        } else if (concern === 'custom') {
+            if (subjectSelect) {
+                subjectSelect.value = 'Custom Itenary';
+                clearError(subjectSelect);
+            }
+        } else if (bookingSubject === 'Booking' && destination) {
+            // Legacy support for old URL parameter format
+            if (subjectSelect) {
+                subjectSelect.value = 'Booking';
+                clearError(subjectSelect);
             }
 
+            var bookingMessage = $('#message');
             if (bookingMessage) {
-                bookingMessage.value = bookingDestination.trim() + ',';
+                bookingMessage.value = destination.trim() + ',';
                 clearError(bookingMessage);
             }
         }
