@@ -298,6 +298,31 @@
                 closePreview();
             }
         });
+
+        const searchParams = new URLSearchParams(window.location.search);
+        const searchedDestination = searchParams.get('destination');
+
+        if (searchedDestination) {
+            const normalizedDestination = searchedDestination.trim().toLowerCase();
+            const matchingButton = Array.from(previewButtons).find((button) => {
+                const previewAlt = (button.dataset.previewAlt || '').trim().toLowerCase();
+                const imageAlt = (button.querySelector('img')?.alt || '').trim().toLowerCase();
+                const heading = (button.querySelector('h4')?.textContent || '').trim().toLowerCase();
+
+                return (
+                    previewAlt === normalizedDestination ||
+                    imageAlt === normalizedDestination ||
+                    heading === normalizedDestination ||
+                    previewAlt.includes(normalizedDestination) ||
+                    heading.includes(normalizedDestination)
+                );
+            });
+
+            if (matchingButton) {
+                matchingButton.classList.add('search-match');
+                matchingButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
     </script>
 </body>
 </html>
