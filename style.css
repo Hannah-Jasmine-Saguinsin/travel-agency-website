@@ -285,3 +285,41 @@ textarea{
     }
     
 }
+
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 1.5rem;
+    z-index: 9999;
+ 
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+ 
+    background: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+ 
+    color: #fff;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+  }
+ 
+  #back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+ 
+  #back-to-top:hover  { background: rgba(20, 20, 20, 0.85); }
+  #back-to-top:active { transform: translateY(2px); }
