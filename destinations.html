@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="navbar.css">
 
     <link rel="stylesheet" href="destinations.css">
+    <script src="destinations.js" defer></script>
     <script src="navbar.js" defer></script>
 
     <script src="https://kit.fontawesome.com/6a1f3f4237.js" crossorigin="anonymous"></script>
@@ -266,68 +267,5 @@
         </div>
     </footer>
 
-    <script>
-        const previewModal = document.getElementById('destination-preview');
-        const previewImage = document.getElementById('destination-preview-image');
-        const previewButtons = document.querySelectorAll('[data-preview-src]');
-        const previewBookLink = previewModal.querySelector('.modal-preview__book');
-        const closePreviewButtons = previewModal.querySelectorAll('.modal-preview__backdrop, .modal-preview__close');
-
-        function openPreview(button) {
-            previewImage.src = button.dataset.previewSrc;
-            previewImage.alt = button.dataset.previewAlt;
-            previewBookLink.href = 'contact.html?subject=Booking&destination=' + encodeURIComponent(button.dataset.previewAlt);
-            previewModal.classList.add('is-open');
-            previewModal.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('modal-open');
-            previewModal.querySelector('.modal-preview__close').focus();
-        }
-
-        function closePreview() {
-            previewModal.classList.remove('is-open');
-            previewModal.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('modal-open');
-            previewImage.src = '';
-        }
-
-        previewButtons.forEach((button) => {
-            button.addEventListener('click', () => openPreview(button));
-        });
-
-        closePreviewButtons.forEach((button) => {
-            button.addEventListener('click', closePreview);
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && previewModal.classList.contains('is-open')) {
-                closePreview();
-            }
-        });
-
-        const searchParams = new URLSearchParams(window.location.search);
-        const searchedDestination = searchParams.get('destination');
-
-        if (searchedDestination) {
-            const normalizedDestination = searchedDestination.trim().toLowerCase();
-            const matchingButton = Array.from(previewButtons).find((button) => {
-                const previewAlt = (button.dataset.previewAlt || '').trim().toLowerCase();
-                const imageAlt = (button.querySelector('img')?.alt || '').trim().toLowerCase();
-                const heading = (button.querySelector('h4')?.textContent || '').trim().toLowerCase();
-
-                return (
-                    previewAlt === normalizedDestination ||
-                    imageAlt === normalizedDestination ||
-                    heading === normalizedDestination ||
-                    previewAlt.includes(normalizedDestination) ||
-                    heading.includes(normalizedDestination)
-                );
-            });
-
-            if (matchingButton) {
-                matchingButton.classList.add('search-match');
-                matchingButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-    </script>
 </body>
 </html>
