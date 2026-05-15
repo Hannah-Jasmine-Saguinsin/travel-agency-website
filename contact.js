@@ -132,6 +132,7 @@
     var mainSuccess = $('#mainSuccess');
     var mainError   = $('#mainError');
     var mainSubmit  = $('#mainSubmit');
+    var subjectSelect = $('#subject');
     if (mainSuccess) mainSuccess.style.display = 'none';
     if (mainError) mainError.style.display = 'none';
 
@@ -144,8 +145,6 @@
         var concern = urlParams.get('concern');
         var destination = urlParams.get('destination');
         var bookingSubject = urlParams.get('subject');
-
-        var subjectSelect = $('#subject');
 
         if (concern === 'booking') {
             if (subjectSelect) {
@@ -353,6 +352,14 @@
             });
     }
         
+    var bookNowBtn = $('#bookNowBtn');
+    if (bookNowBtn && subjectSelect) {
+        bookNowBtn.addEventListener('click', function () {
+            subjectSelect.value = 'Booking';
+            clearError(subjectSelect);
+        });
+    }
+
 
     /* SMOOTH SCROLL for anchor links*/
     $$('a[href^="#"]').forEach(function (anchor) {
