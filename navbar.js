@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const toggle   = document.querySelector('.navigation .menu-toggle');
   const navLinks = document.querySelector('.navigation .nav-links');
   const icon     = toggle ? toggle.querySelector('i') : null;
+  const backToTopButton = document.getElementById('back-to-top');
 
   if (!toggle || !navLinks) {
     console.warn('Navbar: .menu-toggle or .nav-links not found.');
@@ -63,4 +64,15 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('resize', function () {
     if (window.innerWidth > 900) closeMenu();
   });
+
+  /*Back to top button*/
+  if (backToTopButton) {
+    window.addEventListener('scroll', function () {
+      backToTopButton.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+
+    backToTopButton.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
