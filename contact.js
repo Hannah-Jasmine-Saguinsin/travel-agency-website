@@ -126,6 +126,34 @@
            });
     }
     });
+    function suggestValue(sourceEl, targetEl) {
+    if (!sourceEl || !targetEl) return;
+    
+    var val = sourceEl.value.trim();
+    if (!val) return;
+    targetEl.value = val;
+    clearError(targetEl);
+    targetEl.style.transition = 'border-color 0.3s ease, box-shadow 0.3s ease';
+    targetEl.style.borderColor = 'var(--gold)';
+    targetEl.style.boxShadow = '0 0 0 3px rgba(240,177,61,0.25)';
+    setTimeout(function () {
+        targetEl.style.borderColor = '';
+        targetEl.style.boxShadow = '';
+    }, 1200);
+}
+
+function attachSuggestTrigger(sourceEl, targetEl) {
+    if (!sourceEl || !targetEl) return;
+    sourceEl.addEventListener('blur', function () { suggestValue(sourceEl, targetEl); });
+    sourceEl.addEventListener('change', function () { suggestValue(sourceEl, targetEl); });
+}
+
+attachSuggestTrigger($('#fullName'), $('#sName'));
+attachSuggestTrigger($('#email'),    $('#sEmail'));
+attachSuggestTrigger($('#phone'),    $('#sPhone'));
+attachSuggestTrigger($('#sName'),  $('#fullName'));
+attachSuggestTrigger($('#sEmail'), $('#email'));
+attachSuggestTrigger($('#sPhone'), $('#phone'));
 
     /*MAIN CONTACT FORM*/
     var mainForm    = $('#mainForm');
@@ -208,6 +236,9 @@
                 }
 
             // Simulate send
+            suggestValue($('#fullName'), $('#sName'));
+    suggestValue($('#email'),    $('#sEmail'));
+    suggestValue($('#phone'),    $('#sPhone'));
             setLoading(mainSubmit, true);
 
             setTimeout(function () {
