@@ -239,9 +239,18 @@ body.modal-open {
     outline: none;
 }
 
-.modal-preview__book {
+.modal-preview__actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.modal-preview__book,
+.modal-preview__download {
     display: inline-flex;
     align-items: center;
+    gap: 8px;
     justify-content: center;
     min-width: 150px;
     padding: 12px 24px;
@@ -256,10 +265,17 @@ body.modal-open {
 }
 
 .modal-preview__book:hover,
-.modal-preview__book:focus-visible {
+.modal-preview__book:focus-visible,
+.modal-preview__download:hover,
+.modal-preview__download:focus-visible {
     background: var(--primary-dark);
     color: var(--white);
     outline: none;
+}
+
+.modal-preview__download {
+    background: var(--primary-color);
+    color: var(--white);
 }
 /* 7. Why Choose Us Section */
 .why-choose-us {

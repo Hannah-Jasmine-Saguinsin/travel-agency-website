@@ -13,6 +13,7 @@ const previewModal = document.getElementById('destination-preview');
 const previewImage = document.getElementById('destination-preview-image');
 const previewButtons = document.querySelectorAll('[data-preview-src]');
 const previewBookLink = previewModal.querySelector('.modal-preview__book');
+const previewDownloadLink = document.getElementById('destination-preview-download');
 const closePreviewButtons = previewModal.querySelectorAll('.modal-preview__backdrop, .modal-preview__close');
 
 
@@ -26,6 +27,8 @@ function openPreview(button) {
     previewImage.src = button.dataset.previewSrc;
     previewImage.alt = button.dataset.previewAlt;
     previewBookLink.href = 'contact.html?subject=Booking&destination=' + encodeURIComponent(button.dataset.previewAlt);
+    previewDownloadLink.href = button.dataset.previewSrc;
+    previewDownloadLink.download = `${button.dataset.previewAlt.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}-package.jpg`;
     previewModal.classList.add('is-open');
     previewModal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
@@ -38,6 +41,8 @@ function closePreview() {
     previewModal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
     previewImage.src = '';
+    previewDownloadLink.href = '#';
+    previewDownloadLink.removeAttribute('download');
 }
 
 
