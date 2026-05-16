@@ -11,6 +11,7 @@
 
     <!--About CSS style Link-->
     <link rel="stylesheet" href="about.css">
+    <script src="navbar.js" defer></script>
 
     <!--Fontawesome script kit-->
     <script src="https://kit.fontawesome.com/6a1f3f4237.js" crossorigin="anonymous"></script>
@@ -27,9 +28,9 @@
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
             </div>       
-            <div class="menu-toggle">
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
-            </div>
+            </button>
     </nav>
     </div>
     
@@ -56,7 +57,7 @@
         </p>
         
     </div>
-    <button class="learn-more-btn" onclick="window.location.href='contact.html'">Learn More<i class="fa-regular fa-lightbulb"></i>   
+    <button class="learn-more-btn" onclick="window.location.href='contact.html#faq'">Learn More<i class="fa-regular fa-lightbulb"></i>   
     </button>
 </section>
 
@@ -117,6 +118,11 @@
     </ul>
 </section>
 
+    <!-- Button -->
+    <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
     <!--(Footer)-->
     <footer class="site-footer">
         <div class="footer-inner">
@@ -146,7 +152,7 @@
                     <ul>
                         <li><a href="contact.html#faq">FAQ</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="terms.jpg" target="_blank">Terms</a></li>
+                        <li><a href="terms.html" target="_blank">Terms</a></li>
                     </ul>
                 </div>
             </div>

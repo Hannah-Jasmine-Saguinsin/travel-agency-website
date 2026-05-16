@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="navbar.css">
     <!-- Contact Page CSS -->
     <link rel="stylesheet" href="contact.css">
+    <script src="navbar.js" defer></script>
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/6a1f3f4237.js" crossorigin="anonymous"></script>
 </head>
@@ -24,9 +25,9 @@
             <a href="about.html">About</a>
             <a href="contact.html" class="active">Contact</a>
         </div>
-        <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
             <i class="fa-solid fa-bars" id="menuIcon"></i>
-        </div>
+        </button>
     </nav>
 
     <!--Hero + Contact Form-->
@@ -267,32 +268,31 @@
 
             <div class="support-form-card reveal reveal-delay-1">
                 <form id="supportForm" novalidate>
-                    <div class="form-row">
-                        <div class="form-group" data-field="sName">
+                    <div class="form-group" data-field="sName">
                             <label for="sName">Full Name <span class="req">*</span></label>
                             <div class="input-wrap">
                                 <i class="fa-regular fa-user input-icon"></i>
                                 <input type="text" id="sName" name="sName" placeholder="Your full name">
                             </div>
                             <span class="err-msg"></span>
-                        </div>
-                        <div class="form-group" data-field="sEmail">
+                        </div> 
+                    <div class="form-group" data-field="sEmail">
                             <label for="sEmail">Email Address <span class="req">*</span></label>
                             <div class="input-wrap">
                                 <i class="fa-regular fa-envelope input-icon"></i>
                                 <input type="email" id="sEmail" name="sEmail" placeholder="your@email.com">
                             </div>
                             <span class="err-msg"></span>
-                        </div>
-                        <div class="form-group" data-field="sPhone">
-                     <label for="phone">Phone Number <span class="req">*</span></label>
+                    </div> 
+                    <div class="form-group" data-field="sPhone">
+                    <label for="phone">Phone Number <span class="req">*</span></label>
                         <div class="input-wrap">
                         <i class="fa-solid fa-phone input-icon"></i>
                             <input type="tel" id="sPhone" name="sPhone" placeholder="+63 9XX XXX XXXX" autocomplete="tel">
                         </div>
-                         <span class="err-msg"></span>
+                        <span class="err-msg"></span>
                     </div>
-
+                    
                     <div class="form-group" data-field="concernType">
                         <label for="concernType">Concern Type <span class="req">*</span></label>
                         <div class="input-wrap select-wrap">
@@ -353,6 +353,10 @@
         </div>
     </section>
 
+    <!-- Button -->
+    <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+    </button>
 
     <!--(Footer)-->
     <footer class="site-footer">
@@ -383,7 +387,7 @@
                     <ul>
                         <li><a href="#faq">FAQ</a></li>
                         <li><a href="#hero">Contact</a></li>
-                        <li><a href="terms.jpg" target="_blank">Terms</a></li>
+                        <li><a href="terms.html" target="_blank">Terms</a></li>
                     </ul>
                 </div>
             </div>

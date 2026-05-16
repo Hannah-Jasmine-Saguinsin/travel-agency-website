@@ -9,6 +9,7 @@
 
     <!--Home Page JS-->
     <script src="home.js" defer></script>
+    <script src="navbar.js" defer></script>
     
     <!-- Global CSS -->
     <link rel="stylesheet" href="style.css">
@@ -93,11 +94,9 @@
                     <span class="subtitle">Select Preferred Dates</span>
                     <div class="date-display" id="date-display">
                         <input
-                            type="text"
+                            type="date"
                             id="date-input"
                             class="date-input"
-                            placeholder="mm/dd/yyyy"
-                            inputmode="numeric"
                             autocomplete="off"
                             aria-label="Travel date"
                         >
@@ -113,7 +112,6 @@
                         </button>
                     </div>
                 </div>
-                <div class="calendar-dropdown" id="calendar-dropdown" role="dialog" aria-label="Date picker"></div>
             </div>
 
             <!-- WHO -->
@@ -544,10 +542,10 @@
         </p>
 
         <div class="cta-buttons">
-        <a href="destinations.html#package-list" class="cta-btn cta-btn--primary">
+        <a href="#packages" class="cta-btn cta-btn--primary">
             <i class="fa-solid fa-paper-plane"></i>Browse featured packages
         </a>
-        <a href="contact.html" class="cta-btn cta-btn--secondary">
+        <a href="contact.html?concern=custom" class="cta-btn cta-btn--secondary">
             <i class="fa-solid fa-user-plus"></i> Ask for a custom itinerary
         </a>
         </div>
@@ -561,6 +559,10 @@
         <p>Personal travel support</p>
     </div>
 </section>
+    <!-- Button -->
+    <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+    </button>
 
     <!--(Footer)-->
     <footer class="site-footer">
@@ -591,7 +593,7 @@
                     <ul>
                         <li><a href="contact.html#faq">FAQ</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="terms.jpg" target="_blank">Terms</a></li>
+                        <li><a href="terms.html" target="_blank">Terms</a></li>
                     </ul>
                 </div>
             </div>

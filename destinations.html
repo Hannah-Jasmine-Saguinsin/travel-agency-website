@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="navbar.css">
 
     <link rel="stylesheet" href="destinations.css">
+    <script src="destinations.js" defer></script>
+    <script src="navbar.js" defer></script>
 
     <script src="https://kit.fontawesome.com/6a1f3f4237.js" crossorigin="anonymous"></script>
 
@@ -151,7 +153,7 @@
         <button type="button" class="modal-preview__backdrop" aria-label="Close preview"></button>
         <div class="modal-preview__box" role="dialog" aria-modal="true" aria-label="Destination image preview">
             <img src="" alt="" class="modal-preview__img" id="destination-preview-image">
-            <a href="contact.html" class="modal-preview__book">Book Now</a>
+            <a href="contact.html?concern=booking" class="modal-preview__book">Book Now</a>
             <button type="button" class="modal-preview__close" aria-label="Close preview">&times;</button>
         </div>
     </div>
@@ -197,6 +199,11 @@
         <br><br>
     </section>
 
+    <!-- Button -->
+    <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
     <!--(Footer)-->
     <footer class="site-footer">
         <div class="footer-inner">
@@ -226,7 +233,7 @@
                     <ul>
                         <li><a href="contact.html#faq">FAQ</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="terms.jpg" target="_blank">Terms</a></li>
+                        <li><a href="terms.html" target="_blank">Terms</a></li>
                     </ul>
                 </div>
             </div>
@@ -260,43 +267,5 @@
         </div>
     </footer>
 
-    <script>
-        const previewModal = document.getElementById('destination-preview');
-        const previewImage = document.getElementById('destination-preview-image');
-        const previewButtons = document.querySelectorAll('[data-preview-src]');
-        const previewBookLink = previewModal.querySelector('.modal-preview__book');
-        const closePreviewButtons = previewModal.querySelectorAll('.modal-preview__backdrop, .modal-preview__close');
-
-        function openPreview(button) {
-            previewImage.src = button.dataset.previewSrc;
-            previewImage.alt = button.dataset.previewAlt;
-            previewBookLink.href = 'contact.html?subject=Booking&destination=' + encodeURIComponent(button.dataset.previewAlt);
-            previewModal.classList.add('is-open');
-            previewModal.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('modal-open');
-            previewModal.querySelector('.modal-preview__close').focus();
-        }
-
-        function closePreview() {
-            previewModal.classList.remove('is-open');
-            previewModal.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('modal-open');
-            previewImage.src = '';
-        }
-
-        previewButtons.forEach((button) => {
-            button.addEventListener('click', () => openPreview(button));
-        });
-
-        closePreviewButtons.forEach((button) => {
-            button.addEventListener('click', closePreview);
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && previewModal.classList.contains('is-open')) {
-                closePreview();
-            }
-        });
-    </script>
 </body>
 </html>
