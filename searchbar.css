@@ -10,6 +10,7 @@
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: visible;
+    z-index: 1000;
 }
 
 .search-box {
@@ -241,7 +242,7 @@
     background: var(--white);
     border: 1px solid var(--surface-line, #d8e5ec);
     box-shadow: 0 20px 48px rgba(17, 38, 59, 0.18);
-    z-index: 200;
+    z-index: 1200;
     box-sizing: border-box;
 }
 
@@ -466,10 +467,32 @@
     border-color: rgba(53, 107, 134, 0.35);
 }
 
+.cal-month-option:disabled {
+    color: #c5d5de;
+    cursor: not-allowed;
+    background: #f7fafc;
+    border-color: var(--surface-line, #d8e5ec);
+}
+
+.cal-month-option:disabled:hover {
+    background: #f7fafc;
+    border-color: var(--surface-line, #d8e5ec);
+}
+
 .cal-month-option--selected {
     background: var(--primary-color, #356b86);
     color: var(--white, #fff);
     border-color: var(--primary-color, #356b86);
+}
+
+.cal-empty {
+    margin: 0;
+    padding: 10px 4px;
+    color: var(--secondary-light, #6a8fa3);
+    font-family: Montserrat, sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    text-align: center;
 }
 
 .cal-days-row,

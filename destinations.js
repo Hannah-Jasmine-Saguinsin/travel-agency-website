@@ -13,6 +13,7 @@ const previewModal = document.getElementById('destination-preview');
 const previewImage = document.getElementById('destination-preview-image');
 const previewButtons = document.querySelectorAll('[data-preview-src]');
 const previewBookLink = previewModal.querySelector('.modal-preview__book');
+const previewDownloadLink = document.getElementById('destination-preview-download');
 const closePreviewButtons = previewModal.querySelectorAll('.modal-preview__backdrop, .modal-preview__close');
 
 
@@ -26,6 +27,8 @@ function openPreview(button) {
     previewImage.src = button.dataset.previewSrc;
     previewImage.alt = button.dataset.previewAlt;
     previewBookLink.href = 'contact.html?subject=Booking&destination=' + encodeURIComponent(button.dataset.previewAlt);
+    previewDownloadLink.href = button.dataset.previewSrc;
+    previewDownloadLink.download = `${button.dataset.previewAlt.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}-package.jpg`;
     previewModal.classList.add('is-open');
     previewModal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
@@ -38,6 +41,8 @@ function closePreview() {
     previewModal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
     previewImage.src = '';
+    previewDownloadLink.href = '#';
+    previewDownloadLink.removeAttribute('download');
 }
 
 
@@ -71,29 +76,47 @@ document.addEventListener('keydown', (event) => {
 const searchParams = new URLSearchParams(window.location.search);
 const searchedDestination = searchParams.get('destination');
 
+function normalizeDestination(value) {
+    return (value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s*-\s*(manila|cebu)\s+departure$/i, '')
+        .replace(/\s{2,}/g, ' ');
+}
+
+function getCardDestination(button) {
+    const previewAlt = button.dataset.previewAlt || '';
+    const imageAlt = button.querySelector('img')?.alt || '';
+    const heading = button.querySelector('h4')?.textContent || '';
+
+    return [
+        normalizeDestination(previewAlt),
+        normalizeDestination(imageAlt),
+        normalizeDestination(heading)
+    ];
+}
+
 // If a destination was passed via URL, finds the matching card and scrolls to it
 if (searchedDestination) {
-    const normalizedDestination = searchedDestination.trim().toLowerCase();
+    const normalizedDestination = normalizeDestination(searchedDestination);
 
-    // Finds the first preview button whose alt text, image alt, or heading matches the query
-    const matchingButton = Array.from(previewButtons).find((button) => {
-        const previewAlt = (button.dataset.previewAlt || '').trim().toLowerCase();
-        const imageAlt = (button.querySelector('img')?.alt || '').trim().toLowerCase();
-        const heading = (button.querySelector('h4')?.textContent || '').trim().toLowerCase();
+    const matchingButtons = Array.from(previewButtons).filter((button) =>
+        getCardDestination(button).some((destination) =>
+            destination === normalizedDestination ||
+            destination.includes(normalizedDestination) ||
+            normalizedDestination.includes(destination)
+        )
+    );
 
-        return (
-            previewAlt === normalizedDestination ||
-            imageAlt === normalizedDestination ||
-            heading === normalizedDestination ||
-            previewAlt.includes(normalizedDestination) ||
-            heading.includes(normalizedDestination)
-        );
+    matchingButtons.forEach((button) => {
+        button.classList.add('search-match');
     });
 
-    // Highlights the matched card and smoothly scrolls it into view
-    if (matchingButton) {
-        matchingButton.classList.add('search-match');
-        matchingButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (matchingButtons.length) {
+        window.addEventListener('load', () => {
+            matchingButtons[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            matchingButtons[0].focus({ preventScroll: true });
+        });
     }
 }
 

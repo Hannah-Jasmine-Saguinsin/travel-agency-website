@@ -1,3 +1,8 @@
+.gitattributes text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+
 destinations.html text eol=lf
 destinations.css text eol=lf
 contact.js text eol=lf
