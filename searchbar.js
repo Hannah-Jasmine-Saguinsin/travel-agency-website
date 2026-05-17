@@ -328,17 +328,7 @@ function getAvailableDatesForDestination(destination) {
   }
 
   const ranges = PACKAGE_DATE_RANGES[normalized] || [];
-  const dates = [];
-
-  ranges.forEach(([startValue, endValue]) => {
-    const currentDate = parseIsoDate(startValue);
-    const endDate = parseIsoDate(endValue);
-
-    while (currentDate <= endDate) {
-      dates.push(new Date(currentDate));
-      currentDate.setDate(currentDate.getDate() + 1);
-    }
-  });
+  const dates = ranges.map(([startValue]) => parseIsoDate(startValue));
 
   return dates.filter((date, index, allDates) =>
     isDateAllowed(date) && allDates.findIndex((item) => sameDate(item, date)) === index
