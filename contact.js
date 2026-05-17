@@ -205,6 +205,37 @@ attachSuggestTrigger($('#sPhone'), $('#phone'));
     if (mainForm) {
         var mainInputs = $$('input, select, textarea', mainForm);
         attachLiveValidation(mainInputs);
+        var bookingMessageField = $('#bookingMessage') || $('#message');
+
+        function applyStoredBookingMessage(destinationFromUrl) {
+            if (!bookingMessageField) return;
+
+            try {
+                var storedBookingRaw = localStorage.getItem('bookingData');
+                if (!storedBookingRaw) return;
+
+                var storedBooking = JSON.parse(storedBookingRaw);
+                if (!storedBooking) return;
+
+                var resolvedDestination = (storedBooking.destination || destinationFromUrl || '').trim();
+                var hasGeneratedDestinationOnlyValue = destinationFromUrl &&
+                    bookingMessageField.value.trim() === destinationFromUrl.trim() + ',';
+
+                if (!resolvedDestination) return;
+                if (bookingMessageField.value.trim() && !hasGeneratedDestinationOnlyValue) return;
+
+                bookingMessageField.value =
+                    'Booking Inquiry\n\n' +
+                    'Destination: ' + resolvedDestination + '\n' +
+                    'Travel Date: ' + (storedBooking.date || '') + '\n' +
+                    'Adults: ' + String(storedBooking.adults || '') + '\n' +
+                    'Children: ' + String(storedBooking.children || '');
+
+                clearError(bookingMessageField);
+            } catch (error) {
+                // Prevent malformed localStorage data from breaking the contact page.
+            }
+        }
 
         // Reads URL query parameters to auto-populate the subject dropdown
         // and optionally pre-fill the message field based on the concern type
@@ -233,12 +264,14 @@ attachSuggestTrigger($('#sPhone'), $('#phone'));
                 clearError(subjectSelect);
             }
 
-            var bookingMessage = $('#message');
+            var bookingMessage = $('#bookingMessage') || $('#message');
             if (bookingMessage) {
                 bookingMessage.value = destination.trim() + ',';
                 clearError(bookingMessage);
             }
         }
+
+        applyStoredBookingMessage(destination);
 
         mainForm.addEventListener('submit', function (e) {
             e.preventDefault();

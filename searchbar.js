@@ -244,6 +244,7 @@ const childCount = document.getElementById("child-count");
 
 const searchBtn = document.getElementById("search-button");
 const searchBar = document.querySelector(".search-bar");
+const BOOKING_STORAGE_KEY = "bookingData";
 
 let selectedDate = null;
 let calendarViewDate = new Date(2026, 3, 1);
@@ -791,6 +792,21 @@ function destinationHasAvailableDate(destination, date) {
   return getAvailableDatesForDestination(destination).some((availableDate) => sameDate(availableDate, date));
 }
 
+function saveBookingDataToStorage(destination, date, adultCount, childCount) {
+  try {
+    const bookingData = {
+      destination: destination || "",
+      date: date ? formatDateForInput(date) : "",
+      adults: String(Number(adultCount) || 1),
+      children: String(Number(childCount) || 0)
+    };
+
+    localStorage.setItem(BOOKING_STORAGE_KEY, JSON.stringify(bookingData));
+  } catch (error) {
+    // Prevent localStorage failures from breaking the current booking flow.
+  }
+}
+
 function refreshSelectedDateForDestination() {
   const destination = getCurrentDestination();
 
@@ -1020,6 +1036,7 @@ searchBtn.addEventListener("click", () => {
     children: String(children)
   });
 
+  saveBookingDataToStorage(matchedDestination, selectedDate, adults, children);
   window.location.href = `destinations.html?${searchParams.toString()}`;
 });
 
