@@ -275,6 +275,7 @@
     background: var(--surface);
 }
 
+
 .calendar-dropdown,
 .people-dropdown {
     top: calc(100% + 10px);

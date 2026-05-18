@@ -548,6 +548,11 @@ function buildSuggestions(query) {
 
   if (matches.length === 0) {
     suggestionsList.classList.remove("show");
+    showError(
+      "No destinations are available. Please explore more packages for other available options.",
+      "Click here.",
+      "destinations.html#destination-columns"
+    );
     return;
   }
 
@@ -1002,7 +1007,10 @@ destinationInput.addEventListener("input", (event) => {
   activateBox(destinationBox);
   updatePersistentStates();
   refreshSelectedDateForDestination();
-  clearError();
+
+  if (!sanitizedValue.trim() || getDestinationMatch(sanitizedValue)) {
+    clearError();
+  }
 
   typingTimer = window.setTimeout(() => {
     buildSuggestions(event.target.value);
@@ -1187,13 +1195,21 @@ searchBtn.addEventListener("click", () => {
 
   // Validate: destination is unrecognized and no date selected
   if (!matchedDestination && !hasSelectedDate) {
-    showError("No available destinations and dates.", "Click here", "#packages");
+    showError(
+      "No destinations are available. Please explore more packages for other available options.",
+      "Click here.",
+      "destinations.html#destination-columns"
+    );
     return;
   }
 
   // Validate: destination is unrecognized
   if (!matchedDestination) {
-    showError("No available destinations.", "Click here", "#packages");
+    showError(
+      "No destinations are available. Please explore more packages for other available options.",
+      "Click here.",
+      "destinations.html#destination-columns"
+    );
     return;
   }
 
