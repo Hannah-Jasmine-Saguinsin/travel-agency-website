@@ -1,14 +1,3 @@
-/* ═══════════════════════════════════════════
-   ABOUT.CSS  —  Bryvelrisse Travel and Tours
-   Design tokens assumed from style.css:
-   --white, --dark, --accent, --primary-color,
-   --primary-light, --primary-dark,
-   --secondary-light-dark, --secondary-light,
-   --secondary-dark, --soft-blue,
-   --surface, --surface-strong, --surface-line,
-   --gold, --gold-dark
-═══════════════════════════════════════════ */
-
 /* ── Shared typography helpers ── */
 .section-label {
     display: inline-block;

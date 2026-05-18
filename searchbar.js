@@ -1,3 +1,8 @@
+// ============================================================
+// STATIC DATA — DESTINATIONS & PACKAGE DATE RANGES
+// ============================================================
+
+// List of all available travel destinations
 const DESTINATIONS = [
   "South Korea",
   "Shanghai, China",
@@ -13,6 +18,7 @@ const DESTINATIONS = [
   "Boracay, Philippines"
 ];
 
+// Maps each destination (lowercase) to its available package date ranges [start, end]
 const PACKAGE_DATE_RANGES = {
   "south korea": [
     ["2026-09-02", "2026-09-07"],
@@ -211,15 +217,23 @@ const PACKAGE_DATE_RANGES = {
   ]
 };
 
+// Generates a URL map for each destination pointing to its filtered destinations page
 const DESTINATION_LINKS = DESTINATIONS.reduce((links, destination) => {
   links[destination.toLowerCase()] = `destinations.html?destination=${encodeURIComponent(destination)}#destination-columns`;
   return links;
 }, {});
 
+
+// ============================================================
+// DOM ELEMENT SELECTORS
+// ============================================================
+
+// Destination search box elements
 const destinationBox = document.getElementById("destination-box");
 const destinationInput = document.getElementById("destination-input");
 const suggestionsList = document.getElementById("suggestions");
 
+// Date picker box elements — calendar dropdown is created dynamically and appended
 const dateBox = document.getElementById("date-box");
 const dateInput = document.getElementById("date-input");
 const dateTrigger = document.getElementById("date-trigger");
@@ -230,11 +244,13 @@ calendarDropdown.setAttribute("role", "dialog");
 calendarDropdown.setAttribute("aria-label", "Available travel dates");
 dateBox.appendChild(calendarDropdown);
 
+// People (passenger count) box elements
 const peopleBox = document.getElementById("people-box");
 const peopleDisplay = document.getElementById("people-display");
 const peopleLabel = document.getElementById("people-label");
 const peopleDropdown = document.getElementById("people-dropdown");
 
+// Adult and child count controls
 const adultDec = document.getElementById("adult-dec");
 const adultInc = document.getElementById("adult-inc");
 const adultCount = document.getElementById("adult-count");
@@ -242,17 +258,25 @@ const childDec = document.getElementById("child-dec");
 const childInc = document.getElementById("child-inc");
 const childCount = document.getElementById("child-count");
 
+// Search button and search bar container
 const searchBtn = document.getElementById("search-button");
 const searchBar = document.querySelector(".search-bar");
 const BOOKING_STORAGE_KEY = "bookingData";
 
-let selectedDate = null;
-let calendarViewDate = new Date(2026, 3, 1);
-let calendarMode = "months";
-let adults = 1;
-let children = 0;
-let errorTimeoutId = null;
-let typingTimer;
+
+// ============================================================
+// STATE VARIABLES
+// ============================================================
+
+let selectedDate = null;                          // Currently selected travel date
+let calendarViewDate = new Date(2026, 3, 1);      // Default calendar view (April 2026)
+let calendarMode = "months";                      // Calendar display mode: 'months' or 'days'
+let adults = 1;                                   // Default adult passenger count
+let children = 0;                                 // Default child passenger count
+let errorTimeoutId = null;                        // Timeout ID for auto-dismissing error messages
+let typingTimer;                                  // Debounce timer for destination input
+
+// Abbreviated and full month name arrays used for calendar rendering
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const fullMonthNames = [
   "January",
@@ -269,12 +293,19 @@ const fullMonthNames = [
   "December"
 ];
 
+
+// ============================================================
+// DATE UTILITY FUNCTIONS
+// ============================================================
+
+// Returns today's date with time zeroed out for accurate comparisons
 function getToday() {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return today;
 }
 
+// Formats a Date object to MM/DD/YYYY for display in the date input field
 function formatDate(date) {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
@@ -282,6 +313,7 @@ function formatDate(date) {
   return `${month}/${day}/${year}`;
 }
 
+// Formats a Date object to YYYY-MM-DD for use as a data key or URL parameter
 function formatDateForInput(date) {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
@@ -289,12 +321,14 @@ function formatDateForInput(date) {
   return `${year}-${month}-${day}`;
 }
 
+// Parses an ISO date string (YYYY-MM-DD) into a midnight-normalized Date object
 function parseIsoDate(value) {
   const parsedDate = new Date(`${value}T00:00:00`);
   parsedDate.setHours(0, 0, 0, 0);
   return parsedDate;
 }
 
+// Parses a date string in ISO or display (MM/DD/YYYY) format; returns null if invalid
 function parseNativeDate(value) {
   if (!value) {
     return null;
@@ -316,10 +350,28 @@ function parseNativeDate(value) {
   return parsedDate;
 }
 
+// Returns true if the given date is today or in the future
 function isDateAllowed(date) {
   return date >= getToday();
 }
 
+// Returns true if two Date objects represent the same calendar day
+function sameDate(dateA, dateB) {
+  return (
+    dateA &&
+    dateB &&
+    dateA.getFullYear() === dateB.getFullYear() &&
+    dateA.getMonth() === dateB.getMonth() &&
+    dateA.getDate() === dateB.getDate()
+  );
+}
+
+
+// ============================================================
+// DESTINATION UTILITY FUNCTIONS
+// ============================================================
+
+// Returns a list of unique, future-allowed Date objects for the given destination
 function getAvailableDatesForDestination(destination) {
   const normalized = destination.trim().toLowerCase();
 
@@ -335,40 +387,92 @@ function getAvailableDatesForDestination(destination) {
   );
 }
 
-function sameDate(dateA, dateB) {
-  return (
-    dateA &&
-    dateB &&
-    dateA.getFullYear() === dateB.getFullYear() &&
-    dateA.getMonth() === dateB.getMonth() &&
-    dateA.getDate() === dateB.getDate()
-  );
+// Returns a Set of YYYY-MM-DD keys for all available dates of a destination
+function getAvailableDateKeysForDestination(destination) {
+  return new Set(getAvailableDatesForDestination(destination).map(formatDateForInput));
 }
 
+// Returns a Set of YYYY-MM keys for all months that have available dates
+function getAvailableMonthKeysForDestination(destination) {
+  const monthKeys = new Set();
+
+  getAvailableDatesForDestination(destination).forEach((date) => {
+    monthKeys.add(`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`);
+  });
+
+  return monthKeys;
+}
+
+// Returns the earliest available date for a given destination, or null if none
+function getFirstAvailableDate(destination) {
+  return getAvailableDatesForDestination(destination).sort((a, b) => a - b)[0] || null;
+}
+
+// Returns true if the given destination has an available package on the specified date
+function destinationHasAvailableDate(destination, date) {
+  return getAvailableDatesForDestination(destination).some((availableDate) => sameDate(availableDate, date));
+}
+
+// Finds the exact matching destination string (case-insensitive); returns null if not found
+function getDestinationMatch(value) {
+  const normalized = value.trim().toLowerCase();
+  return DESTINATIONS.find((destination) => destination.toLowerCase() === normalized) || null;
+}
+
+// Returns the destinations page link for a given destination, or '#packages' as fallback
+function getDestinationPackagesLink(destination) {
+  return DESTINATION_LINKS[destination.toLowerCase()] || "#packages";
+}
+
+// Finds the matching package date range [startDate, endDate] for a destination and date
+function getPackageDateRangeForSelection(destination, date) {
+  if (!destination || !date) {
+    return null;
+  }
+
+  const normalized = destination.trim().toLowerCase();
+  const ranges = PACKAGE_DATE_RANGES[normalized] || [];
+  const selectedDateKey = formatDateForInput(date);
+  const matchingRange = ranges.find(([startValue]) => startValue === selectedDateKey);
+
+  if (!matchingRange) {
+    return null;
+  }
+
+  return {
+    startDate: matchingRange[0],
+    endDate: matchingRange[1]
+  };
+}
+
+// Returns the currently typed destination if it exactly matches a known destination
+function getCurrentDestination() {
+  return getDestinationMatch(destinationInput.value.trim());
+}
+
+
+// ============================================================
+// UI STATE — BOX ACTIVE / FILLED STATES
+// ============================================================
+
+// Adds or removes the 'filled' class based on whether a box has a value
 function setBoxPersistentState(box, hasValue) {
   box.classList.toggle("filled", hasValue);
 }
 
+// Adds the 'active' class to a box to show it is currently focused
 function activateBox(box) {
   box.classList.add("active");
 }
 
+// Syncs the filled/active state of all three search boxes based on current values
 function updatePersistentStates() {
   setBoxPersistentState(destinationBox, destinationInput.value.trim().length > 0);
   setBoxPersistentState(dateBox, Boolean(selectedDate || dateInput.value));
   setBoxPersistentState(peopleBox, adults > 1 || children > 0);
 }
 
-function closeDatePanel() {
-  dateTrigger.setAttribute("aria-expanded", "false");
-  calendarDropdown.classList.remove("show");
-}
-
-function closeDestinationPanel() {
-  suggestionsList.innerHTML = "";
-  suggestionsList.classList.remove("show");
-}
-
+// Removes 'active' state from boxes that have no entered value
 function closeBoxesIfEmpty() {
   if (!destinationInput.value.trim()) {
     destinationBox.classList.remove("active");
@@ -387,6 +491,12 @@ function closeBoxesIfEmpty() {
   }
 }
 
+
+// ============================================================
+// DESTINATION PANEL — OPEN, CLOSE & SUGGESTIONS
+// ============================================================
+
+// Opens the destination panel and shows suggestions if the input has a value
 function openDestinationPanel() {
   activateBox(destinationBox);
 
@@ -400,6 +510,13 @@ function openDestinationPanel() {
   }
 }
 
+// Hides the suggestions dropdown and clears its content
+function closeDestinationPanel() {
+  suggestionsList.innerHTML = "";
+  suggestionsList.classList.remove("show");
+}
+
+// Focuses the destination input on the next animation frame and moves cursor to end
 function focusDestinationInput() {
   window.requestAnimationFrame(() => {
     destinationInput.focus();
@@ -408,28 +525,153 @@ function focusDestinationInput() {
   });
 }
 
-function getCurrentDestination() {
-  return getDestinationMatch(destinationInput.value.trim());
+// Strips digits and excess spaces from destination input to prevent invalid entries
+function normalizeDestinationValue(value) {
+  return value.replace(/[0-9]/g, "").replace(/\s{2,}/g, " ");
 }
 
-function getAvailableDateKeysForDestination(destination) {
-  return new Set(getAvailableDatesForDestination(destination).map(formatDateForInput));
-}
+// Filters DESTINATIONS by query and renders matching buttons in the suggestions list
+function buildSuggestions(query) {
+  const normalizedQuery = query.trim().toLowerCase();
 
-function getAvailableMonthKeysForDestination(destination) {
-  const monthKeys = new Set();
+  if (!normalizedQuery) {
+    suggestionsList.innerHTML = "";
+    suggestionsList.classList.remove("show");
+    return;
+  }
 
-  getAvailableDatesForDestination(destination).forEach((date) => {
-    monthKeys.add(`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`);
+  suggestionsList.innerHTML = "";
+
+  const matches = DESTINATIONS.filter((destination) =>
+    destination.toLowerCase().includes(normalizedQuery)
+  );
+
+  if (matches.length === 0) {
+    suggestionsList.classList.remove("show");
+    return;
+  }
+
+  matches.forEach((destination) => {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "suggestion-item";
+    option.textContent = destination;
+
+    // On click: fills the input, closes the panel, refreshes the date, and moves focus to date box
+    option.addEventListener("click", (event) => {
+      event.stopPropagation();
+      destinationInput.value = destination;
+      activateBox(destinationBox);
+      updatePersistentStates();
+      clearError();
+      closeDestinationPanel();
+      refreshSelectedDateForDestination();
+      dateTrigger.focus();
+    });
+
+    suggestionsList.appendChild(option);
   });
 
-  return monthKeys;
+  suggestionsList.classList.add("show");
 }
 
-function getFirstAvailableDate(destination) {
-  return getAvailableDatesForDestination(destination).sort((a, b) => a - b)[0] || null;
+// Clears the selected date if it's no longer valid for the newly typed destination
+function refreshSelectedDateForDestination() {
+  const destination = getCurrentDestination();
+
+  if (selectedDate && (!destination || !destinationHasAvailableDate(destination, selectedDate))) {
+    clearDateSelection();
+  }
+
+  if (calendarDropdown.classList.contains("show")) {
+    if (destination) {
+      ensureCalendarMonth(destination);
+    }
+
+    renderCalendar();
+  }
 }
 
+
+// ============================================================
+// DATE PANEL — OPEN, CLOSE & SYNC
+// ============================================================
+
+// Collapses the calendar dropdown and updates the trigger's aria-expanded attribute
+function closeDatePanel() {
+  dateTrigger.setAttribute("aria-expanded", "false");
+  calendarDropdown.classList.remove("show");
+}
+
+// Opens the calendar dropdown, validates destination, and renders the calendar
+function openDateCalendar() {
+  activateBox(dateBox);
+  dateTrigger.setAttribute("aria-expanded", "true");
+  calendarDropdown.classList.add("show");
+
+  const destination = getCurrentDestination();
+
+  if (!destination) {
+    showError("Please select a destination first.");
+  } else {
+    ensureCalendarMonth(destination);
+    calendarMode = "months";
+    clearError();
+  }
+
+  renderCalendar();
+}
+
+// Sets selectedDate and updates the date input field to show the formatted date
+function syncDateInput(date) {
+  selectedDate = new Date(date);
+  selectedDate.setHours(0, 0, 0, 0);
+  dateInput.value = formatDate(selectedDate);
+  dateInput.dataset.filled = "true";
+  updatePersistentStates();
+}
+
+// Resets the selected date and clears the date input field
+function clearDateSelection() {
+  selectedDate = null;
+  dateInput.value = "";
+  delete dateInput.dataset.filled;
+  updatePersistentStates();
+}
+
+// Parses and validates the current date input value; clears or shows errors as needed
+function applySelectedDate() {
+  const parsedDate = parseNativeDate(dateInput.value);
+
+  if (!parsedDate) {
+    clearDateSelection();
+    return true;
+  }
+
+  if (!isDateAllowed(parsedDate)) {
+    showError(`Please choose a date on or after ${formatDate(getToday())}.`);
+    clearDateSelection();
+    return false;
+  }
+
+  const destination = getCurrentDestination();
+  if (destination && !destinationHasAvailableDate(destination, parsedDate)) {
+    showError("Please choose one of the available package dates.");
+    clearDateSelection();
+    return false;
+  }
+
+  syncDateInput(parsedDate);
+  clearError();
+  return true;
+}
+
+
+// ============================================================
+// CALENDAR RENDERING
+// ============================================================
+
+// Ensures the calendar view is set to the month of the selected or first available date
 function ensureCalendarMonth(destination) {
   if (selectedDate && destinationHasAvailableDate(destination, selectedDate)) {
     calendarViewDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
@@ -442,6 +684,7 @@ function ensureCalendarMonth(destination) {
   }
 }
 
+// Builds and renders the full calendar header and body based on current calendarMode
 function renderCalendar() {
   const destination = getCurrentDestination();
   calendarDropdown.innerHTML = "";
@@ -457,6 +700,7 @@ function renderCalendar() {
     return;
   }
 
+  // Build calendar header with prev/next year navigation and month/year labels
   const header = document.createElement("div");
   header.className = "cal-header";
 
@@ -491,30 +735,35 @@ function renderCalendar() {
   header.append(previousButton, center, nextButton);
   calendarDropdown.appendChild(header);
 
+  // Navigate to the previous year and re-render the calendar
   previousButton.addEventListener("click", (event) => {
     event.stopPropagation();
     calendarViewDate.setFullYear(calendarViewDate.getFullYear() - 1);
     renderCalendar();
   });
 
+  // Navigate to the next year and re-render the calendar
   nextButton.addEventListener("click", (event) => {
     event.stopPropagation();
     calendarViewDate.setFullYear(calendarViewDate.getFullYear() + 1);
     renderCalendar();
   });
 
+  // Clicking the month label switches back to the month picker view
   monthButton.addEventListener("click", (event) => {
     event.stopPropagation();
     calendarMode = "months";
     renderCalendar();
   });
 
+  // Clicking the year label also resets to the month picker view
   yearButton.addEventListener("click", (event) => {
     event.stopPropagation();
     calendarMode = "months";
     renderCalendar();
   });
 
+  // Render month grid or day grid depending on the current calendar mode
   if (calendarMode === "months") {
     renderMonthPicker(destination);
     return;
@@ -523,6 +772,7 @@ function renderCalendar() {
   renderDayPicker(destination);
 }
 
+// Renders a 12-month grid; disables months with no available package dates
 function renderMonthPicker(destination) {
   const availableMonthKeys = getAvailableMonthKeysForDestination(destination);
   const picker = document.createElement("div");
@@ -540,6 +790,7 @@ function renderMonthPicker(destination) {
       option.classList.add("cal-month-option--selected");
     }
 
+    // Clicking a month switches to the day picker for that month
     option.addEventListener("click", (event) => {
       event.stopPropagation();
       calendarViewDate = new Date(calendarViewDate.getFullYear(), monthIndex, 1);
@@ -553,11 +804,13 @@ function renderMonthPicker(destination) {
   calendarDropdown.appendChild(picker);
 }
 
+// Renders a day grid for the current month; only available package start dates are enabled
 function renderDayPicker(destination) {
   const availableDateKeys = getAvailableDateKeysForDestination(destination);
   const daysRow = document.createElement("div");
   daysRow.className = "cal-days-row";
 
+  // Render weekday header labels (Sun–Sat)
   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach((dayName) => {
     const day = document.createElement("span");
     day.className = "cal-day-name";
@@ -573,12 +826,14 @@ function renderDayPicker(destination) {
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+  // Add empty cells to align the first day of the month correctly
   for (let i = 0; i < firstDay; i += 1) {
     const emptyCell = document.createElement("span");
     emptyCell.className = "cal-cell cal-cell--empty";
     grid.appendChild(emptyCell);
   }
 
+  // Render a button for each day; disable unavailable dates and highlight the selected one
   for (let day = 1; day <= daysInMonth; day += 1) {
     const cellDate = new Date(year, month, day);
     cellDate.setHours(0, 0, 0, 0);
@@ -597,6 +852,7 @@ function renderDayPicker(destination) {
       cell.classList.add("cal-cell--selected");
     }
 
+    // On click: save the selected date, close the calendar, and clear any errors
     cell.addEventListener("click", (event) => {
       event.stopPropagation();
       syncDateInput(cellDate);
@@ -610,112 +866,12 @@ function renderDayPicker(destination) {
   calendarDropdown.append(daysRow, grid);
 }
 
-function openDateCalendar() {
-  activateBox(dateBox);
-  dateTrigger.setAttribute("aria-expanded", "true");
-  calendarDropdown.classList.add("show");
 
-  const destination = getCurrentDestination();
+// ============================================================
+// PEOPLE (PASSENGER COUNT) — LABEL & CONTROLS
+// ============================================================
 
-  if (!destination) {
-    showError("Please select a destination first.");
-  } else {
-    ensureCalendarMonth(destination);
-    calendarMode = "months";
-    clearError();
-  }
-
-  renderCalendar();
-}
-
-function syncDateInput(date) {
-  selectedDate = new Date(date);
-  selectedDate.setHours(0, 0, 0, 0);
-  dateInput.value = formatDate(selectedDate);
-  dateInput.dataset.filled = "true";
-  updatePersistentStates();
-}
-
-function clearDateSelection() {
-  selectedDate = null;
-  dateInput.value = "";
-  delete dateInput.dataset.filled;
-  updatePersistentStates();
-}
-
-function applySelectedDate() {
-  const parsedDate = parseNativeDate(dateInput.value);
-
-  if (!parsedDate) {
-    clearDateSelection();
-    return true;
-  }
-
-  if (!isDateAllowed(parsedDate)) {
-    showError(`Please choose a date on or after ${formatDate(getToday())}.`);
-    clearDateSelection();
-    return false;
-  }
-
-  const destination = getCurrentDestination();
-  if (destination && !destinationHasAvailableDate(destination, parsedDate)) {
-    showError("Please choose one of the available package dates.");
-    clearDateSelection();
-    return false;
-  }
-
-  syncDateInput(parsedDate);
-  clearError();
-  return true;
-}
-
-function normalizeDestinationValue(value) {
-  return value.replace(/[0-9]/g, "").replace(/\s{2,}/g, " ");
-}
-
-function buildSuggestions(query) {
-  const normalizedQuery = query.trim().toLowerCase();
-
-  if (!normalizedQuery) {
-    suggestionsList.innerHTML = "";
-    suggestionsList.classList.remove("show");
-    return;
-  }
-
-  suggestionsList.innerHTML = "";
-
-  const matches = DESTINATIONS.filter((destination) =>
-    destination.toLowerCase().includes(normalizedQuery)
-  );
-
-  if (matches.length === 0) {
-    suggestionsList.classList.remove("show");
-    return;
-  }
-
-  matches.forEach((destination) => {
-    const option = document.createElement("button");
-    option.type = "button";
-    option.className = "suggestion-item";
-    option.textContent = destination;
-
-    option.addEventListener("click", (event) => {
-      event.stopPropagation();
-      destinationInput.value = destination;
-      activateBox(destinationBox);
-      updatePersistentStates();
-      clearError();
-      closeDestinationPanel();
-      refreshSelectedDateForDestination();
-      dateTrigger.focus();
-    });
-
-    suggestionsList.appendChild(option);
-  });
-
-  suggestionsList.classList.add("show");
-}
-
+// Updates the people label text and counter displays; disables decrement buttons at minimums
 function refreshPeopleLabel() {
   const parts = [`${adults} adult${adults !== 1 ? "s" : ""}`];
 
@@ -731,6 +887,12 @@ function refreshPeopleLabel() {
   updatePersistentStates();
 }
 
+
+// ============================================================
+// ERROR MESSAGE — SHOW & CLEAR
+// ============================================================
+
+// Displays an error message below the search bar; auto-dismisses after 4 seconds
 function showError(message, linkText, linkHref) {
   clearError();
 
@@ -742,6 +904,7 @@ function showError(message, linkText, linkHref) {
   messageNode.textContent = `${message} `;
   errorBox.appendChild(messageNode);
 
+  // Optionally appends a clickable link (e.g., "Click here") to the error message
   if (linkText) {
     const link = document.createElement("a");
     link.className = "search-error__link";
@@ -757,6 +920,7 @@ function showError(message, linkText, linkHref) {
   }, 4000);
 }
 
+// Removes the active error message and cancels any pending auto-dismiss timeout
 function clearError() {
   if (errorTimeoutId) {
     clearTimeout(errorTimeoutId);
@@ -769,39 +933,12 @@ function clearError() {
   }
 }
 
-function getDestinationMatch(value) {
-  const normalized = value.trim().toLowerCase();
-  return DESTINATIONS.find((destination) => destination.toLowerCase() === normalized) || null;
-}
 
-function getDestinationPackagesLink(destination) {
-  return DESTINATION_LINKS[destination.toLowerCase()] || "#packages";
-}
+// ============================================================
+// LOCAL STORAGE — SAVE BOOKING DATA
+// ============================================================
 
-function destinationHasAvailableDate(destination, date) {
-  return getAvailableDatesForDestination(destination).some((availableDate) => sameDate(availableDate, date));
-}
-
-function getPackageDateRangeForSelection(destination, date) {
-  if (!destination || !date) {
-    return null;
-  }
-
-  const normalized = destination.trim().toLowerCase();
-  const ranges = PACKAGE_DATE_RANGES[normalized] || [];
-  const selectedDateKey = formatDateForInput(date);
-  const matchingRange = ranges.find(([startValue]) => startValue === selectedDateKey);
-
-  if (!matchingRange) {
-    return null;
-  }
-
-  return {
-    startDate: matchingRange[0],
-    endDate: matchingRange[1]
-  };
-}
-
+// Saves the current booking selection (destination, dates, passengers) to localStorage
 function saveBookingDataToStorage(destination, date, adultCount, childCount) {
   try {
     const selectedRange = getPackageDateRangeForSelection(destination, date);
@@ -821,22 +958,12 @@ function saveBookingDataToStorage(destination, date, adultCount, childCount) {
   }
 }
 
-function refreshSelectedDateForDestination() {
-  const destination = getCurrentDestination();
 
-  if (selectedDate && (!destination || !destinationHasAvailableDate(destination, selectedDate))) {
-    clearDateSelection();
-  }
+// ============================================================
+// EVENT LISTENERS — DESTINATION BOX
+// ============================================================
 
-  if (calendarDropdown.classList.contains("show")) {
-    if (destination) {
-      ensureCalendarMonth(destination);
-    }
-
-    renderCalendar();
-  }
-}
-
+// Clicking the destination box (outside suggestions) opens the panel and focuses the input
 destinationBox.addEventListener("click", (event) => {
   if (event.target.closest(".suggestions")) {
     return;
@@ -847,11 +974,13 @@ destinationBox.addEventListener("click", (event) => {
   focusDestinationInput();
 });
 
+// Clicking the input itself also opens the destination panel
 destinationInput.addEventListener("click", (event) => {
   event.stopPropagation();
   openDestinationPanel();
 });
 
+// Pressing Enter or Space on the destination box opens the panel via keyboard
 destinationBox.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
@@ -860,6 +989,7 @@ destinationBox.addEventListener("keydown", (event) => {
   }
 });
 
+// On input: sanitizes the value, updates state, refreshes date validity, and debounces suggestions
 destinationInput.addEventListener("input", (event) => {
   clearTimeout(typingTimer);
 
@@ -879,16 +1009,24 @@ destinationInput.addEventListener("input", (event) => {
   }, 150);
 });
 
+// Focusing the destination input opens the suggestions panel
 destinationInput.addEventListener("focus", () => {
   openDestinationPanel();
 });
 
+// Prevents numeric key input in the destination field
 destinationInput.addEventListener("keydown", (event) => {
   if (/^\d$/.test(event.key)) {
     event.preventDefault();
   }
 });
 
+
+// ============================================================
+// EVENT LISTENERS — DATE BOX
+// ============================================================
+
+// Clicking the date box (outside the calendar) opens the calendar dropdown
 dateBox.addEventListener("click", (event) => {
   if (event.target.closest(".calendar-dropdown")) {
     return;
@@ -897,11 +1035,13 @@ dateBox.addEventListener("click", (event) => {
   openDateCalendar();
 });
 
+// Clicking the date trigger button specifically also opens the calendar
 dateTrigger.addEventListener("click", (event) => {
   event.stopPropagation();
   openDateCalendar();
 });
 
+// Pressing Enter or Space on the date box opens the calendar via keyboard
 dateBox.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
@@ -909,20 +1049,29 @@ dateBox.addEventListener("keydown", (event) => {
   }
 });
 
+// Typing into the date input opens the calendar (for native date picker interactions)
 dateInput.addEventListener("input", () => {
   openDateCalendar();
 });
 
+// On change: activates the date box and validates/applies the typed date
 dateInput.addEventListener("change", () => {
   activateBox(dateBox);
   applySelectedDate();
 });
 
+// Clicking the date input itself also opens the calendar
 dateInput.addEventListener("click", (event) => {
   event.stopPropagation();
   openDateCalendar();
 });
 
+
+// ============================================================
+// EVENT LISTENERS — PEOPLE BOX
+// ============================================================
+
+// Clicking the people box (outside the dropdown) opens the passenger count dropdown
 peopleBox.addEventListener("click", (event) => {
   if (event.target.closest(".people-dropdown")) {
     return;
@@ -934,6 +1083,7 @@ peopleBox.addEventListener("click", (event) => {
   peopleBox.classList.add("dropdown-open");
 });
 
+// Clicking the people display also opens the dropdown
 peopleDisplay.addEventListener("click", (event) => {
   event.stopPropagation();
   closeDatePanel();
@@ -942,6 +1092,7 @@ peopleDisplay.addEventListener("click", (event) => {
   peopleBox.classList.add("dropdown-open");
 });
 
+// Pressing Enter or Space on the people box opens the dropdown via keyboard
 peopleBox.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
@@ -951,6 +1102,7 @@ peopleBox.addEventListener("keydown", (event) => {
   }
 });
 
+// Increment adult count by 1
 adultInc.addEventListener("click", (event) => {
   event.stopPropagation();
   adults += 1;
@@ -958,6 +1110,7 @@ adultInc.addEventListener("click", (event) => {
   clearError();
 });
 
+// Decrement adult count by 1 (minimum of 1)
 adultDec.addEventListener("click", (event) => {
   event.stopPropagation();
   if (adults > 1) {
@@ -967,6 +1120,7 @@ adultDec.addEventListener("click", (event) => {
   }
 });
 
+// Increment child count by 1
 childInc.addEventListener("click", (event) => {
   event.stopPropagation();
   children += 1;
@@ -974,6 +1128,7 @@ childInc.addEventListener("click", (event) => {
   clearError();
 });
 
+// Decrement child count by 1 (minimum of 0)
 childDec.addEventListener("click", (event) => {
   event.stopPropagation();
   if (children > 0) {
@@ -983,6 +1138,12 @@ childDec.addEventListener("click", (event) => {
   }
 });
 
+
+// ============================================================
+// EVENT LISTENERS — GLOBAL
+// ============================================================
+
+// Clicking outside the search bar or error closes all open panels
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".search-bar") && !event.target.closest(".search-error")) {
     closeDatePanel();
@@ -990,6 +1151,12 @@ document.addEventListener("click", (event) => {
   }
 });
 
+
+// ============================================================
+// SEARCH BUTTON — VALIDATION & REDIRECT
+// ============================================================
+
+// Validates all fields and redirects to the destinations page with search parameters
 searchBtn.addEventListener("click", () => {
   clearError();
 
@@ -998,6 +1165,7 @@ searchBtn.addEventListener("click", () => {
   const hasDateText = Boolean(dateInput.value);
   const selectedDateIsValid = !hasDateText || applySelectedDate();
 
+  // Stop if the typed date is invalid
   if (!selectedDateIsValid) {
     activateBox(dateBox);
     return;
@@ -1005,21 +1173,25 @@ searchBtn.addEventListener("click", () => {
 
   const hasSelectedDate = Boolean(selectedDate);
 
+  // Validate: both destination and date are missing
   if (!destinationValue && !hasSelectedDate) {
     showError("Please enter a destination and select a travel date.");
     return;
   }
 
+  // Validate: destination is missing
   if (!destinationValue) {
     showError("Please enter a destination.");
     return;
   }
 
+  // Validate: destination is unrecognized and no date selected
   if (!matchedDestination && !hasSelectedDate) {
     showError("No available destinations and dates.", "Click here", "#packages");
     return;
   }
 
+  // Validate: destination is unrecognized
   if (!matchedDestination) {
     showError("No available destinations.", "Click here", "#packages");
     return;
@@ -1028,21 +1200,25 @@ searchBtn.addEventListener("click", () => {
   const destinationLink = getDestinationPackagesLink(matchedDestination);
   const availableDates = getAvailableDatesForDestination(matchedDestination);
 
+  // Validate: no available dates exist for this destination
   if (!availableDates.length) {
     showError("No available dates.", "Click here", destinationLink);
     return;
   }
 
+  // Validate: no travel date was selected
   if (!hasSelectedDate) {
     showError("Please select a travel date.");
     return;
   }
 
+  // Validate: selected date is not in the destination's available package dates
   if (!destinationHasAvailableDate(matchedDestination, selectedDate)) {
     showError("No available dates.", "Click here", destinationLink);
     return;
   }
 
+  // All validations passed — build URL params, save to storage, and redirect
   const searchParams = new URLSearchParams({
     destination: matchedDestination,
     date: formatDate(selectedDate),
@@ -1054,5 +1230,11 @@ searchBtn.addEventListener("click", () => {
   window.location.href = `destinations.html?${searchParams.toString()}`;
 });
 
+
+// ============================================================
+// INITIALIZATION
+// ============================================================
+
+// Initialize the people label and sync all box states on page load
 refreshPeopleLabel();
 updatePersistentStates();
