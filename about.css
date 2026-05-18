@@ -18,6 +18,29 @@
     line-height: 1.6;
 }
 
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-header h3 {
+    font-family: PlayfairDisplay, serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: var(--primary-dark);
+    margin: 0 0 10px;
+}
+
+.section-subtitle {
+    font-family: Montserrat, sans-serif;
+    font-size: 0.98rem;
+    color: var(--secondary-light);
+    margin: 0;
+    line-height: 1.7;
+}
+
 /* ── Segment base ── */
 .seg {
     padding: 96px 60px;
@@ -215,75 +238,70 @@
    MISSION / VISION / GOALS
 ══════════════════════════════════════ */
 .seg--svm {
-    background:
-        linear-gradient(rgba(245,249,251,0.97), rgba(240,244,248,0.97));
+    background: var(--surface);
     padding: 96px 60px;
 }
 
-.svm-grid {
+.values-grid--about {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
     max-width: 1100px;
     margin: 0 auto;
-    align-items: stretch;
 }
 
-.svm-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.value-card {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 36px 28px;
     text-align: center;
-    background: var(--white);
-    border: 1.5px solid var(--surface-line);
-    border-radius: 22px;
-    padding: 44px 32px;
-    box-shadow: 0 4px 20px rgba(17,38,59,0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(17, 38, 59, 0.06);
+    border: 1px solid var(--surface-line);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
-.svm-card:hover {
+
+.value-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 40px rgba(53,107,134,0.14);
+    box-shadow: 0 18px 36px rgba(53, 107, 134, 0.14);
+    background: #eef5f8;
 }
 
-/* featured card (Vision) gets a gold top border */
-.svm-card--featured {
-    border-top: 4px solid var(--gold);
-}
-.svm-card--featured .svm-card__icon {
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-}
-
-.svm-card__icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
+.value-card__icon {
+    font-size: 2.3rem;
+    width: 70px;
+    height: 70px;
     background: var(--soft-blue);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 22px;
-    flex-shrink: 0;
+    margin: 0 auto 20px;
     transition: transform 0.3s ease;
 }
-.svm-card:hover .svm-card__icon { transform: scale(1.1) rotate(6deg); }
-.svm-card__icon img {
+
+.value-card:hover .value-card__icon {
+    transform: scale(1.12) rotate(5deg);
+}
+
+.value-card__icon--image img {
     width: 40px;
     height: 40px;
     object-fit: contain;
 }
 
-.svm-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
+.value-card h4 {
+    font-family: PlayfairDisplay, serif;
+    font-size: 1.05rem;
+    font-weight: 900;
     color: var(--primary-dark);
-    margin: 0 0 14px;
+    margin: 0 0 12px;
 }
-.svm-card p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
+
+.value-card p {
+    font-family: Montserrat, sans-serif;
+    font-size: 0.875rem;
     color: var(--secondary-light);
-    line-height: 1.75;
+    line-height: 1.7;
     margin: 0;
 }
 
@@ -395,7 +413,7 @@
     .intro__accent-img { aspect-ratio: 16/9; }
 
     /* SVM */
-    .svm-grid {
+    .values-grid--about {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -408,10 +426,11 @@
 
     /* Segment header */
     .seg__header h2 { font-size: 2rem; }
+    .section-header h3 { font-size: 2rem; }
 }
 
 @media (max-width: 480px) {
     .abt-content h2 { font-size: 1.8rem; }
-    .svm-grid { grid-template-columns: 1fr; }
+    .values-grid--about { grid-template-columns: 1fr; }
     .intro__card { padding: 24px 18px; }
 }
