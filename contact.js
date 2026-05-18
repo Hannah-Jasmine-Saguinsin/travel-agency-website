@@ -207,6 +207,19 @@ attachSuggestTrigger($('#sPhone'), $('#phone'));
         attachLiveValidation(mainInputs);
         var bookingMessageField = $('#bookingMessage') || $('#message');
 
+        function formatStoredTravelDate(storedBooking) {
+            if (!storedBooking) return '';
+
+            var startDate = String(storedBooking.startDate || storedBooking.date || '').trim();
+            var endDate = String(storedBooking.endDate || '').trim();
+
+            if (startDate && endDate) {
+                return startDate + ' to ' + endDate;
+            }
+
+            return startDate;
+        }
+
         function applyStoredBookingMessage(destinationFromUrl) {
             if (!bookingMessageField) return;
 
@@ -227,7 +240,7 @@ attachSuggestTrigger($('#sPhone'), $('#phone'));
                 bookingMessageField.value =
                     'Booking Inquiry\n\n' +
                     'Destination: ' + resolvedDestination + '\n' +
-                    'Travel Date: ' + (storedBooking.date || '') + '\n' +
+                    'Travel Date: ' + formatStoredTravelDate(storedBooking) + '\n' +
                     'Adults: ' + String(storedBooking.adults || '') + '\n' +
                     'Children: ' + String(storedBooking.children || '');
 

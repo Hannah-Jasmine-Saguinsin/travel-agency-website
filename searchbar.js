@@ -782,11 +782,35 @@ function destinationHasAvailableDate(destination, date) {
   return getAvailableDatesForDestination(destination).some((availableDate) => sameDate(availableDate, date));
 }
 
+function getPackageDateRangeForSelection(destination, date) {
+  if (!destination || !date) {
+    return null;
+  }
+
+  const normalized = destination.trim().toLowerCase();
+  const ranges = PACKAGE_DATE_RANGES[normalized] || [];
+  const selectedDateKey = formatDateForInput(date);
+  const matchingRange = ranges.find(([startValue]) => startValue === selectedDateKey);
+
+  if (!matchingRange) {
+    return null;
+  }
+
+  return {
+    startDate: matchingRange[0],
+    endDate: matchingRange[1]
+  };
+}
+
 function saveBookingDataToStorage(destination, date, adultCount, childCount) {
   try {
+    const selectedRange = getPackageDateRangeForSelection(destination, date);
+
     const bookingData = {
       destination: destination || "",
       date: date ? formatDateForInput(date) : "",
+      startDate: selectedRange ? selectedRange.startDate : (date ? formatDateForInput(date) : ""),
+      endDate: selectedRange ? selectedRange.endDate : "",
       adults: String(Number(adultCount) || 1),
       children: String(Number(childCount) || 0)
     };
